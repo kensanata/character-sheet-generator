@@ -14,6 +14,9 @@ Take a look at the
 [Help](http://campaignwiki.org/halberdsnhelmets/help) page. It comes
 with links to examples of what this web application can do.
 
+If you want to report bugs, provide feedback, fix typos or collaborate
+in any other way, feel free to
+[contact me](https://alexschroeder.ch/wiki/Contact).
 
 ## Purisa
 
@@ -21,7 +24,6 @@ You can get the Purisa font for free from the
 [linux.thai.net (LTN) Thai Linux FTP archive](ftp://linux.thai.net/pub/thailinux/software/thai-ttf/),
 or from your package manager. It was called `fonts-tlwg-purisa` on my
 system.
-
 
 ## Running it locally
 
