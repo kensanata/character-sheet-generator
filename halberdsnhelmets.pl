@@ -3777,7 +3777,7 @@ Da es für Hellebarden und Helme keine Kleriker gibt, kann man auch
 <%= link_to url_for("random" => {lang => "de"})->query(rules => "halberds-n-helmets") => begin %>einen zufälligen Charakter<% end %>,
 <%= link_to url_for("characters" => {lang => "de"})->query(rules => "halberds-n-helmets") => begin %>einige Charaktere<% end %>
 oder <%= link_to  url_for("stats" => {lang => "de"})->query(rules => "halberds-n-helmets") => begin %>Statistiken<% end %>
-mit <a href="https://github.com/kensanata/halberdsnhelmets/tree/master/Hellebarden%20und%20Helme">Hellebarden und Helme</a>
+mit <a href="https://alexschroeder.ch/cgit/hellebarden-und-helme/about/">Hellebarden und Helme</a>
 Regeln generieren.
 
 <h2 id="pendragon">Pendragon</h2>
@@ -3961,7 +3961,7 @@ As Halberds and Helmets has no clerics, you can also generate a
 <%= link_to url_for("random" => {lang => "en"})->query(rules => "halberds-n-helmets") => begin %>random character<% end %>,
 <%= link_to url_for("characters" => {lang => "en"})->query(rules => "halberds-n-helmets") => begin %>bunch of characters<% end %>
 or <%= link_to  url_for("stats" => {lang => "en"})->query(rules => "halberds-n-helmets") => begin %>some statistics<% end %>
-using <a href="https://github.com/kensanata/halberdsnhelmets/tree/master/Halberds%20and%20Helmets">Halberds and Helmets</a>
+using <a href="https://alexschroeder.ch/cgit/halberds-and-helmets/about/">Halberds and Helmets</a>
 rules.
 
 <h2 id="pendragon">Pendragon</h2>
@@ -4100,7 +4100,7 @@ textarea { width: 100% }
 <%= link_to url_for("main" => {lang => "de"}) => begin %>Character Generator<% end %> &nbsp;
 <%= link_to Help => "help" %> &nbsp;
 <a href="https://alexschroeder.ch/wiki/Contact">Alex Schroeder</a> &nbsp;
-<a href="https://github.com/kensanata/halberdsnhelmets/tree/master/Characters">GitHub</a> &nbsp;
+<a href="https://alexschroeder.ch/cgit/character-sheet-generator/about/">Source</a> &nbsp;
 <%= link_to url_for("main" => {lang => "de"}) => begin %>German<% end %>
 </div>
 % end
@@ -4114,7 +4114,7 @@ textarea { width: 100% }
 <%= link_to url_for("main" => {lang => "de"}) => begin %>Charakterblatt Generator<% end %> &nbsp;
 <%= link_to Hilfe => "hilfe" %> &nbsp;
 <a href="https://alexschroeder.ch/wiki/Contact">Alex Schroeder</a> &nbsp;
-<a href="https://github.com/kensanata/halberdsnhelmets/tree/master/Characters">GitHub</a> &nbsp;
+<a href="https://alexschroeder.ch/cgit/character-sheet-generator/about/">Source</a> &nbsp;
 <%= link_to url_for("main" => {lang => "en"}) => begin %>English<% end %>
 </div>
 % end
