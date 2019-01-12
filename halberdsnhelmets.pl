@@ -1084,7 +1084,7 @@ sub buy_basics {
   push(@property, "- $money gp -") if $char->{debug};
   ($money, @property) = buy($char, T('backpack'), $money, @property);
   ($money, @property) = buy($char, T('iron rations (1 week)'), $money, @property);
-  
+
   return ($money, @property);
 }
 
@@ -1153,11 +1153,11 @@ sub buy_armor {
     ($budget, @property) = buy($char, T('shield'), $budget, @property);
     ($budget, @property) = buy($char, T('helmet'), $budget, @property);
   }
-  
+
   # compute AC
   my $dex = $char->{dex};
   my $ac = 9 - bonus($dex);
-  
+
   if (member(T('plate mail'), @property)) { $ac -= 6; }
   elsif (member(T('chain mail'), @property)) { $ac -= 4; }
   elsif (member(T('leather armor'), @property)) { $ac -= 2; }
@@ -1167,7 +1167,7 @@ sub buy_armor {
 
   # ACKS is ascending
   if ($char->{rules} eq "acks") { $ac = 9 - $ac; }
-  
+
   provide($char, "ac",  $ac);
 
   return ($money + $budget, @property);
@@ -1180,7 +1180,7 @@ sub buy_melee_weapon {
   my $hp  = $char->{hp};
   my $shield = member(T('shield'), @property);
   my @preferences;
-  
+
   if ($class eq T('cleric')) {
     @preferences = shuffle(
       T('mace'),
@@ -1265,7 +1265,7 @@ sub buy_weapon {
   push(@property, "- $money gp -") if $char->{debug};
   my $budget = $money / 2;
   $money -= $budget;
-  
+
   ($budget, @property) = buy_melee_weapon($char, $budget, $class, @property);
   ($budget, @property) = buy_throwing_weapon($char, $budget, $class, @property);
   ($budget, @property) = buy_ranged_weapon($char, $budget, $class, @property);
@@ -2178,7 +2178,7 @@ sub traits {
 sub random_moldvay {
   my $char = shift;
   # keys that can be provided: name, class, charsheet
-  
+
   provide($char, "name", name()) unless $char->{name};
 
   my ($str, $dex, $con, $int, $wis, $cha) =
@@ -2492,7 +2492,7 @@ sub random_acks {
   }
 
   provide($char, "hp",  $hp);
-  
+
   equipment($char);
 
   provide($char, "abilities", proficiencies());
@@ -2536,7 +2536,7 @@ sub freebooters_abilities {
   provide($char, "wis", roll_3d6());
   provide($char, "cha", roll_3d6());
   provide($char, "luc", roll_3d6());
-  
+
   # and swap one
   if ($char->{class} eq T('fighter')) {
     swap_for_highest($char, ["str", "con", "dex"], ["wis", "int", "cha"]);
@@ -2798,7 +2798,7 @@ sub freebooters_hit_points {
 sub freebooters_alignment {
   my $char = shift;
   my ($evil, $chaotic, $neutral, $lawful, $good);
-  
+
   if ($char->{class} eq T('fighter')) {
     ($evil, $chaotic, $neutral, $lawful, $good) = (2, 4, 8, 10, 12);
   } elsif ($char->{class} eq T('thief')) {
@@ -2808,7 +2808,7 @@ sub freebooters_alignment {
   } elsif ($char->{class} eq T('magic-user')) {
     ($evil, $chaotic, $neutral, $lawful, $good) = (3, 8, 8, 8, 12);
   }
-  
+
   my $roll = d12();
   if    ($roll <= $evil)    { return T('evil') }
   elsif ($roll <= $chaotic) { return T('chaotic') }
@@ -2864,7 +2864,7 @@ sub freebooters_gear {
   my $char = shift;
   my $wt = 0;
 
-  my %weapons = 
+  my %weapons =
       (T('axe') => [T('1d8'), 'close', 2],
        T('club') => [T('1d6'), 'close', 1],
        T('dagger') => [T('1d4'), "1 " . join(", ", T('pierce'), T('precise'), T('hand')), 0],
@@ -2888,7 +2888,7 @@ sub freebooters_gear {
        T('long bow') => [T('1d8'), join(", ", T('near'), T('far'), T('2-handed')), 1],
        T('light crossbow') => [T('1d6'), "1 " . join(", ", T('pierce'), T('near'), T('far'), T('2-handed'), T('reload')), 1],
        T('heavy crossbow') => [T('1d6'), "2 " . join(", ", T('pierce'), T('near'), T('far'), T('2-handed'), T('reload')), 2]);
-  
+
   if ($char->{class} eq T('fighter')) {
 
     $wt += freebooter_weapon($char, \%weapons, freebooters_fighter_weapon($char, \%weapons));
@@ -2913,16 +2913,16 @@ sub freebooters_gear {
   } elsif ($char->{class} eq T('thief')) {
 
     $wt += freebooter_weapon($char, \%weapons, one(T('knife'), T('dagger'), T('shortsword')));
-    
+
     provide($char, "item1", T('leather armor'));
     provide($char, "armor", 1);
     provide($char, "item1-wt", 1);
     $wt += 1;
-    
+
   } elsif ($char->{class} eq T('cleric')) {
 
     $wt += freebooter_weapon($char, \%weapons, one(T('staff'), T('mace'), T('war hammer')));
-    
+
     my $roll = d6();
     if ($roll <= 2) {
       provide($char, "item1", T('shield'));
@@ -3132,7 +3132,7 @@ sub proficiencies {
     if ($char->{level} > 5) {
       $proficiencies{'Arcane Dabbling'} = +1;
     }
-  }      
+  }
 
   # add general proficiencies
   my %general = ();
