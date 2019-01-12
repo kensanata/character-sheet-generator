@@ -1470,7 +1470,7 @@ sub average {
 # allows wrap to use wantarray when used to wrap $value, see freebooters_appearance
 sub provide ($$$) {
   my ($char, $key, $value) = @_;
-  push(@{$char->{provided}}, $key) unless $char->{$key};
+  push(@{$char->{provided}}, $key) unless defined $char->{$key};
   $char->{$key} = $value;
 }
 
