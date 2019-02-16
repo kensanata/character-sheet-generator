@@ -3956,7 +3956,7 @@ or <%= link_to  url_for("stats" => {lang => "en"})->query(rules => "labyrinth lo
 using <a href="http://www.goblinoidgames.com/labyrinthlord.html">Labyrinth Lord</a>
 rules.
 
-<p id="labyrinth_lord">
+<p id="halberds">
 As Halberds and Helmets has no clerics, you can also generate a
 <%= link_to url_for("random" => {lang => "en"})->query(rules => "halberds-n-helmets") => begin %>random character<% end %>,
 <%= link_to url_for("characters" => {lang => "en"})->query(rules => "halberds-n-helmets") => begin %>bunch of characters<% end %>
@@ -4097,7 +4097,7 @@ textarea { width: 100% }
 <div class="footer">
 <hr>
 <p>
-<%= link_to url_for("main" => {lang => "de"}) => begin %>Character Generator<% end %> &nbsp;
+<%= link_to url_for("main" => {lang => "en"}) => begin %>Character Generator<% end %> &nbsp;
 <%= link_to Help => "help" %> &nbsp;
 <a href="https://alexschroeder.ch/wiki/Contact">Alex Schroeder</a> &nbsp;
 <a href="https://alexschroeder.ch/cgit/character-sheet-generator/about/">Source</a> &nbsp;
