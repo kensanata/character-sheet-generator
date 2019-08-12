@@ -2319,7 +2319,7 @@ sub encode_char {
 			  my $item = $_;
 			  my $n = 1;
 			  $item = $1, $n = $2 if $item =~ /(.*) \((\d+)\)$/;
-			  warn "$item, $n, $h{$item}" if $n > 1;
+			  # warn "$item, $n, $h{$item}" if $n > 1;
 			  $h{$item} x $n;
 			} split(/\\\\/, $char->{$_}));
 		} else {
