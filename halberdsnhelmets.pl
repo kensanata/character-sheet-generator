@@ -2140,7 +2140,8 @@ xenophobic youthful zany zealous}], };
 # perl halberdsnhelmets.pl get --redirect /characters | w3m -T text/html
 
 sub traits {
-  my $lang = shift;
+  my $language = shift;
+  local $lang = $language; # make sure T works as intended
   my $name = name();
   my $gender = $names{$name};
   my $description = "$name, ";
