@@ -2346,15 +2346,14 @@ sub decode_char {
   my ($code, $language) = @_;
   local $lang = $language; # make sure T works as intended
   my $char = {};
-  provide($char, 'name', '?');
+  provide($char, "name", "?");
   my @abilities = map { number($_) } split(//, substr($code, 0, 6));
   for my $ability (qw(str dex con int wis cha)) {
     provide($char, $ability, shift(@abilities));
   }
-  provide($char, 'level', 1);
-  provide($char, 'xp', 0);
-  provide($char, 'thac0', 19);
-  # provide($char, 'code', $code);
+  provide($char, "level", 1);
+  provide($char, "xp", 0);
+  provide($char, "thac0", 19);
   my $h = classes();
   my %h = map { $h->{$_} => $_ } keys %$h;
   my $class = $h{substr($code, 6, 1)};
@@ -2391,13 +2390,12 @@ sub unique {
   my $i = 1;
   while (@source) {
     $h{$i++} = shift(@source);
-    if ($i eq '10') {
+    if ($i eq "10") {
       $i = "A"; # $i++ will still work
-    } elsif ($i eq 'AA') {
+    } elsif ($i eq "AA") {
       $i = "a";
     }
   }
-  # warn join(', ', map { "$_: $h{$_}" } keys %h);
   return \%h;
 }
 
@@ -3686,7 +3684,7 @@ Charakter:
 <td class="num"><%= $char->{ac} %></td>\
 <td><%= $char->{class} %></td></tr>
 </table>
-<p><%= join(', ', split(/\\\\/, $char->{property})) %></p>
+<p><%= join(", ", split(/\\\\/, $char->{property})) %></p>
 </div>
 <% } %>
 <div style="clear: both"></div>
