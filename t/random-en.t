@@ -33,10 +33,10 @@ $t->get_ok('/' => {'Accept-Language' => 'en'})
 $t->get_ok('/en')
     ->status_is(200)
     ->text_is('h1' => 'Character Sheet Generator')
-    ->text_is('.footer a[href="/de"]:nth-child(1)' => 'Character Generator')
+    ->text_is('.footer a[href="/en"]:nth-child(1)' => 'Character Generator')
     ->text_is('.footer a[href="/help"]:nth-child(2)' => 'Help')
     ->text_is('.footer a[href="https://alexschroeder.ch/wiki/Contact"]:nth-child(3)' => 'Alex Schroeder')
-    ->text_is('.footer a[href="https://github.com/kensanata/halberdsnhelmets/tree/master/Characters"]:nth-child(4)' => 'GitHub')
+    ->text_is('.footer a[href="https://alexschroeder.ch/cgit/character-sheet-generator/about/"]:nth-child(4)' => 'Source')
     ->text_is('.footer a[href="/de"]:nth-child(5)' => 'German');
 
 $t->get_ok('/random?name=Alex')
