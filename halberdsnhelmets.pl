@@ -3323,7 +3323,7 @@ sub init {
 
 sub lang {
   my $self = shift;
-  my $acceptor = I18N::AcceptLanguage->new();
+  my $acceptor = I18N::AcceptLanguage->new(defaultLanguage => "en");
   return $acceptor->accepts($self->req->headers->accept_language, [qw(en de)]);
 }
 
