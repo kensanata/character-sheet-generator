@@ -71,7 +71,6 @@ property: Holzstab
 property: Spiegel
 property: 4 Gold
 abilities: 1/6 für normale Aufgaben
-abilities: 2/6 um Geräusche zu hören
 abilities: 2/6 für Verstecken und Schleichen
 abilities: 5/6 für Verstecken und Schleichen im Freien
 abilities: +1 für Fernwaffen
