@@ -52,6 +52,8 @@ sub translations {
 2/6 für Verstecken und Schleichen
 5/6 to hide and sneak outdoors
 5/6 für Verstecken und Schleichen im Freien
+2/6 for all activities
+2/6 für alle Aktivitäten
 AC -2 vs. opponents larger than humans
 Rüstung -2 bei Gegnern über Menschengrösse
 Acrobatics
@@ -2291,7 +2293,7 @@ sub abilities {
     $abilities .= "\\\\" . T('+1 bonus to ranged weapons');
     $abilities .= "\\\\" . T('AC -2 vs. opponents larger than humans');
   } elsif ($class eq T('thief')) {
-    $abilities .= "\\\\" . T('2/6 to hear noise');
+    $abilities .= "\\\\" . T('2/6 for all activities');
     $abilities .= "\\\\" . T('+4 to hit and double damage backstabbing');
   }
   return $abilities;
