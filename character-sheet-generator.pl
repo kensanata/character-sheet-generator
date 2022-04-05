@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 
-# Copyright (C) 2012-2022  Alex Schroeder <alex@gnu.org>
+# Copyright (C) 2012-2016  Alex Schroeder <alex@gnu.org>
 
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -30,6 +30,8 @@ sub translations {
   # use %0, %1, etc. for parameters
   my %translations = split(/\n/, q{%0 gold
 %0 Gold
+%0 is unknown.
+%0 ist unbekannt.
 %0 silver
 %0 Silber
 %0: How much does this cost?
@@ -54,46 +56,228 @@ sub translations {
 2/6 für alle Aktivitäten
 AC -2 vs. opponents larger than humans
 Rüstung -2 bei Gegnern über Menschengrösse
+Acrobatics
+Akrobatik
+Adventuring
+Abenteurer
+Alchemy
+Alchemie
+Alertness
+Aufmerksamkeit
+Animal Husbandry
+Tierpflege
+Animal Training (Dog)
+Tiertrainer (Hunde)
+Arcane Dabbling
+Hexereien
+Arcanist
+Arkanist
+Arcanist-Avenger
+Arkaner Rächer
+Arcanist-Guardian
+Arkaner Wächter
+Art
+Kunst
+Bargaining
+Handeln
+Beast Friendship
+Tierfreundschaft
+Blade-Initiate
+Klingenkenner
+Blind Fighting
+Blind Kämpfen
+Bribery
+Bestechung
+Cat Burglary
+Einbruch
+Catechist
+Katechet
+Caving
+Höhlenwandern
 Charactersheet.svg
 Charakterblatt.svg
 Classes
 Klassen
+Climbing
+Klettern
+Collegiate Wizardry
+Zauberkollegium
+Combat Refexes
+Kampfreflexe
+Combat Trickery (Disarm)
+Austricksen (Entwaffnen)
+Combat Trickery (Incapacitate)
+Austricksen (Überwältigen)
+Contortionism
+Kontorsion
+Craft
+Handwerk
+Diplomacy
+Diplomatie
+Disguise
+Verkleiden
+Dwarven Craft-Catechist
+Zwergischer Werk-Katechet
+ESP
+Gedankenlesen
+Eavesdropping
+Lauschen
+Endurance
+Ausdauer
+Engineering
+Technik
+Fighting Style
+Kampfstil
+First level spells:
+Sprüche der ersten Stufe:
+Footpad
+Strassenräuber
+Gambling
+Glücksspiel
+Healing
+Heilung
+Intimidation
+Einschüchterung
+Knowledge
+Wissen
+Labor
+Arbeit
+Language
+Sprache
+Leadership
+Anführer
+Lip Reading
+Lippenlesen
+Man-at-Arms
+Landsknecht
+Manual of Arms
+Fechtbuch
+Mapping
+Kartographie
+Military Strategy
+Strategie
+Mimicry
+Mimikry
+Naturalism
+Naturfreund
+Navigation
+Navigation
+Performance
+Auftritt
+Precise Shooting
+Scharfschütze
+Profession
+Beruf
 Property
 Eigentum
+Reciter
+Rezitierer
+Riding
+Reiten
+Running
+Rennen
+Scout
+Späher
+Seafaring
+Seefahrt
+Seduction
+Verführung
+Sentry
+Wächter
+Siege Engineering
+Belagerung
+Signaling
+Signalisieren
+Skirmishing
+Plänkeln
+Skulking
+Schleichen
+Sniping
+Scharfschütze
 Spells:
 Zaubersprüche:
+Survival
+Überleben
+Swashbuckling
+Draufgängertum
+Theology
+Theologie
+Thug
+Schläger
+Tracking
+Spurenlesen
+Trap Finding
+Fallenfinden
+Trapping
+Fallenstellen
 Unknown Price
 Unbekannter Preis
+Unknown Rules
+Unbekannte Regeln
+Weapon Finesse
+Waffenfinesse
+Weapon Focus
+Waffenfokus
 and
 und
+arcane lock
+Arkanes Schloss
+assassin
+Assassine
 backpack
 Rucksack
+barbarian
+Barbar
+bard
+Barde
 battle axe
 Streitaxt
+bladedancer
+Klingentänzer
 case with 30 bolts
 Kiste mit 30 Bolzen
 chain mail
 Kettenhemd
 charm person
 Person bezaubern
+cleric
+Kleriker
 club
 Keule
+continual light
+Ewiges Licht
 crossbow
 Armbrust
 d6
 W6
 dagger
 Dolch
+detect evil
+Böses entdecken
+detect invisible
+Unsichtbares entdecken
 detect magic
 Magie entdecken
 dwarf
 Zwerg
+dwarven craftpriest
+Zwergischer Werkpriester
+dwarven vaultguard
+Zwergischer Schatzwächter
 elderly man
 älterer Mann
 elderly woman
 ältere Frau
 elf
 Elf
+elven bladedancer
+Elfischer Klingentänzer
+elven nightblade
+Elfische Nachtklinge
+elven spellsword
+Elfische Zauberklinge
+explorer
+Forscher
 fighter
 Krieger
 flask of oil
@@ -108,30 +292,48 @@ helmet
 Helm
 hold portal
 Portal verschliessen
-iron spikes (12) and hammer
-Eisenkeile (12) und Hammer
-stakes (3) and hammer
-Holzpfähle (12) und Hammer
+holy symbol
+Heiliges Symbol
+holy water
+Weihwasser
+invisibility
+Unsichtbarkeit
+iron rations (1 week)
+Feldrationen (1 Woche)
+iron spikes and hammer
+Eisenkeile und Hammer
+knock
+Klopfen
 lantern
 Laterne
 leather armor
 Lederrüstung
+levitate
+Schweben
 light
 Licht
+locate object
+Objekt lokalisieren
 long bow
 Langbogen
 long sword
 Langschwert
 mace
 Streitkeule
+mage
+Magier
 magic missile
 Magisches Geschoss
 magic-user
 Magier
 man
 Mann
+minor image
+kleines Ebenbild
 mirror
 Spiegel
+phantasmal force
+phantastische Kraft
 plate mail
 Plattenpanzer
 pole arm
@@ -148,6 +350,8 @@ read magic
 Magie lesen
 rope
 Seil
+second level spells:
+Sprüche der zweiten Stufe:
 shield
 Schild
 short bow
@@ -170,28 +374,120 @@ thief
 Dieb
 thieves’ tools
 Diebeswerkzeug
-torches (6)
-Fackeln (6)
+torches
+Fackeln
 two handed sword
 Zweihänder
 ventriloquism
 Bauchreden
 war hammer
 Kriegshammer
+web
+Netz
 wolfsbane
 Eisenhut (sog. Wolfsbann)
-garlic
-Knoblauch
 woman
 Frau
-pole
-Stab
+wooden pole
+Holzstab
 young man
 junger Mann
 young woman
 junge Frau
-rations (1 week)
-Wegzehrung (1 Woche)
+1d10
+1W10
+1d4
+1W4
+1d6
+1W6
+1d8
+1W6
+2-handed
+zweihänder
+awkward
+sperrig
+axe
+Axt
+chaotic
+chaotisch
+close
+sehr nah
+evil
+böse
+far
+fern
+flail
+Flegel
+forceful
+schwer
+good
+gut
+great axe
+Grossaxt
+great hammer
+Grosshammer
+great sword
+Zweihänder
+hand
+Hand
+hatchet
+Beil
+heavy crossbow
+Arbalest
+human
+Mensch
+knife
+Messer
+lawful
+rechtschaffen
+light crossbow
+Armbrust
+near
+nah
+neutral
+neutral
+pick
+Pickel
+pierce
+Stich
+polearm
+Stangenwaffe
+precise
+präzis
+rare
+selten
+reach
+Reichweite
+reload
+Nachladen
+scale armor
+Schuppenpanzer
+shortbow
+Kurzbogen
+shortsword
+Kurzschwert
+sword
+Schwert
+throw
+werfen
+throwing knife
+Wurfmesser
+bag of books (○○○○○)
+Büchertasche (○○○○○)
+healing potion (heal 1d8 HP)
+Heiltrank (für 1W8 LP)
+magic orb
+Kristallkugel
+magic staff
+Langer Zauberstab
+magic wand
+Zauberstab
+power
+Macht
+rations
+Wegzehrung
+spell components (+1 power, ○○○)
+Zauberzutaten (+1 Macht, ○○○)
 });
 
   return \%translations;
@@ -375,7 +671,7 @@ sub cha_bonus {
   return "+2";
 }
 
-sub character {
+sub moldvay {
   my $char = shift;
   for my $id (qw(str dex con int wis cha)) {
     if ($char->{$id} and not $char->{"$id-bonus"}) {
@@ -414,17 +710,223 @@ sub character {
   if (not $char->{"range-damage"}) {
     $char->{"range-damage"} = $char->{damage};
   }
-  saves($char);
+  moldvay_saves($char);
+}
+
+sub crypt_bonus {
+  my $n = shift;
+  return "-1" if $n <=  8;
+  return "" if $n <= 12;
+  return "+1" if $n <= 15;
+  return "+2" if $n <= 17;
+  return "+3";
+}
+
+sub crypts_n_things {
+  my $char = shift;
+  if ($char->{str} and not $char->{"to-hit"}) {
+    $char->{"to-hit"} = crypt_bonus($char->{str});
+  }
+  if ($char->{str} and not $char->{"damage-bonus"}) {
+    $char->{"damage-bonus"} = crypt_bonus($char->{str});
+  }
+  if ($char->{dex} and not $char->{"missile-bonus"}) {
+    $char->{"missile-bonus"} = crypt_bonus($char->{dex});
+  }
+  if ($char->{dex} and not $char->{"ac-bonus"}) {
+    $char->{"ac-bonus"} = crypt_bonus($char->{dex});
+  }
+  if ($char->{con} and not $char->{"con-bonus"}) {
+    $char->{"con-bonus"} = crypt_bonus($char->{con});
+  }
+  if ($char->{int} and not $char->{understand}) {
+    if ($char->{int} <= 7) {
+      $char->{understand} = "0%";
+    } elsif ($char->{int} <= 9) {
+      $char->{understand} = 5 * ($char->{int} - 7) . "%";
+    } elsif ($char->{int} <= 16) {
+      $char->{understand} = 5 * ($char->{int} - 6) . "%";
+    } else {
+      $char->{understand} = 15 * ($char->{int} - 13) . "%";
+    }
+  }
+  if ($char->{cha} and not $char->{charm}) {
+    if ($char->{cha} <= 4) {
+      $char->{charm} = "10%";
+    } elsif ($char->{cha} <= 6) {
+      $char->{charm} = "20%";
+    } elsif ($char->{cha} <= 8) {
+      $char->{charm} = "30%";
+    } elsif ($char->{cha} <= 12) {
+      $char->{charm} = "40%";
+    } elsif ($char->{cha} <= 15) {
+      $char->{charm} = "50%";
+    } elsif ($char->{cha} <= 17) {
+      $char->{charm} = "60%";
+    } elsif ($char->{cha} <= 18) {
+      $char->{charm} = "75%";
+    }
+  }
+  if ($char->{cha} and not $char->{hirelings}) {
+    if ($char->{cha} <= 4) {
+      $char->{hirelings} = 1;
+    } elsif ($char->{cha} <= 6) {
+      $char->{hirelings} = 2;
+    } elsif ($char->{cha} <= 8) {
+      $char->{hirelings} = 3;
+    } elsif ($char->{cha} <= 12) {
+      $char->{hirelings} = 4;
+    } elsif ($char->{cha} <= 15) {
+      $char->{hirelings} = 5;
+    } elsif ($char->{cha} <= 17) {
+      $char->{hirelings} = 6;
+    } elsif ($char->{cha} <= 18) {
+      $char->{hirelings} = 7;
+    }
+  }
+  if ($char->{wis} and not $char->{sanity}) {
+    $char->{sanity} = $char->{wis};
+  }
+}
+
+sub complete {
+  my ($char, $one, $two) = @_;
+  if ($char->{$one} and not $char->{$two}) {
+    if ($char->{$one} > 20) {
+      $char->{$two} = 0;
+    } else {
+      $char->{$two} = 20 - $char->{$one};
+    }
+  }
+}
+
+sub pendragon {
+  my $char = shift;
+  if ($char->{str} and $char->{siz} and not $char->{damage}) {
+    $char->{damage} = int(($char->{str}+$char->{siz}) / 6 + 0.5) . T('d6');
+  }
+  if ($char->{str} and $char->{con} and not $char->{healing}) {
+    $char->{healing} = int(($char->{str}+$char->{con}) / 10 + 0.5);
+  }
+  if ($char->{str} and $char->{dex} and not $char->{move}) {
+    $char->{move} = int(($char->{str}+$char->{dex}) / 10 + 0.5);
+  }
+  if ($char->{con} and $char->{siz} and not $char->{hp}) {
+    $char->{hp} = $char->{con}+$char->{siz};
+  }
+  if ($char->{hp} and not $char->{unconscious}) {
+    $char->{unconscious} = int($char->{hp} / 4 + 0.5);
+  }
+  my @traits = qw(chaste lustful
+		  energetic lazy
+		  forgiving vengeful
+		  generous selfish
+		  honest deceitful
+		  just arbitrary
+		  merciful cruel
+		  modest proud
+		  pious worldly
+		  prudent reckless
+		  temperate indulgent
+		  trusting suspicious
+		  valorous cowardly);
+  while (@traits) {
+    my $one = shift(@traits);
+    my $two = shift(@traits);
+    complete($char, $one, $two);
+    complete($char, $two, $one);
+  }
+}
+
+sub acks {
+  my $char = shift;
+  for my $id (qw(str dex con int wis cha)) {
+    if ($char->{$id} and not $char->{"$id-bonus"}) {
+      $char->{"$id-bonus"} = bonus($char->{$id});
+    }
+  }
+  if ($char->{attack} and not $char->{melee}) {
+    $char->{melee} =  $char->{attack} - $char->{"str-bonus"};
+  }
+  if ($char->{attack} and not $char->{missile}) {
+    $char->{missile} =  $char->{attack} - $char->{"dex-bonus"};
+  }
+
+  acks_saves($char);
+}
+
+# This function computes the values that are shown but that don't need to be
+# stored.
+sub freebooters {
+  my $char = shift;
+
+  # attribute bonus
+  for my $id (qw(str dex con int wis cha luc)) {
+    if ($char->{$id} and not $char->{"$id-bonus"}) {
+      $char->{"$id-bonus"} = bonus($char->{$id});
+    }
+  }
+
+  # Max Load
+  if (not $char->{"max-load"}) {
+    if ($char->{class} eq T('fighter')) {
+      $char->{"load-bonus"} = 10;
+    } elsif ($char->{class} eq T('thief')) {
+      $char->{"load-bonus"} = 6;
+    } elsif ($char->{class} eq T('cleric')) {
+      $char->{"load-bonus"} = 8;
+    } elsif ($char->{class} eq T('magic-user')) {
+      $char->{"load-bonus"} = 4;
+    }
+    $char->{"max-load"} = $char->{"str-bonus"} + $char->{"load-bonus"};
+  }
+
+  # HD type
+  if ($char->{class} eq T('fighter')) {
+    $char->{"hd-type"} = "10";
+  } elsif ($char->{class} eq T('thief')) {
+    $char->{"hd-type"} = "6";
+  } elsif ($char->{class} eq T('cleric')) {
+    $char->{"hd-type"} = "8";
+  } elsif ($char->{class} eq T('magic-user')) {
+    $char->{"hd-type"} = "4";
+  }
+
+  # character sheet
+  my $charsheet = "Maezar-Freebooters.svg";
+  if (not $char->{"charsheet"} and -f "$home/$charsheet") {
+    $char->{"charsheet"} = $charsheet;
+  }
 }
 
 # This function is called when preparing data for display in SVG.
 sub compute_data {
   my ($char, $language) = @_;
   local $lang = $language; # make sure T works as intended
-  character($char);
+  if (not exists $char->{rules}
+      or not defined $char->{rules}
+      or $char->{rules} eq "moldvay"
+      or $char->{rules} eq "halberds-n-helmets"
+      or $char->{rules} eq "labyrinth lord") {
+    moldvay($char);
+  } elsif ($char->{rules} eq "pendragon") {
+    pendragon($char);
+  } elsif ($char->{rules} eq "crypts-n-things") {
+    crypts_n_things($char);
+  } elsif ($char->{rules} eq "acks") {
+    acks($char);
+  } elsif ($char->{rules} eq "freebooters") {
+    freebooters($char);
+  } else {
+    moldvay($char);
+  }
 }
 
 sub starting_gold {
+  my $char = shift;
+  if ($char->{rules} eq "labyrinth lord") {
+    return roll_3d8() * 10;
+  }
   return roll_3d6() * 10;
 }
 
@@ -442,7 +944,8 @@ sub equipment {
   my @property;
 
   # free spellbook for arcane casters
-  if (member($class, T('magic-user'), T('elf'))) {
+  if (member($class, T('magic-user'), T('elf'), T('mage'),
+	     T('elven spellsword'), T('elven nightblade'))) {
     push(@property, T('spell book'));
   }
 
@@ -460,47 +963,50 @@ sub equipment {
   provide($char, "property",  join("\\\\", @property));
 }
 
-# This is computed at runtime because of the translations.
 sub get_price_cache {
   my $char = shift;
+  my $i = 0; # the default is B/X
+  if ($char->{rules} eq "acks") { $i = 2; }
+  elsif ($char->{rules} eq "labyrinth lord") { $i = 1; }
   %price_cache = (
-    T('backpack') => 5,
-    T('rations (1 week)') => 15,
+    T('backpack') => [5, 2, 2]->[$i],
+    # ACKS: 1-6gp for one week, LL: 5sp/day, B/X: 15gp
+    T('iron rations (1 week)') => [15, 3.5, 1]->[$i],
+    T('holy symbol') => 25,
     T('thieves’ tools') => 25,
-    T('lantern') => 10,
-    T('flask of oil') => 2,
-    T('torches (6)') => 1,
+    T('lantern') => [10, 9, 10]->[$i],
+    T('flask of oil') => [2, 0.1, 2]->[$i],
+    T('torches') => [1, 0.3, 0.1]->[$i],
     T('rope') => 1,
-    T('stakes (3) and hammer') => 3,
-    T('iron spikes (12) and hammer') => 3,
-    T('pole') => 1,
+    T('iron spikes and hammer') => [3, 1.5, 3]->[$i],
+    T('wooden pole') => [1, 0.2, 0.1]->[$i],
+    T('holy water') => 25,
     T('wolfsbane') => 10,
-    T('garlic') => 1,
-    T('mirror') => 5,
-    T('leather armor') => 20,
-    T('chain mail') => 40,
-    T('plate mail') => 60,
+    T('mirror') => [5, 10, 5]->[$i],
+    T('leather armor') => [20, 6, 20]->[$i],
+    T('chain mail') => [40, 70, 40]->[$i],
+    T('plate mail') => [60, 450, 60]->[$i],
     T('shield') => 10,
     T('helmet') => 10,
-    T('club') => 3,
+    T('club') => [3, 3, 1]->[$i],
     T('mace') => 5,
-    T('war hammer') => 5,
-    T('staff') => 2,
+    T('war hammer') => [5, 7, 5]->[$i],
+    T('staff') => [2, 2, 1]->[$i],
     T('dagger') => 3,
     T('silver dagger') => 30,
     T('two handed sword') => 15,
-    T('battle axe') => 7,
+    T('battle axe') => [7, 6, 7]->[$i],
     T('pole arm') => 7,
     T('long sword') => 10,
     T('short sword') => 7,
-    T('long bow') => 40,
-    T('quiver with 20 arrows') => 5,
-    T('short bow') => 25,
-    T('crossbow') => 30,
-    T('case with 30 bolts') => 10,
+    T('long bow') => [40, 40, 7]->[$i],
+    T('quiver with 20 arrows') => [5, 5, 1]->[$i],
+    T('short bow') => [25, 25, 3]->[$i],
+    T('crossbow') => [30, 25, 30]->[$i],
+    T('case with 30 bolts') => [10, 9, 3]->[$i],
     T('sling') => 2,
     T('pouch with 30 stones') => 0,
-    T('hand axe') => 4,
+    T('hand axe') => [4, 1, 4]->[$i],
     T('spear') => 3,
       );
 }
@@ -509,7 +1015,7 @@ sub price {
   my ($char, $item) = @_;
   my $price = $price_cache{$item};
   if (not defined $price) {
-    die(T('Unknown Price'), T('%0: How much does this cost?', $item));
+    error(T('Unknown Price'), T('%0: How much does this cost?', $item));
   }
   return $price;
 }
@@ -579,7 +1085,7 @@ sub buy_basics {
   my ($char, $money, $class, @property) = @_;
   push(@property, "- $money gp -") if $char->{debug};
   ($money, @property) = buy($char, T('backpack'), $money, @property);
-  ($money, @property) = buy($char, T('rations (1 week)'), $money, @property);
+  ($money, @property) = buy($char, T('iron rations (1 week)'), $money, @property);
 
   return ($money, @property);
 }
@@ -587,7 +1093,9 @@ sub buy_basics {
 sub buy_tools {
   my ($char, $money, $class, @property) = @_;
   push(@property, "- $money gp -") if $char->{debug};
-  if ($class eq T('thief')) {
+  if (member($class, T('cleric'), T('dwarven craftpriest'), T('bladedancer'))) {
+    ($money, @property) = buy($char, T('holy symbol'), $money, @property);
+  } elsif ($class eq T('thief')) {
     ($money, @property) = buy($char, T('thieves’ tools'), $money, @property);
   }
   return ($money, @property);
@@ -597,7 +1105,7 @@ sub buy_light {
   my ($char, $money, $class, @property) = @_;
   push(@property, "- $money gp -") if $char->{debug};
   return buy($char, [[T('lantern'), T('flask of oil')],
-	      T('torches (6)')],
+	      T('torches')],
 	     $money, @property);
 }
 
@@ -606,9 +1114,8 @@ sub buy_gear {
   push(@property, "- $money gp -") if $char->{debug};
   my @preferences = shuffle(
     T('rope'),
-    T('iron spikes (12) and hammer'),
-    T('stakes (3) and hammer'),
-    T('pole'));
+    T('iron spikes and hammer'),
+    T('wooden pole'));
   return buy($char, \@preferences, $money, @property);
 }
 
@@ -616,7 +1123,7 @@ sub buy_protection {
   my ($char, $money, $class, @property) = @_;
   push(@property, "- $money gp -") if $char->{debug};
   my @preferences = shuffle(
-    T('garlic'),
+    T('holy water'),
     T('wolfsbane'),
     T('mirror'));
   return buy($char, \@preferences, $money, @property);
@@ -628,16 +1135,23 @@ sub buy_armor {
   my $budget = $money / 2;
   $money -= $budget;
 
-  if ($class eq T('magic-user')) {
+  if (member($class, T('magic-user'), T('mage'))) {
     # no armor
-  } elsif ($class eq T('thief')) {
+  } elsif (member($class, T('thief'), T('assassin'), T('bard'),
+		  T('bladedancer'), T('elven nightblade'))) {
     # leather, no shield, no helmet
     ($budget, @property) = buy($char, T('leather armor'), $budget, @property);
+  } elsif (member($class, T('explorer'))) {
+    # chain and shield
+    ($budget, @property) = buy($char, [T('chain mail'),
+			       T('leather armor')], $budget, @property);
+    ($budget, @property) = buy($char, T('shield'), $budget, @property);
+    ($budget, @property) = buy($char, T('helmet'), $budget, @property);
   } else {
     # any armor
     ($budget, @property) = buy($char, [T('plate mail'),
-				       T('chain mail'),
-				       T('leather armor')], $budget, @property);
+				T('chain mail'),
+				T('leather armor')], $budget, @property);
     ($budget, @property) = buy($char, T('shield'), $budget, @property);
     ($budget, @property) = buy($char, T('helmet'), $budget, @property);
   }
@@ -651,6 +1165,10 @@ sub buy_armor {
   elsif (member(T('leather armor'), @property)) { $ac -= 2; }
 
   if (member(T('shield'), @property)) { $ac -= 1; }
+  if ($class eq T('bladedancer')) { $ac -= $char->{level}; }
+
+  # ACKS is ascending
+  if ($char->{rules} eq "acks") { $ac = 9 - $ac; }
 
   provide($char, "ac",  $ac);
 
@@ -665,27 +1183,29 @@ sub buy_melee_weapon {
   my $shield = member(T('shield'), @property);
   my @preferences;
 
-  if ($class eq T('magic-user')) {
+  if ($class eq T('cleric')) {
+    @preferences = shuffle(
+      T('mace'),
+      T('war hammer'),
+      T('club'),
+      T('staff'));
+  } elsif (member($class, T('magic-user'), T('mage'))) {
     @preferences = shuffle(
       T('dagger'),
       T('staff'));
-  } elsif ($class eq T('fighter')
-	   and good($str)
-	   and $hp > 6
-	   and not $shield) {
-    @preferences = (T('two handed sword'),
-		    T('battle axe'),
-		    T('pole arm'),
-		    T('long sword'),
-		    T('short sword'));
-  } elsif ($class eq T('dwarf')
-	   and not $shield) {
-    @preferences = (T('battle axe'),
-		    T('long sword'),
-		    T('short sword'));
   } else {
-    @preferences = (T('long sword'),
-		    T('short sword'));
+    if ($class eq T('fighter')
+	and good($str)
+	and $hp > 6
+	and not $shield) {
+      @preferences = (T('two handed sword'), T('battle axe'), T('pole arm'));
+    }
+    elsif (member($class, T('dwarf'), T('dwarven vaultguard'),
+		  T('dwarven craftpriest'))
+	   and not $shield) {
+      @preferences = (T('battle axe'));
+    }
+    push(@preferences, T('long sword'), T('short sword'));
   }
   return buy($char, \@preferences, $money, @property);
 }
@@ -694,7 +1214,8 @@ sub buy_throwing_weapon {
   my $char = shift;
   my ($money, $class, @property) = @_;
   my @preferences;
-  if ($class eq T('dwarf') or member(T('battle axe'), @property)) {
+  if (member($class, T('dwarf'), T('dwarven vaultguard'), T('dwarven craftpriest'))
+      or member(T('battle axe'), @property)) {
     push(@preferences, [T('hand axe'), T('hand axe')]);
     push(@preferences, T('hand axe'));
   }
@@ -718,18 +1239,21 @@ sub buy_ranged_weapon {
 	 [T('long bow'),
 	  T('quiver with 20 arrows')]);
   }
-  if ($class ne T('magic-user')) {
-    if (average($dex)) {
+  if (not(member($class, T('magic-user'), T('mage'), T('bladedancer'),
+		 T('dwarven craftpriest')))) {
+    if (not(member($class, T('cleric')))) {
+      if (average($dex)) {
+	push(@preferences,
+	     [T('short bow'),
+	      T('quiver with 20 arrows'),
+	      T('quiver with 20 arrows')],
+	     [T('short bow'),
+	      T('quiver with 20 arrows')]);
+      }
       push(@preferences,
-	   [T('short bow'),
-	    T('quiver with 20 arrows'),
-	    T('quiver with 20 arrows')],
-	   [T('short bow'),
-	    T('quiver with 20 arrows')]);
+	   [T('crossbow'),
+	    T('case with 30 bolts')]);
     }
-    push(@preferences,
-	 [T('crossbow'),
-	  T('case with 30 bolts')]);
     push(@preferences,
 	 [T('sling'),
 	  T('pouch with 30 stones')]);
@@ -748,17 +1272,50 @@ sub buy_weapon {
   ($budget, @property) = buy_throwing_weapon($char, $budget, $class, @property);
   ($budget, @property) = buy_ranged_weapon($char, $budget, $class, @property);
 
-  ($budget, @property) = buy($char, T('silver dagger'), $budget, @property);
+  if ($class ne T('cleric')) {
+    ($budget, @property) = buy($char, T('silver dagger'), $budget, @property);
+  }
 
-  ($budget, @property) = buy($char, T('dagger'), $budget, @property);
-  ($budget, @property) = buy($char, T('dagger'), $budget, @property);
+  if ($class ne T('cleric') and $class ne T('magic-user')) {
+    ($budget, @property) = buy($char, T('dagger'), $budget, @property);
+    ($budget, @property) = buy($char, T('dagger'), $budget, @property);
+  }
 
   return ($money + $budget, @property);
 }
 
 sub spellbook {
   my $char = shift;
-  return T('Spells:') . " "
+  if ($char->{rules} eq "labyrinth lord") {
+    return T('First level spells:') . "\\\\"
+    . join("\\\\",
+	   two(T('charm person'),
+	       T('detect magic'),
+	       T('floating disc'),
+	       T('hold portal'),
+	       T('light'),
+	       T('magic missile'),
+	       T('protection from evil'),
+	       T('read languages'),
+	       T('read magic'),
+	       T('shield'),
+	       T('sleep'),
+	       T('ventriloquism')),
+	   T('second level spells:'),
+	   one(T('arcane lock'),
+	       T('continual light'),
+	       T('detect evil'),
+	       T('detect invisible'),
+	       T('ESP'),
+	       T('invisibility'),
+	       T('knock'),
+	       T('levitate'),
+	       T('locate object'),
+	       T('minor image'),
+	       T('phantasmal force'),
+	       T('web')));
+  } else {
+    return T('Spells:') . " "
       . one(T('charm person'),
 	    T('detect magic'),
 	    T('floating disc'),
@@ -771,15 +1328,19 @@ sub spellbook {
 	    T('shield'),
 	    T('sleep'),
 	    T('ventriloquism'));
+  }
 }
 
-sub saves {
+sub moldvay_saves {
   my $char = shift;
   my $class = $char->{class};
   my $level = $char->{level};
   return unless $class and $level >= 1 and $level <= 3;
   my ($breath, $poison, $petrify, $wands, $spells);
-  if  ($class eq T('dwarf') or $class eq T('halfling')) {
+  if ($class eq T('cleric')) {
+    ($breath, $poison, $petrify, $wands, $spells) =
+      (16, 11, 14, 12, 15);
+  } elsif ($class eq T('dwarf') or $class eq T('halfling')) {
     ($breath, $poison, $petrify, $wands, $spells) =
       (13, 8, 10, 9, 12);
   } elsif ($class eq T('elf')) {
@@ -794,6 +1355,48 @@ sub saves {
   } elsif ($class eq T('thief')) {
     ($breath, $poison, $petrify, $wands, $spells) =
       (16, 14, 13, 15, 13);
+  }
+
+  provide($char, "breath",  $breath) unless $char->{breath};
+  provide($char, "poison",  $poison) unless $char->{poison};
+  provide($char, "petrify",  $petrify) unless $char->{petrify};
+  provide($char, "wands",  $wands) unless $char->{wands};
+  provide($char, "spells",  $spells) unless $char->{spells};
+}
+
+sub acks_saves {
+  my $char = shift;
+  my $class = $char->{class};
+  my $level = $char->{level};
+  return unless $class and $level == 1;
+  my ($petrify, $poison, $breath, $wands, $spells);
+  if ($class eq T('fighter')) {
+    ($petrify, $poison, $breath, $wands, $spells) =
+      (15, 14, 16, 16, 17);
+  } elsif ($class eq T('mage')) {
+    ($petrify, $poison, $breath, $wands, $spells) =
+      (13, 13, 15, 11, 12);
+  } elsif (member($class, T('cleric'), T('bladedancer'))) {
+    ($petrify, $poison, $breath, $wands, $spells) =
+      (13, 10, 16, 13, 15);
+  } elsif (member($class, T('thief'),  T('bard'))) {
+    ($petrify, $poison, $breath, $wands, $spells) =
+      (13, 13, 16, 14, 15);
+  } elsif ($class eq T('assassin')) {
+    ($petrify, $poison, $breath, $wands, $spells) =
+      (15, 14, 16, 16, 17);
+  } elsif ($class eq T('dwarven vaultguard')) {
+    ($petrify, $poison, $breath, $wands, $spells) =
+      (11, 10, 13, 12, 13);
+  } elsif ($class eq T('dwarven craftpriest')) {
+    ($petrify, $poison, $breath, $wands, $spells) =
+      (9, 6, 13, 9, 11);
+  } elsif ($class eq T('elven spellsword')) {
+    ($petrify, $poison, $breath, $wands, $spells) =
+      (14, 14, 16, 16, 16);
+  } elsif ($class eq T('elven nightblade')) {
+    ($petrify, $poison, $breath, $wands, $spells) =
+      (12, 13, 16, 14, 14);
   }
 
   provide($char, "breath",  $breath) unless $char->{breath};
@@ -1575,7 +2178,7 @@ sub traits {
   return $description;
 }
 
-sub random {
+sub random_moldvay {
   my $char = shift;
   # keys that can be provided: name, class, charsheet
 
@@ -1630,10 +2233,15 @@ sub random {
       $class = T('fighter');
     } elsif ($best eq "int") {
       $class = T('magic-user');
+    } elsif (($best eq "wis" or $best eq "cha")
+	     and d6() > 2
+	     and $char->{rules} ne "halberds-n-helmets") {
+      $class = T('cleric');
     } elsif ($best eq "dex") {
       $class = T('thief');
     } else {
       my @candidates = (T('thief'), T('magic-user'), T('fighter'));
+      push(@candidates, T('cleric')) if $char->{rules} ne "halberds-n-helmets";
       $class = one(@candidates);
     }
   }
@@ -1729,6 +2337,7 @@ sub classes {
 	T('halfling') => "H",
 	T('fighter') => "F",
 	T('magic-user') => "M",
+	T('cleric') => "C",
 	T('thief') => "T",
   };
 }
@@ -1762,7 +2371,7 @@ sub decode_char {
   }
   provide($char, "property", join("\\\\", @property));
   provide($char, "abilities", abilities($class));
-  saves($char);
+  moldvay_saves($char);
   return $char;
 }
 
@@ -1790,14 +2399,834 @@ sub unique {
   return \%h;
 }
 
+sub random_acks {
+  my $char = shift;
+  provide($char, "name", name()) unless $char->{name};
+
+  my ($str, $dex, $con, $int, $wis, $cha) =
+    (roll_3d6(), roll_3d6(), roll_3d6(),
+     roll_3d6(), roll_3d6(), roll_3d6());
+
+  # if a class is provided, make sure minimum requirements are met
+  my $class = $char->{class};
+  while (member($class, T('dwarven vaultguard'), T('dwarven craftpriest'))
+	 and not average($con)) {
+    $con = roll_3d6();
+  }
+
+  my $title = $char->{title};
+
+  provide($char, "str", $str);
+  provide($char, "dex", $dex);
+  provide($char, "con", $con);
+  provide($char, "int", $int);
+  provide($char, "wis", $wis);
+  provide($char, "cha", $cha);
+
+  provide($char, "level",  "1");
+  provide($char, "xp",  "0");
+  provide($char, "attack",  10);
+
+  my $best = best($str, $dex, $con, $int, $wis, $cha);
+
+  if (not $class) {
+    if (average($con) and $best eq "str" and d6() > 2) {
+      $class = T('dwarven vaultguard');
+      $title = T('Sentry');
+    } elsif (average($con) and $best eq "wis" and d6() > 2) {
+      $class = T('dwarven craftpriest');
+      $title = T('Dwarven Craft-Catechist');
+    } elsif (average($int) and $best eq "str") {
+      $class = T('elven spellsword');
+      $title = T('Arcanist-Guardian');
+    } elsif (average($int) and $best eq "dex" and d6() > 3) {
+      $class = T('elven nightblade');
+      $title = T('Arcanist-Avenger');
+    } elsif (average($wis) and $best eq "dex") {
+      $class = T('bladedancer');
+      $title = T('Blade-Initiate');
+    } elsif (average($str, $dex) >= 2 and good($str, $dex) >= 1) {
+      if (d6() > 3) {
+	$class = T('explorer');
+	$title = T('Scout');
+      } else {
+	$class = T('assassin');
+	$title = T('Thug');
+      }
+    } elsif (good($str, $con) >= 2) {
+      $class = T('fighter');
+      $title = T('Man-at-Arms');
+    } elsif (good($wis)) {
+      $class = T('cleric');
+      $title = T('Catechist');
+    } elsif ($best eq "int" and d6() > 2) {
+      $class = T('mage');
+      $title = T('Arcanist');
+    } elsif (average($dex) and good($cha)) {
+	$class = T('bard');
+	$title = T('Reciter');
+    } elsif (average($dex)) {
+      $class = T('thief');
+      $title = T('Footpad');
+    } else {
+      $class = T('fighter');
+      $title = T('Man-at-Arms');
+    }
+  }
+
+  provide($char, "class",  $class);
+  provide($char, "title",  $title);
+
+  my $hp = $char->{hp};
+  if (not $hp) {
+    if ($class eq T('fighter') or $class eq T('dwarven vaultguard')) {
+      $hp = d8();
+    } elsif ($class eq T('mage') or $class eq T('thief')) {
+      $hp = d4();
+    } else {
+      $hp = d6();
+    }
+
+    $hp += bonus($con);
+    $hp = 1 if $hp < 1;
+  }
+
+  provide($char, "hp",  $hp);
+
+  equipment($char);
+
+  provide($char, "abilities", proficiencies());
+  # abilities
+  # spells
+}
+
+sub random_freebooters {
+  my $char = shift;
+  # keys that can be provided: gender, name, class, charsheet
+  provide($char, "class", freebooters_playbook($char)) unless $char->{class};
+  freebooters_abilities($char);
+  freebooters_heritage($char);
+  freebooters_name($char) unless $char->{name};
+  provide($char, "appearance", freebooters_appearance($char)) if $char->{portrait} eq "no";
+  provide($char, "hp", freebooters_hit_points($char));
+  provide($char, "alignment", freebooters_alignment($char));
+  provide($char, "traits", freebooters_traits($char));
+  freebooters_gear($char);
+  provide($char, "level",  "1");
+  provide($char, "xp",  "0");
+}
+
+sub freebooters_playbook {
+  my $char = shift;
+  if (not $char->{class}) {
+    my $roll = d12();
+    if ($roll <=  6)    { return T('fighter')    }
+    elsif ($roll <=  9) { return T('thief')      }
+    elsif ($roll <= 11) { return T('cleric')     }
+    else                { return T('magic-user') }
+  }
+}
+
+sub freebooters_abilities {
+  my $char = shift;
+  provide($char, "str", roll_3d6());
+  provide($char, "dex", roll_3d6());
+  provide($char, "con", roll_3d6());
+  provide($char, "int", roll_3d6());
+  provide($char, "wis", roll_3d6());
+  provide($char, "cha", roll_3d6());
+  provide($char, "luc", roll_3d6());
+
+  # and swap one
+  if ($char->{class} eq T('fighter')) {
+    swap_for_highest($char, ["str", "con", "dex"], ["wis", "int", "cha"]);
+  } elsif ($char->{class} eq T('thief')) {
+    swap_for_highest($char, ["dex"], ["wis", "str", "int"]);
+  } elsif ($char->{class} eq T('cleric')) {
+    swap_for_highest($char, ["cha"], ["wis", "int", "dex"]);
+  } elsif ($char->{class} eq T('magic-user')) {
+    swap_for_highest($char, ["int"], ["str", "wis", "con", "dex", "cha"]);
+  }
+}
+
+sub swap_for_highest {
+  my ($char, $to, $from) = @_;
+  my $highest_from = highest($char, @$from);
+  my $lowest_to = lowest($char, @$to);
+  if ($char->{$highest_from} > $char->{$lowest_to}) {
+    swap($char, $highest_from, $lowest_to);
+    $char->{notes} .= "Swapped $highest_from and $lowest_to.\\\\"
+  }
+}
+
+sub highest {
+  my ($char, @abilities) = @_;
+  my $best = shift(@abilities);
+  for my $ability (@abilities) {
+    if ($char->{$ability} > $char->{$best}) {
+      $best = $ability;
+    }
+  }
+  return $best;
+}
+
+sub lowest {
+  my ($char, @abilities) = @_;
+  my $worst = shift(@abilities);
+  for my $ability (@abilities) {
+    if ($char->{$ability} < $char->{$worst}) {
+      $worst = $ability;
+    }
+  }
+  return $worst;
+}
+
+sub swap {
+  my ($char, $a, $b) = @_;
+  my $temp = $char->{$a};
+  $char->{$a} = $char->{$b};
+  $char->{$b} = $temp;
+}
+
+sub freebooters_heritage {
+  my $char = shift;
+  if ($char->{class} eq T('fighter')) {
+    roll_heritage($char, 7, 8, 11, 12, qw/str dex con/);
+  } elsif ($char->{class} eq T('thief')) {
+    roll_heritage($char, 7, 10, 11, 12, qw/dex int cha/);
+  } elsif ($char->{class} eq T('cleric')) {
+    roll_heritage($char, 7, 8, 11, 12, qw/cha wis con/);
+  } elsif ($char->{class} eq T('magic-user')) {
+    roll_heritage($char, 8, 9, 10, 12, qw/int dex cha/);
+  }
+}
+
+sub roll_heritage {
+  my ($char, $human, $halfling, $dwarf, $elf, @preferred) = @_;
+  my $roll = d12();
+  if ($roll <= $human) {
+    provide($char, "race", T('human'));
+    human_bonus($char, @preferred);
+  } elsif ($roll <= $halfling) {
+    provide($char, "race", T('halfling'));
+    $char->{luc} += 2;
+  } elsif ($roll <= $dwarf) {
+    provide($char, "race", T('dwarf'));
+    # increase the better value
+    $char->{best($char->{str}, 0, $char->{con}, 0, 0, 0)} += 2;
+  } elsif ($roll <= $elf) {
+    provide($char, "race", T('elf'));
+    # increase the better value
+    $char->{best(0, $char->{dex}, 0, 0, $char->{wis}, $char->{cha})} += 2;
+  }
+}
+
+sub human_bonus {
+  my ($char, @preferred) = @_;
+  my $picked;
+  for (1..2) {
+    my $choice;
+    for my $attr (@preferred) {
+      if ($char->{$attr} =~ /^(3|5|8|12|15|17)$/ and $attr ne $picked) {
+	$char->{$attr}++;
+	$picked = $choice = $attr;
+	last;
+      }
+      if (not $choice) {
+	my $attr = one(grep { $_ ne $picked } @preferred);
+	$char->{$attr}++;
+	$picked = $choice = $attr;
+      }
+    }
+  }
+}
+
+sub freebooters_name {
+  my $char = shift;
+  my $gender = one("M", "F");
+  my $name;
+  # The names in this list are from the book Freebooters on the Frontier by
+  # Jason Lutes. The text of that book is released under a Creative Commons
+  # Attribution-ShareAlike 3.0 Unported license.
+  # https://creativecommons.org/licenses/by-sa/3.0/
+  if ($char->{race} eq T('human') and $gender eq "M") {
+    $name = one(qw(Athelan Aldred Alger Archard Astyrian Bowden Brogan Caden
+    Cerdic Devan Druce Dugal Edlyn Ebis Esward Firman Framar Fugol Garret Gidwin
+    Gord Govannon Greme Grindan Halwen Holt Iden Irbend Kendrik Leor Lufian Nyle
+    Odel Ord Orleg Radan Reged Rowe Scrydan Seaver Shepard Snell Stedman Swift
+    Teon Tobrec Tredan Ware Warian Wulf));
+  } elsif ($char->{race} eq T('human') and $gender eq "F") {
+    $name = one(qw(Acca Alodia Andessa Anlis Ara Ardith Berroc Bernia Bodica
+    Brigantia Brimlid Caro Cwen Darel Dawn Diera Dotor Eda Elene Elga Elswyth
+    Elva Elvina Erlina Esma Faradan Freya Garmang Gloris Harmilla Hunnar Juliana
+    Kandara Laralan Lorn Maida Megdas Mercia Mora Ogethas Ossia Pallas Rathet
+    Sibley Sunnivar Tate Udela Viradeca Wilona Zora));
+  } elsif ($char->{race} eq T('halfling') and $gender eq "M") {
+    $name = one(qw(Adaman Adelard Adred Agilward Arnest Balbas Barton Bell Banco
+    Bowman Cal Emmet Erling Fastman Foda Freebern Frid Gerd Hadred Hagar Halbert
+    Hamfast Hildred Huge Isen Jaco Jungo Helm Konner Lambert Leon Linus Marko
+    Matti Mekel Melchior Lesser Nenko Nob Olo Ortwin Otto Paladin Pasco Quintus
+    Sifro Ted Tolman Wilber Wiseman));
+  } elsif ($char->{race} eq T('halfling') and $gender eq "F") {
+    $name = one(qw(Adelle Agilward Alfreda Amalinde Balba Bella Beryl Bess
+    Camelia Cordelia Daisy Demona Drogga Elanor Ella Elsbeth Elsina Emerly Foda
+    Gilda Gilly Hanna Hilda Hildred Janna Jilly Kat Klare Lily Lobelia Lorna
+    Lucie Magda Marga Mari Marigold Marka Marlyn Mina Noba Olga Ottillia Pansy
+    Pervinca Poppy Rose Rowan Salina Tella Ulrica));
+  } elsif ($char->{race} eq T('dwarf') and $gender eq "M") {
+    $name = one(qw(Bagan Banar Belir Besil Boran Darin Dirin Doibur Doigan Fagan
+    Fignus Firin Gesil Glagan Glasil Glenus Goirin Gosil Hanar Heran Hoibur
+    Hoili Hoinar Holir Homli Kimli Koisin Lasin Legan Loilir Mirin Moli Nasil
+    Nefur Neli Nignar Noifur Ramli Regnar Safur Sali Saran Segnar Serin Simli
+    Tasil Teli Tisin Toilin Toinus));
+  } elsif ($char->{race} eq T('dwarf') and $gender eq "F") {
+    $name = one(qw(Berin Bibura Bisil Dagna Delinia Deris Dira Disia Dorinda
+    Faran Fasina Fignis Foifur Foimli Gerda Gestis Ginus Glegna Glelia Glelis
+    Glemlia Gloigas Gloigna Glonara Hegna Hignara Hoimlis Kana Kemlir Keri Keris
+    Kilina Kolina Korana Lifur Loilis Loilina Mamli Milina Moibur Moli Noris
+    Nosi Rana Ribura Sasilia Soirina Soran Toigna Tomlis));
+  } elsif ($char->{race} eq T('elf') and $gender eq "M") {
+    $name = one(qw(Amánd Amioril Analad Anin Anumir Calithrambor Calóng Calór
+    Cebrin Cóldor Corfindil Delithran Elithranduil Elverion Eowóril Galithrar
+    Gelith Gladriendil Glamir Glarang Glil-Gang Glundil Gorfilas Góriand Hal
+    Harang Isil-Galith Isilith Isónd Isorfildur Legaraldur Lómebrildur Mil-Gan
+    Náldur Nelith Niol Porfindel Ráldur Silmandil Tand Taralad Tararion Tendil
+    Téril Tildur Tiniomir Unálad Unebrin Unéndil Uriong));
+  } elsif ($char->{race} eq T('elf') and $gender eq "F") {
+    $name = one(qw(Amidë Anadriedia Anarania Anebriwien Anilmadith Beliniel
+    Calararith Cebridith Celénia Celil-Gathiel Cidien Eäróndra Eärorfindra
+    Eláthien Eláviel Eleniel Elorfindra Elváwien Eoweclya Eowodia Fórith
+    Gilmadith Gladrieclya Glélindë Gorfinia Hadrieviel Haniel Hebriclya
+    Legithralia Lómithrania Meclya Mélith Módien Paclya Paradien Pedith
+    Pil-Gandra Pirith Porficlya Sithralindë Thrédith Thrilmadith Thrithien
+    Throrfindra Tilmaclya Tilmawen Tinilmania Uradriethiel Urithrarith
+    Urorfiviel));
+  } else {
+    # If race or gender is not supported, pick a random name and assign gender
+    # accordingly. This should not happen unless you introduce a new race
+    # without providing names for its members.
+    $name = name();
+    $gender = $names{$name} if member($names{$name}, "M", "F");
+  }
+  provide($char, "name", $name);
+  provide($char, "gender", $gender);
+}
+
+sub freebooters_appearance {
+  my $char = shift;
+  my @phrases;
+  # The descriptions in this list are from the book Freebooters on the Frontier
+  # by Jason Lutes. The text of that book is released under a Creative Commons
+  # Attribution-ShareAlike 3.0 Unported license.
+  # https://creativecommons.org/licenses/by-sa/3.0/
+  for (1..3) {
+    my $phrase;
+    # Note that some of the results make you roll on the next table, so don't
+    # use elsif!
+    if ($char->{class} eq T('cleric')) {
+      $phrase = one("big feet", "blazing eyes", "bushy eyebrows", "circlet",
+      "clean-shaven", "clear-eyed", "cleft chin", "crooked teeth", "curly hair",
+      "dandruff", "dark skin", "dirty", "earrings", "gaunt", "goatee",
+      "gray hair", "headband", "heavyset", "high forehead", "hirsute", "hooded",
+      "large hands", "long beard", "missing teeth", "miter", "notable helmet",
+      "notable nose", "notable garb", "pale skin", "perfect posture",
+      "perfumed", "piercing gaze", "pockmarked", "rosy cheeks", "scarred",
+      "shaved head", "shining eyes", "smelly", "smiling", "square chin",
+      "square-shouldered", "strange marks", "stubble", "tattoos",
+      "thundering voice", "tonsure", "unwashed", "warty", "well-scrubbed",
+      "roll on Fighter");
+      # $char->{notes} .= "appearance, rolled on the $char->{class} table: $phrase\\\\";
+    }
+    if ($char->{class} eq T('fighter')
+	or $phrase eq "roll on Fighter") {
+      $phrase = one("big feet", "big mouth", "big mustache", "notable nose",
+      "braided hair", "broken nose", "chiseled", "clear-eyed", "cleft chin",
+      "crooked teeth", "curly hair", "dark skin", "deep voice", "dirty",
+      "earrings", "gap-toothed", "goatee", "headband", "high cheekbones",
+      "hirsute", "lantern jaw", "large ears", "large hands", "large head",
+      "long-legged", "matted hair", "missing ear", "missing eye",
+      "missing finger", "missing teeth", "notable boots", "notable helmet",
+      "perfect posture", "pockmarked", "raspy voice", "rosy cheeks", "sandals",
+      "scarred", "tattoos", "shaved head", "smelly", "smiling", "squint",
+      "steely gaze", "stubble", "tattoos", "unsmiling", "well-scrubbed",
+      "youthful", "roll on Thief");
+      # $char->{notes} .= "appearance, rolled on the $char->{class} table: $phrase\\\\";
+    }
+    if ($char->{class} eq T('thief')
+	or $phrase eq "roll on Thief") {
+      $phrase = one("broken nose", "chin whiskers", "clean-shaven",
+      "clear-eyed", "crooked teeth", "curly hair", "dark skin", "deep voice",
+      "disfigured", "disheveled", "gap-toothed", "gaunt", "goatee", "hirsute",
+      "hooded", "limp", "little mouth", "long fingers", "matted hair",
+      "missing eye", "missing finger", "missing teeth", "narrowed eyes",
+      "notable footwear", "notable gloves", "notable cap/hat", "notable nose",
+      "overbite", "pale skin", "pencil", "mustache", "perfect posture",
+      "pockmarked", "pointy chin", "poor posture", "raspy voice", "ratty
+      clothes", "red-rimmed eyes", "scarred", "shifty eyes", "small hands",
+      "smelly", "squint", "stubble", "tattoos", "unsmiling", "unwashed",
+      "well-groomed", "whispery voice", "widow’s peak", "roll on Magic-User");
+      # $char->{notes} .= "appearance, rolled on the $char->{class} table: $phrase\\\\";
+    }
+    if ($char->{class} eq T('magic-user')
+	or $phrase eq "roll on Magic-User") {
+      $phrase = one("acid scars", "aged", "bald", "black teeth",
+      "booming voice", "burn scars", "bushy eyebrows", "chin whiskers",
+      "crooked teeth", "curly hair", "dark skin", "disfigured", "forked tongue",
+      "gaunt", "glowing eyes", "gnarled hands", "goatee", "gray hair", "haggard",
+      "hairless", "headband", "high cheekbones", "high forehead", "hooded",
+      "limp", "long beard", "long fingernails", "long hair", "mismatched eyes",
+      "missing teeth", "no eyebrows", "notable nose", "notable robes",
+      "oily skin", "pale skin", "pockmarked", "pointy hat", "poor posture",
+      "raspy voice", "scarred", "skeletal hands", "skullcap", "smelly",
+      "strange marks", "sunken eyes", "tattoos", "unwashed", "warty",
+      "white hair", "widow’s peak");
+      # $char->{notes} .= "appearance, rolled on the $char->{class} table: $phrase\\\\";
+    }
+    push(@phrases, $phrase) if $phrase and not member($phrase, @phrases);
+  }
+  return wrap(join(", ", @phrases), 27);
+}
+
+sub freebooters_hit_points {
+  my $char = shift;
+  if    ($char->{class} eq T('fighter'))    { return d10() }
+  elsif ($char->{class} eq T('thief'))      { return  d6() }
+  elsif ($char->{class} eq T('cleric'))     { return  d8() }
+  elsif ($char->{class} eq T('magic-user')) { return  d4() };
+}
+
+sub freebooters_alignment {
+  my $char = shift;
+  my ($evil, $chaotic, $neutral, $lawful, $good);
+
+  if ($char->{class} eq T('fighter')) {
+    ($evil, $chaotic, $neutral, $lawful, $good) = (2, 4, 8, 10, 12);
+  } elsif ($char->{class} eq T('thief')) {
+    ($evil, $chaotic, $neutral, $lawful, $good) = (2, 6, 10, 10, 12);
+  } elsif ($char->{class} eq T('cleric')) {
+    ($evil, $chaotic, $neutral, $lawful, $good) = (3, 5, 7, 9, 12);
+  } elsif ($char->{class} eq T('magic-user')) {
+    ($evil, $chaotic, $neutral, $lawful, $good) = (3, 8, 8, 8, 12);
+  }
+
+  my $roll = d12();
+  if    ($roll <= $evil)    { return T('evil') }
+  elsif ($roll <= $chaotic) { return T('chaotic') }
+  elsif ($roll <= $neutral) { return T('neutral') }
+  elsif ($roll <= $lawful)  { return T('lawful') }
+  elsif ($roll <= $good)    { return T('good') }
+}
+
+sub freebooters_traits {
+  my $char = shift;
+  my $alignment = $char->{alignment};
+  my ($virtues, $vices);
+  if ($alignment eq T('evil')) {
+    ($virtues, $vices) = (0, 3);
+  } elsif ($alignment eq T('chaotic')) {
+    ($virtues, $vices) = (1, 2);
+  } elsif ($alignment eq T('neutral')) {
+    ($virtues, $vices) = (1, 1);
+  } elsif ($alignment eq T('lawful')) {
+    ($virtues, $vices) = (2, 1);
+  } elsif ($alignment eq T('good')) {
+    ($virtues, $vices) = (3, 0);
+  }
+  my (@traits, $trait);
+  for (1..$virtues) {
+    do {
+      $trait = one(qw(ambitious benevolent bold brave charitable chaste cautious
+      compassionate confident considerate cooperative courteous creative curious
+      daring defiant dependable determined disciplined enthusiastic fair focused
+      forgiving friendly frugal funny generous gregarious helpful honest
+      honorable hopeful humble idealistic just kind loving loyal merciful
+      orderly patient persistent pious resourceful respectful responsible
+      selfless steadfast tactful tolerant));
+    } until not member($trait, @traits);
+    push(@traits, $trait);
+  }
+  for (1..$vices) {
+    do {
+      $trait = one(qw(addict aggressive alcoholic antagonistic arrogant boastful
+      cheater covetous cowardly cruel decadent deceitful disloyal doubtful
+      egotistical envious gluttonous greedy hasty hedonist impatient inflexible
+      irritable lazy lewd liar lustful mad malicious manipulative merciless
+      moody murderous obsessive petulant prejudiced reckless resentful rude
+      ruthless self-pitying selfish snobbish stingy stubborn vain vengeful
+      wasteful wrathful zealous));
+    } until not member($trait, @traits);
+    push(@traits, $trait);
+  }
+  return wrap(join(", ", @traits), 25);
+}
+
+sub freebooters_gear {
+  my $char = shift;
+  my $wt = 0;
+
+  my %weapons =
+      (T('axe') => [T('1d8'), 'close', 2],
+       T('club') => [T('1d6'), 'close', 1],
+       T('dagger') => [T('1d4'), "1 " . join(", ", T('pierce'), T('precise'), T('hand')), 0],
+       T('flail') => [T('1d8'), join(", ", T('close'), T('forceful')), 2],
+       T('great axe') => [T('1d10'), join(", ", T('close'), T('rare'), T('2-handed')), 3],
+       T('great hammer') => [T('1d10'), join(", ", T('close'), T('forceful'), T('rare'), T('2-handed')), 4],
+       T('great sword') => [T('1d10'), join(", ", T('close'), T('reach'), T('rare'), T('2-handed')), 3],
+       T('hatchet') => [T('1d4'), join(", ", T('throw'), T('close'), T('near')), 1],
+       T('knife') => [T('1d4'), join(", ", T('precise'), T('hand')), 0],
+       T('mace') => [T('1d6'), join(", ", T('close'), T('forceful')), 1],
+       T('pick') => [T('1d6'), "2 " . join(", ", T('pierce'), T('close'), T('awkward')), 1],
+       T('polearm') => [T('1d10'), join(", ", T('reach'), T('2-handed')), 3],
+       T('shortsword') => [T('1d6'), "!" . T('close'), 1],
+       T('spear') => [T('1d8'), join(", ", T('throw'), T('reach'), T('near')), 2],
+       T('staff') => [T('1d4'), join(", ", T('close'), T('2-handed')), 1],
+       T('sword') => [T('1d8'), "!" . T('close'), 2],
+       T('war hammer') => [T('1d6'), "1 " . join(", ", T('pierce'), T('close')), 1],
+       T('throwing knife') => [T('1d4'), join(", ", T('hand'), T('close'), T('reach'), T('near'), T('precise')), 0],
+       T('sling') => [T('1d4'), join(", ", T('near'), T('far'), T('reload')), 0],
+       T('shortbow') => [T('1d6'), join(", ", T('near'), T('far'), T('2-handed')), 1],
+       T('long bow') => [T('1d8'), join(", ", T('near'), T('far'), T('2-handed')), 1],
+       T('light crossbow') => [T('1d6'), "1 " . join(", ", T('pierce'), T('near'), T('far'), T('2-handed'), T('reload')), 1],
+       T('heavy crossbow') => [T('1d6'), "2 " . join(", ", T('pierce'), T('near'), T('far'), T('2-handed'), T('reload')), 2]);
+
+  if ($char->{class} eq T('fighter')) {
+
+    $wt += freebooter_weapon($char, \%weapons, freebooters_fighter_weapon($char, \%weapons));
+
+    my $roll = d6();
+    if ($roll == 1) {
+      provide($char, "item1", T('leather armor'));
+      provide($char, "armor", 1);
+      provide($char, "item1-wt", 1);
+      $wt += 1;
+    } elsif ($roll <= 5) {
+      provide($char, "item1", T('chain mail'));
+      provide($char, "armor", 2);
+      provide($char, "item1-wt", 3);
+      $wt += 3;
+    } else {
+      provide($char, "item1", T('scale armor') . " (" . T('awkward') . ")");
+      provide($char, "armor", 3);
+      provide($char, "item1-wt", 4);
+      $wt += 4;
+    }
+  } elsif ($char->{class} eq T('thief')) {
+
+    $wt += freebooter_weapon($char, \%weapons, one(T('knife'), T('dagger'), T('shortsword')));
+
+    provide($char, "item1", T('leather armor'));
+    provide($char, "armor", 1);
+    provide($char, "item1-wt", 1);
+    $wt += 1;
+
+  } elsif ($char->{class} eq T('cleric')) {
+
+    $wt += freebooter_weapon($char, \%weapons, one(T('staff'), T('mace'), T('war hammer')));
+
+    my $roll = d6();
+    if ($roll <= 2) {
+      provide($char, "item1", T('shield'));
+      provide($char, "armor", 1);
+      provide($char, "item1-wt", 2);
+      $wt += 3;
+    } elsif ($roll <= 4) {
+      provide($char, "item1", T('leather armor'));
+      provide($char, "armor", 1);
+      provide($char, "item1-wt", 1);
+      $wt += 1;
+    } else {
+      provide($char, "item1", T('chain mail'));
+      provide($char, "armor", 2);
+      provide($char, "item1-wt", 3);
+      $wt += 3;
+    }
+  } elsif ($char->{class} eq T('magic-user')) {
+
+    provide($char, "item1", T('spell book'));
+    provide($char, "item1-wt", 1);
+    provide($char, "item2", T('rations'));
+    provide($char, "item2-wt", 1);
+    provide($char, "silver", d6() + d6() + $char->{luc});
+    $wt += 2;
+
+    my $wp = 1; # next weapon
+    my $it = 3; # next item
+
+    my $roll = d6();
+    # $char->{notes} .= "magic-user focus: $roll\\\\";
+    if ($roll <= 2) {
+      provide($char, "item$it", T('magic wand') . " (+1 " . T('power') . ")");
+      provide($char, "item$it-wt", 0);
+      $it++;
+    } elsif ($roll <= 5) {
+      provide($char, "weapon$wp", T('magic staff') . "\\\\(" . join(", ", T('close'), T('2-handed'), "+1 " . T('power')) . ")");
+      provide($char, "dmg$wp", T('1d4'));
+      provide($char, "weapon$wp-wt", 1);
+      $wt += 1;
+      $wp += 2;
+    } else {
+      provide($char, "item$it", T('magic orb') . " (+2 " . T('power') . ")");
+      provide($char, "item$it-wt", 1);
+      $wt += 1;
+      $it++;
+    }
+
+    for (1 .. 2) {
+
+      $roll = d6();
+      # $char->{notes} .= "magic-user equipment: $roll\\\\";
+      if ($roll <= 2) {
+	provide($char, "item$it", T('bag of books (○○○○○)'));
+	provide($char, "item$it-wt", 2);
+	$wt += 2;
+	$it++;
+      } elsif ($roll <= 3) {
+	# check if we already rolled a dagger
+	if ($char->{"weapon$wp"} =~ /^dagger/) {
+	  $char->{"weapon$wp"} =~ s/^dagger/dagger (2)/;
+	} else {
+	  $wt += freebooter_weapon($char, \%weapons, T('dagger'), $wp);
+	  # don't increase $wp because a second dagger will just add (2)
+	}
+      } elsif ($roll <= 4) {
+	provide($char, "item$it", T('healing potion (heal 1d8 HP)'));
+	provide($char, "item$it-wt", 0);
+	$it++;
+      } else {
+	provide($char, "item$it", T('spell components (+1 power, ○○○)'));
+	provide($char, "item$it-wt", 0);
+	$it++;
+      }
+    }
+  }
+  provide($char, "total-wt", $wt);
+}
+
+sub freebooter_weapon {
+  my ($char, $weapons, $weapon, $wp) = @_;
+  $wp ||= 1; # position
+  if (length($weapon . " (" . $weapons->{$weapon}->[1] . ")") > 23) {
+    provide($char, "weapon$wp", $weapon . "\\\\"
+	    # the second line has more space
+	    . wrap("(" . $weapons->{$weapon}->[1] . ")", 33));
+  } else {
+    provide($char, "weapon$wp", $weapon . " (" . $weapons->{$weapon}->[1] . ")");
+  }
+  provide($char, "dmg$wp", $weapons->{$weapon}->[0]);
+  provide($char, "weapon$wp-wt", $weapons->{$weapon}->[2]);
+  return $weapons->{$weapon}->[2];
+}
+
+sub freebooters_fighter_weapon {
+  my ($char, $weapons) = @_;
+  if ($char->{dex} >= 13 and $char->{str} >= 13
+      and $char->{race} ne T('halfling')) {
+    # no great weapons for halflings
+    $char->{notes} .= "High dex and str and not a halfling: pick a 2-handed weapon doing 1d10.\\\\";
+    return one(freeboters_filter_weapons($weapons, ["1d10", "2-handed"]));
+  } elsif ($char->{dex} >= 13
+	   and $char->{race} ne T('halfling')) {
+    # no longbows for halflings
+    $char->{notes} .= "High dex and not a halfling: pick a ranged weapon doing 1d8.\\\\";
+    return one(freeboters_filter_weapons($weapons, ["1d8", "far"]));
+  } elsif ($char->{str} <= 8) {
+    $char->{notes} .= "Low str: pick a light (wt 1) melee weapon doing 1d6.\\\\";
+    return one(freeboters_filter_weapons($weapons, ["1d6", "close", "1"]));
+  } elsif ($char->{str} >= 13) {
+    $char->{notes} .= "High str: pick a melee weapon doing 1d8.\\\\";
+    return one(freeboters_filter_weapons($weapons, ["1d8", "close"]));
+  } else {
+    $char->{notes} .= "Picked a random weapon.\\\\";
+    one(keys %$weapons);
+  }
+}
+
+sub freeboters_filter_weapons {
+  my ($weapons, $with, $without) = @_;
+  return grep {
+    my @tags = ($weapons->{$_}->[0],
+		split(/, /, $weapons->{$_}->[1]),
+		$weapons->{$_}->[2]);
+    my $ok = 1;
+    foreach (@$with) {
+      $ok = 0 unless member($_, @tags);
+    }
+    foreach (@$without) {
+      $ok = 0 if member($_, @tags);
+    }
+    $ok;
+  } keys %$weapons;
+}
+
 sub random_parameters {
   my ($char, $language) = @_;
   local $lang = $language; # make sure T works as intended
-  random($char);
+  if (not exists $char->{rules}
+      or not defined $char->{rules}
+      or $char->{rules} eq "moldvay"
+      or $char->{rules} eq "halberds-n-helmets"
+      or $char->{rules} eq "labyrinth lord") {
+    random_moldvay($char);
+  } elsif ($char->{rules} eq "pendragon") {
+    random_pendragon($char);
+  } elsif ($char->{rules} eq "crypts-n-things") {
+    random_crypts_n_things($char);
+  } elsif ($char->{rules} eq "acks") {
+    random_acks($char);
+  } elsif ($char->{rules} eq "freebooters") {
+    random_freebooters($char);
+  } else {
+    error(T('Unknown Rules'), T('%0 is unknown.', $char->{rules}));
+  }
+
   # choose a random portrait based on the character name or class
   if (member("portrait", @_)) {
     provide($char, "portrait", portrait($char)) unless $char->{portrait};
   }
+}
+
+sub proficiencies {
+  my $char = shift;
+  my %proficiencies = ();
+
+  # start with class based preferences for proficiencies
+  if ($char->{class} eq T('assassin')) {
+
+    %proficiencies = (
+      'Acrobatics' => +2,
+      'Alchemy' => -1,
+      'Alertness' => 0,
+      'Arcane Dabbling' => 0,
+      'Blind Fighting' => 0,
+      'Bribery' => +1,
+      'Cat Burglary' => +1,
+      'Climbing' => +1,
+      'Combat Refexes' => 0,
+      'Combat Trickery (Disarm)' => 0,
+      'Combat Trickery (Incapacitate)' => 0,
+      'Contortionism' => 0,
+      'Disguise' => +1,
+      'Eavesdropping' => 0,
+      'Fighting Style' => +1,
+      'Gambling' => -2,
+      'Intimidation' => 0,
+      'Mimicry' => -1,
+      'Precise Shooting' => +1,
+      'Running' => 0,
+      'Seduction' => 0,
+      'Skirmishing' => 0,
+      'Skulking' => +1,
+      'Sniping' => +1,
+      'Swashbuckling' => 0,
+      'Trap Finding' => 0,
+      'Weapon Finesse' => -2,
+      'Weapon Focus' => -1, );
+    if ($char->{cha} > 12) {
+      $proficiencies{Bribery} = +2;
+      $proficiencies{Intimidation} = +1;
+      $proficiencies{Seduction} = +1;
+    }
+    if ($char->{dex} > 12) {
+      $proficiencies{Sniping} = +2;
+    }
+    if ($char->{level} > 5) {
+      $proficiencies{'Arcane Dabbling'} = +1;
+    }
+  }
+
+  # add general proficiencies
+  my %general = ();
+  $general{'Alchemy'} = 1 if $char->{class} eq T('mage');
+  $general{'Animal Husbandry'} = 0;
+  $general{'Animal Husbandry'} = 1 if $char->{class} eq T('explorer');
+  $general{'Beast Friendship'} = 2;
+  $general{'Animal Training (Dog)'} = 2;
+  $general{'Art'} = 0;
+  $general{'Bargaining'} = 0;
+  $general{'Bargaining'} = 1 if member($char->{class}, T('dwarven vaultguard'), T('dwarven craftpriest'), T('explorer'));
+  $general{'Caving'} = 0;
+  $general{'Collegiate Wizardry'} = 0;
+  $general{'Collegiate Wizardry'} = 1 if member($char->{class}, T('mage'), T('elven spellsword'), T('elven nightblade'));
+  $general{'Craft'} = 0;
+  $general{'Diplomacy'} = 0;
+  $general{'Diplomacy'} = 1 if $char->{cha} > 12;
+  $general{'Disguise'} = 0;
+  $general{'Disguise'} = 1 if $char->{class} eq T('thief');
+  $general{'Disguise'} = 2 if $char->{class} eq T('assassin');
+  $general{'Endurance'} = 0;
+  $general{'Endurance'} = 1 if $char->{ac} < 3;
+  $general{'Engineering'} = 0;
+  $general{'Gambling'} = 0;
+  $general{'Healing'} = 0;
+  # add more Healing if we already have healing?
+  $general{'Healing'} = 3 if $char->{int} >= 18;
+  $general{'Gambling'} = 0;
+  $general{'Intimidation'} = 0;
+  $general{'Intimidation'} = 1 if $char->{cha} > 13;
+  $general{'Knowledge'} = 0;
+  $general{'Knowledge'} = 3 if $char->{int} >= 18;
+  $general{'Labor'} = 0;
+  $general{'Language'} = 0;
+  $general{'Leadership'} = 0;
+  $general{'Lip Reading'} = 0;
+  $general{'Lip Reading'} = 3 if $char->{class} eq T('thief');
+  $general{'Manual of Arms'} = 0;
+  $general{'Mapping'} = 0;
+  $general{'Military Strategy'} = 0;
+  $general{'Military Strategy'} = 1 if $char->{int} > 13 and $char->{wis} > 13;
+  $general{'Mimicry'} = 0;
+  $general{'Naturalism'} = 0;
+  $general{'Navigation'} = 0;
+  $general{'Performance'} = 0;
+  $general{'Performance'} = 3 if $char->{class} eq T('bard');
+  $general{'Profession'} = 0;
+  $general{'Profession'} = 1 if $char->{str} < 9 or $char->{dex} < 9;
+  $general{'Riding'} = 0;
+  $general{'Riding'} = 1 if member($char->{class}, T('fighter'), T('explorer'), T('barbarian'));
+  $general{'Seafaring'} = 0;
+  $general{'Seduction'} = 0;
+  $general{'Seduction'} = 1 if $char->{cha} > 13;
+  $general{'Siege Engineering'} = 0;
+  $general{'Seduction'} = 0;
+  $general{'Signaling'} = 0 if $char->{ac} < 3;
+  $general{'Survival'} = 0;
+  $general{'Survival'} = 2 if member($char->{class}, T('explorer'), T('barbarian'));
+  $general{'Theology'} = 0;
+  $general{'Theology'} = 2 if member($char->{class}, T('cleric'), T('elven bladedancer'));
+  $general{'Tracking'} = 0;
+  $general{'Tracking'} = 1 if member($char->{class}, T('assassin'), T('explorer'));
+  $general{'Trapping'} = 0;
+  $general{'Trapping'} = 1 if $char->{class} eq T('explorer');
+
+  # set up lists
+  my @proficiencies = distribution(\%proficiencies);
+  my @general = distribution(\%general);
+  my @result = ('Adventuring');
+  push(@result, one(@proficiencies));
+  my $proficiency;
+  my $m = 1;
+  $m += $char->{"int-bonus"} if $char->{"int-bonus"} > 0;
+  for (my $i = 0; $i < $m; $i++) {
+    $proficiency = one(@general);
+    # do { $proficiency = one(@general) } until not member($proficiency, @result);
+    push(@result, $proficiency);
+  }
+  return join(", ", map { T($_) } @result);
+}
+
+sub distribution {
+  # Given a hash ref mapping keys to numbers between -2 and +2, returns an array with an appropriate number of keys. Use
+  # one() to pick a random key.
+  my $hashref = shift;
+  my @result = ();
+  my $default = 3; # this means the ratio between -- and ++ is 1:5
+  for my $key (keys %$hashref) {
+    my $n = $default + $hashref->{$key};
+    for (my $i = 0; $i < $n; $i++) {
+      push(@result, $key);
+    }
+  }
+  return @result;
 }
 
 sub portrait {
@@ -2084,8 +3513,9 @@ __DATA__
 
 <p>
 
-This is the <a href="https://alexschroeder.ch/wiki/Halberds_and_Helmets">Halberds and Helmets</a>
-Character Sheet Generator.
+This is the <i>Halberds and Helmets</i> Character Sheet Generator. By default it
+will generate a <%= link_to "random character" => "random" %> for <i>Basic
+D&D</i> by Moldvay (the “B” in <a href="https://en.wikipedia.org/wiki/Dungeons_%26_Dragons_Basic_Set#1981_revision">B/X D&D</a>).
 Reload the character sheet to generate more 1<sup>st</sup> level characters.
 
 Feel free to provide a name for your random character!
@@ -2121,8 +3551,11 @@ by <a href="http://save.vs.totalpartykill.ca/">Ramanan Sivaranjan</a>.
 <h1>Charakterblatt Generator</h1>
 
 <p>
-Dies ist der <a href="https://alexschroeder.ch/wiki/Hellebarden_%26_Helme">Hellebarden und Helme</a>
-Charaktergenerator.
+
+Dies ist der <i>Hellebarden und Helme</i> Charaktergenerator. Per Default generieren wir einen
+<%= link_to url_for("random", {lang => "de"}) => begin %>zufälligen Charakter<% end %>
+für die <i>Basic D&D</i> Regeln von Moldvay (das “B” in
+<a href="https://en.wikipedia.org/wiki/Dungeons_%26_Dragons_Basic_Set#1981_revision">B/X D&D</a>).
 Um weitere Charaktere der 1. Stufe zu generieren, kann man die Seite einfach neu laden.
 
 Wer will, kann dem generierten Charakter hier auch einen Namen geben:
@@ -2139,6 +3572,7 @@ sich ein Lesezeichen erstellen kann und wo der Charakter bearbeitet werden kann.
 <%= link_to "Weiterlesen…" => "hilfe" %>
 
 <p>
+
 Hat man ein Charakterblatt ausgedruckt und vergessen, sich den Link zu speicher,
 kann man dies mit dem Code zum Teil wieder herstellen.
 
@@ -2275,6 +3709,18 @@ Charakter:
 
 <p>Das funktioniert über eine Vorlage und dem Ersetzen von Platzhaltern.
 
+<ul>
+<li><a href="#moldvay">Basic D&D</a>
+<li><a href="#labyrinth_lord">Labyrinth Lord</a>
+<li><a href="#hellebarden">Hellebarden und Helme</a>
+<li><a href="#pendragon">Pendragon</a>
+<li><a href="#crypts_n_things">Crypts & Things</a>
+<li><a href="#freebooters">Freebooters on the Frontier</a>
+<li><a href="#ACKS">Adventure Conqueror King System</a>
+</ul>
+
+<h2 id="moldvay">Basic D&amp;D</h2>
+
 <p>Die
 <%= link_to url_for("char" => {lang => "de"})->query(charsheet => "Charakterblatt.svg") => begin %>Defaultvorlage<% end %>
 (<%= link_to url_for("char" => {lang => "de"})->query(charsheet => "Charakterblatt-quer.svg") => begin %>Alternative<% end %>)
@@ -2317,6 +3763,130 @@ Das Skript kann auch
 oder <%= link_to url_for("stats" => {lang => "de"}) => begin %>Statistiken<% end %>
 generieren.
 
+<p id="labyrinth_lord">
+Da die Preisliste für Labyrinth Lord sich von der Moldvay Liste
+etwas unterscheidet, kann man auch
+<%= link_to url_for("random" => {lang => "de"})->query(rules => "labyrinth lord") => begin %>einen zufälligen Charakter<% end %>,
+<%= link_to url_for("characters" => {lang => "de"})->query(rules => "labyrinth lord") => begin %>einige Charaktere<% end %>
+oder <%= link_to  url_for("stats" => {lang => "de"})->query(rules => "labyrinth lord") => begin %>Statistiken<% end %>
+mit <a href="http://www.goblinoidgames.com/labyrinthlord.html">Labyrinth Lord</a>
+Regeln generieren.
+
+<p id="hellebarden">
+Da es für Hellebarden und Helme keine Kleriker gibt, kann man auch
+<%= link_to url_for("random" => {lang => "de"})->query(rules => "halberds-n-helmets") => begin %>einen zufälligen Charakter<% end %>,
+<%= link_to url_for("characters" => {lang => "de"})->query(rules => "halberds-n-helmets") => begin %>einige Charaktere<% end %>
+oder <%= link_to  url_for("stats" => {lang => "de"})->query(rules => "halberds-n-helmets") => begin %>Statistiken<% end %>
+mit <a href="https://alexschroeder.ch/cgit/hellebarden-und-helme/about/">Hellebarden und Helme</a>
+Regeln generieren.
+
+<h2 id="pendragon">Pendragon</h2>
+
+<p>
+Das Skript kann auch
+<a href="http://www.nocturnal-media.com/games/pendragon">Pendragon</a>
+Charaktere anzeigen (aber nicht zufällig erstellen):
+<%= link_to url_for("edit" => {lang => "de"})->query(rules => "pendragon", charsheet => "Pendragon.svg") => begin %>Pendragon Charakter<% end %> bearbeiten.
+Das Skript kann auch zeigen
+<%= link_to url_for("show")->query(charsheet => "Pendragon.svg") => begin %>welche Parameter wo erscheinen<% end %>.
+
+<p>
+Zudem werden einige Parameter berechnet, sofern sie nicht
+angegeben wurden:
+
+<ul>
+<li>str+siz → damage
+<li>str+con → heal
+<li>str+dex → move
+<li>siz+con → hp
+<li>hp → unconscious
+<li>chaste ↔ lustful
+<li>energetic ↔ lazy
+<li>forgiving ↔ vengeful
+<li>generous ↔ selfish
+<li>honest ↔ deceitful
+<li>just ↔ arbitrary
+<li>merciful ↔ cruel
+<li>modest ↔ proud
+<li>pious ↔ worldly
+<li>prudent ↔ reckless
+<li>temperate ↔ indulgent
+<li>trusting ↔ suspicious
+<li>valorous ↔ cowardly
+</ul>
+
+<h2 id="crypts_n_things">Crypts & Things</h2>
+
+<p>
+Das Skript kann auch Charaktere für
+<a href="http://d101games.com/books/crypts-and-things/">Crypts & Things</a>
+anzeigen (aber nicht zufällig erstellen):
+<%= link_to url_for("edit" => {lang => "de"})->query(rules => "crypts-n-things", charsheet => "Crypts-n-Things.svg") => begin %>Crypts & Things Charakter<% end %>
+bearbeiten. Das Skript kann auch zeigen
+<%= link_to url_for("show")->query(charsheet => "Crypts-n-Things.svg") => begin %>welche Parameter wo erscheinen<% end %>.
+
+<p>
+Zudem werden einige Parameter berechnet, sofern sie nicht
+angegeben wurden:
+
+<ul>
+<li>str → to-hit
+<li>str → damage-bonus
+<li>dex → missile-bonus
+<li>dex → ac-bonus
+<li>con → con-bonus
+<li>int → understand
+<li>cha → charm
+<li>cha → hirelings
+<li>wis → sanity
+</ul>
+
+<h2 id="freebooters">Freebooters on the Frontier</h2>
+
+<p>
+Das Skript kann für
+<a href="http://www.drivethrurpg.com/product/157011/Freebooters-on-the-Frontier">Freebooters on the Frontier</a>
+verwendet werden. Leider wurde hierfür noch keine Übersetzungsarbeit geleistet. Wenn man weiss,
+<%= link_to url_for("show")->query(charsheet => "Maezar-Freebooters.svg") => begin %>welche Parameter wo erscheinen<% end %>,
+ist es einfach, einen Charakter zu <%= link_to url_for("edit" => {lang => "en"})->query(rules => "freebooters") => begin %>erstellen<% end %>.
+
+<p>
+Das Skript kann
+<%= link_to url_for("random" => {lang => "en"})->query(rules => "freebooters", portrait => "no") => begin %>zufällige Charaktere erstellen<% end %>.
+Statt einer Beschreibung kann das Charakterblatt auch <%= link_to url_for("random" => {lang => "en"})->query(rules => "freebooters") => begin %>mit einem Bild<% end %> erstellt werden.
+
+<h2 id="ACKS">Adventure Conqueror King System</h2>
+
+<p>
+Das Skript kann auch Charaktere für
+<a href="http://www.autarch.co/">Adventure Conqueror King System</a>
+anzeigen:
+<%= link_to url_for("edit" => {lang => "de"})->query(rules => "acks", charsheet => "ACKS.svg") => begin %>ACKS Charakter<% end %>
+bearbeiten. Das Skript kann auch zeigen
+<%= link_to url_for("show")->query(charsheet => "ACKS.svg") => begin %>welche Parameter wo erscheinen<% end %>.
+
+<p>
+Zudem werden einige Parameter berechnet, sofern sie nicht
+angegeben wurden:
+
+<ul>
+<li>str → str-bonus
+<li>int → int-bonus
+<li>wis → wis-bonus
+<li>dex → dex-bonus
+<li>con → con-bonus
+<li>cha → cha-bonus
+<li>attack+str → melee
+<li>attack+dex → missile
+</ul>
+
+<p>
+<b>Im Aufbau</b>: Das Skript kann auch
+<%= link_to url_for("random" => {lang => "de"})->query(rules => "acks", charsheet => "ACKS.svg") => begin %>einen zufälligen Charakter<% end %>,
+<%= link_to url_for("characters" => {lang => "de"})->query(rules => "acks") => begin %>einige Charaktere<% end %>
+oder <%= link_to  url_for("stats" => {lang => "de"})->query(rules => "acks") => begin %>Statistiken<% end %>
+generieren.
+
 
 @@ help.html.ep
 % layout "default.en";
@@ -2324,6 +3894,18 @@ generieren.
 <h1>Character Sheet Generator</h1>
 
 <p>The generator works by using a template and replacing some placeholders.
+
+<ul>
+<li><a href="#moldvay">Basic D&D</a>
+<li><a href="#labyrinth_lord">Labyrinth Lord</a>
+<li><a href="#halberds">Halberds and Helmets</a>
+<li><a href="#pendragon">Pendragon</a>
+<li><a href="#crypts_n_things">Crypts & Things</a>
+<li><a href="#freebooters">Freebooters on the Frontier</a>
+<li><a href="#ACKS">Adventure Conqueror King System</a>
+</ul>
+
+<h2 id="moldvay">Basic D&D</h2>
 
 <p>The
 <%= link_to url_for("char" => {lang => "en"}) => begin %>default template<% end %>
@@ -2364,6 +3946,128 @@ The script can also generate a
 <%= link_to url_for("random" => {lang => "en"}) => begin %>random character<% end %>,
 <%= link_to url_for("characters" => {lang => "en"}) => begin %>bunch of characters<% end %>
 or <%= link_to url_for("stats" => {lang => "en"}) => begin %>some statistics<% end =%>.
+
+<p id="labyrinth_lord">
+As the price list for Labyrinth Lord differs from the Moldvay
+price list, you can also generate a
+<%= link_to url_for("random" => {lang => "en"})->query(rules => "labyrinth lord") => begin %>random character<% end %>,
+<%= link_to url_for("characters" => {lang => "en"})->query(rules => "labyrinth lord") => begin %>bunch of characters<% end %>
+or <%= link_to  url_for("stats" => {lang => "en"})->query(rules => "labyrinth lord") => begin %>some statistics<% end %>
+using <a href="http://www.goblinoidgames.com/labyrinthlord.html">Labyrinth Lord</a>
+rules.
+
+<p id="halberds">
+As Halberds and Helmets has no clerics, you can also generate a
+<%= link_to url_for("random" => {lang => "en"})->query(rules => "halberds-n-helmets") => begin %>random character<% end %>,
+<%= link_to url_for("characters" => {lang => "en"})->query(rules => "halberds-n-helmets") => begin %>bunch of characters<% end %>
+or <%= link_to  url_for("stats" => {lang => "en"})->query(rules => "halberds-n-helmets") => begin %>some statistics<% end %>
+using <a href="https://alexschroeder.ch/cgit/halberds-and-helmets/about/">Halberds and Helmets</a>
+rules.
+
+<h2 id="pendragon">Pendragon</h2>
+
+<p>
+The script also supports
+<a href="http://www.nocturnal-media.com/games/pendragon">Pendragon</a>
+characters (but cannot generate them randomly): Get started with a
+<%= link_to url_for("edit" => {lang => "en"})->query(rules => "pendragon", charsheet => "Pendragon.svg") => begin %>Pendragon character<% end %>.
+The script can also show
+<%= link_to url_for("show")->query(charsheet => "Pendragon.svg") => begin %>which parameters go where<% end %>.
+
+<p>
+In addition to that, some parameters are computed unless provided:
+
+<ul>
+<li>str+siz → damage
+<li>str+con → heal
+<li>str+dex → move
+<li>siz+con → hp
+<li>hp → unconscious
+<li>chaste ↔ lustful
+<li>energetic ↔ lazy
+<li>forgiving ↔ vengeful
+<li>generous ↔ selfish
+<li>honest ↔ deceitful
+<li>just ↔ arbitrary
+<li>merciful ↔ cruel
+<li>modest ↔ proud
+<li>pious ↔ worldly
+<li>prudent ↔ reckless
+<li>temperate ↔ indulgent
+<li>trusting ↔ suspicious
+<li>valorous ↔ cowardly
+</ul>
+
+<h2 id="crypts_n_things">Crypts &amp; Things</h2>
+
+<p>
+The script also supports
+<a href="http://d101games.com/books/crypts-and-things/">Crypts & Things</a>
+characters (but cannot generate them randomly):
+Get started with a
+<%= link_to url_for("edit" => {lang => "en"})->query(rules => "crypts-n-things", charsheet => "Crypts-n-Things.svg") => begin %>Crypts & Things character<% end %>.
+The script can also show
+<%= link_to url_for("show")->query(charsheet => "Crypts-n-Things.svg") => begin %>which parameters go where<% end %>.
+
+<p>
+In addition to that, some parameters are computed unless provided:
+
+<ul>
+<li>str → to-hit
+<li>str → damage-bonus
+<li>dex → missile-bonus
+<li>dex → ac-bonus
+<li>con → con-bonus
+<li>int → understand
+<li>cha → charm
+<li>cha → hirelings
+<li>wis → sanity
+</ul>
+
+<h2 id="freebooters">Freebooters on the Frontier</h2>
+
+<p>
+The script also supports
+<a href="http://www.drivethrurpg.com/product/157011/Freebooters-on-the-Frontier">Freebooters on the Frontier</a>
+characters: Get started with an
+<%= link_to url_for("edit" => {lang => "en"})->query(rules => "freebooters") => begin %>Freebooter character<% end %>.
+The script can also show
+<%= link_to url_for("show")->query(charsheet => "Maezar-Freebooters.svg") => begin %>which parameters go where<% end %>.
+
+<p>
+The script can also generate a
+<%= link_to url_for("random" => {lang => "en"})->query(rules => "freebooters", portrait => "no") => begin %>random character<% end %>.
+If you prefer, it can <%= link_to url_for("random" => {lang => "en"})->query(rules => "freebooters") => begin %>use a portrait<% end %> instead of generating an appearance.
+
+<h2 id="ACKS">Adventure Conqueror King System</h2>
+
+<p>
+The script also supports
+<a href="http://www.autarch.co/">Adventure Conqueror King System</a>
+characters: Get started with an
+<%= link_to url_for("edit" => {lang => "en"})->query(rules => "acks", charsheet => "ACKS.svg") => begin %>ACKS character<% end %>.
+The script can also show
+<%= link_to url_for("show")->query(charsheet => "ACKS.svg") => begin %>which parameters go where<% end %>.
+
+<p>
+In addition to that, some parameters are computed unless provided:
+
+<ul>
+<li>str → str-bonus
+<li>int → int-bonus
+<li>wis → wis-bonus
+<li>dex → dex-bonus
+<li>con → con-bonus
+<li>cha → cha-bonus
+<li>attack+str → melee
+<li>attack+dex → missile
+</ul>
+
+<p>
+<b>Work in Progress</b>: The script can also generate a
+<%= link_to url_for("random" => {lang => "en"})->query(rules => "acks", charsheet => "ACKS.svg") => begin %>random character<% end %>,
+<%= link_to url_for("characters" => {lang => "en"})->query(rules => "acks") => begin %>bunch of characters<% end %>
+or <%= link_to  url_for("stats" => {lang => "en"})->query(rules => "acks") => begin %>some statistics<% end %>.
 
 
 @@ default.html.ep

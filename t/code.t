@@ -26,7 +26,7 @@ require "$FindBin::Bin/../halberdsnhelmets.pl";
 
 my $t = Test::Mojo->new;
 
-$t->get_ok('/decode/de?code=BADA97H46-P8NQLR244McCV')
+$t->get_ok('/decode/de?code=BADA97H46-NQLRP2McCV8')
     ->status_is(200)
     ->header_is('Content-Type' => 'text/html;charset=UTF-8');
 
@@ -58,24 +58,21 @@ class: Halbling
 hp: 4
 ac: 6
 property: Rucksack
-property: Feldrationen (1 Woche)
+property: Seil
 property: Lederrüstung
-property: Schild
-property: Langschwert
+property: Silberner Dolch
 property: Schleuder
 property: Beutel mit 30 Steinen
-property: Dolch (2)
-property: Laterne
-property: Ölflasche
-property: Holzstab
-property: Spiegel
-property: 4 Gold
+property: Plattenpanzer
+property: Kiste mit 30 Bolzen
+property: Stangenwaffe
+property: Helm
 abilities: 1/6 für normale Aufgaben
 abilities: 2/6 für Verstecken und Schleichen
 abilities: 5/6 für Verstecken und Schleichen im Freien
 abilities: +1 für Fernwaffen
 abilities: Rüstung -2 bei Gegnern über Menschengrösse
-abilities: Code: BADA97H46-P8NQLR2McCV
+abilities: Code: BADA97H46-NQLRP2McCV8
 charsheet: Charakterblatt.svg
 portrait: https://campaignwiki.org/face/render/alex/eyes_all_39.png_,mouth_all_109.png,chin_woman_32.png,ears_all_21.png,nose_woman_elf_11.png,hair_woman_72.png
 breath: 13
@@ -94,7 +91,6 @@ sub line {
   while ($offset + $length < length($str) and substr($str, $offset + $length, 1) ne "\n") { $length++ };
   return substr($str, $offset, $length);
 }
-
 
 for (my $i = 0; $i < length($new); $i++) {
   if (substr($original, $i, 1) ne substr($new, $i, 1)) {
