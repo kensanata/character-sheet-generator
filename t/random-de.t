@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 
-# Copyright (C) 2015-2016 Alex Schroeder <alex@gnu.org>
+# Copyright (C) 2015-2022 Alex Schroeder <alex@gnu.org>
 
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -14,17 +14,13 @@
 # You should have received a copy of the GNU General Public License along with
 # this program. If not, see <http://www.gnu.org/licenses/>.
 
-use utf8;
+use Modern::Perl;
 use Test::More;
 use Test::Mojo;
-use FindBin;
-use strict;
-use warnings;
+use utf8;
 
-$ENV{MOJO_HOME} = "$FindBin::Bin/..";
-require "$FindBin::Bin/../halberdsnhelmets.pl";
-
-my $t = Test::Mojo->new;
+my $t = Test::Mojo->new('Game::CharacterSheetGenerator');
+$t->app->log->level('warn');
 
 # typical use case: request a random character
 $t->get_ok('/' => {'Accept-Language' => 'de'})

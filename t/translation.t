@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 
-# Copyright (C) 2015 Alex Schroeder <alex@gnu.org>
+# Copyright (C) 2015-2022 Alex Schroeder <alex@gnu.org>
 
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -14,14 +14,12 @@
 # You should have received a copy of the GNU General Public License along with
 # this program. If not, see <http://www.gnu.org/licenses/>.
 
-package HH;
+package Game::CharacterSheetGenerator;
+use Modern::Perl;
 use Test::More;
 use FindBin;
-use strict;
-use warnings;
 
-$ENV{MOJO_HOME} = "$FindBin::Bin/..";
-my $file = "$FindBin::Bin/../halberdsnhelmets.pl";
+my $file = "$FindBin::Bin/../lib/Game/CharacterSheetGenerator.pm";
 require $file;
 open(my $fh, '<:utf8', $file) or die "Cannot read $file\n";
 undef $/;

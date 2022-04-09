@@ -78,10 +78,11 @@ package Game::CharacterSheetGenerator;
 
 our $VERSION = 1.00;
 
+use Modern::Perl;
 use Mojolicious::Lite;
 use Mojo::UserAgent;
 use Mojo::Log;
-use File::ShareDir 'dist_dir';
+use File::ShareDir "dist_dir";
 use I18N::AcceptLanguage;
 use XML::LibXML;
 use List::Util qw(shuffle);
@@ -92,14 +93,14 @@ no warnings qw(uninitialized numeric);
 # Change scheme if "X-Forwarded-Proto" header is set (presumably to HTTPS)
 app->hook(before_dispatch => sub {
   my $c = shift;
-  $c->req->url->base->scheme('https')
-      if $c->req->headers->header('X-Forwarded-Proto') } );
+  $c->req->url->base->scheme("https")
+      if $c->req->headers->header("X-Forwarded-Proto") } );
 
 =head2 Configuration
 
 As a Mojolicious application, it will read a config file called
 F<character-sheet-generator.conf> in the same directory, if it exists. As the
-default log level is 'debug', one use of the config file is to change the log
+default log level is "debug", one use of the config file is to change the log
 level using the C<loglevel> key, and if you're not running the server in a
 terminal, using the C<logfile> key to set a file.
 
@@ -113,32 +114,32 @@ You can set the URL using the C<face_generator_url> key. If you're a developer
 and have it running locally on port 3020, this is what you'd use:
 
     {
-      loglevel => 'debug',
+      loglevel => "debug",
       logfile => undef,
-      contrib => 'share',
-      face_generator_url => 'http://localhost:3020',
+      contrib => "share",
+      face_generator_url => "http://localhost:3020",
     };
 
 =cut
 
 plugin Config => {
   default => {
-    loglevel => 'warn',
+    loglevel => "warn",
     logfile => undef,
     contrib => undef,
   },
-  file => getcwd() . '/character-sheet-generator.conf',
+  file => getcwd() . "/character-sheet-generator.conf",
 };
 
 my $log = Mojo::Log->new;
-$log->level(app->config('loglevel'));
-$log->path(app->config('logfile'));
-$log->info($log->path ? "Logfile is " . $log->path : "Logging to stderr");
+$log->level(app->config("loglevel"));
+$log->path(app->config("logfile"));
+$log->debug($log->path ? "Logfile is " . $log->path : "Logging to stderr");
 
-my $dist_dir = app->config('contrib') // dist_dir('Game-CharacterSheetGenerator');
+my $dist_dir = app->config("contrib") // dist_dir("Game-CharacterSheetGenerator");
 $log->debug("Reading contrib files from $dist_dir");
 
-my $face_generator_url = app->config('face_generator_url') || 'https://campaignwiki.org/face';
+my $face_generator_url = app->config("face_generator_url") || "https://campaignwiki.org/face";
 $log->debug("Face Generator URL: $face_generator_url");
 
 sub translations {
@@ -146,8 +147,6 @@ sub translations {
   # use %0, %1, etc. for parameters
   my %translations = split(/\n/, q{%0 gold
 %0 Gold
-%0 is unknown.
-%0 ist unbekannt.
 %0 silver
 %0 Silber
 %0: How much does this cost?

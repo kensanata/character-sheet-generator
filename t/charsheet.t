@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 
-# Copyright (C) 2015 Alex Schroeder <alex@gnu.org>
+# Copyright (C) 2015-2022 Alex Schroeder <alex@gnu.org>
 
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -14,23 +14,19 @@
 # You should have received a copy of the GNU General Public License along with
 # this program. If not, see <http://www.gnu.org/licenses/>.
 
+use Modern::Perl;
 use Test::More;
 use Test::Mojo;
-use FindBin;
-use strict;
-use warnings;
 
-$ENV{MOJO_HOME} = "$FindBin::Bin/..";
-require "$FindBin::Bin/../halberdsnhelmets.pl";
+my $t = Test::Mojo->new('Game::CharacterSheetGenerator');
+$t->app->log->level('warn');
 
-my $t = Test::Mojo->new;
-
-$t->get_ok('/char/en?name=Markus&charsheet=swn_warrior.svg')
+$t->get_ok('/char/en?name=Markus&charsheet=Charakterblatt.svg')
     ->status_is(200)
     ->header_is('Content-Type' => 'image/svg+xml');
 
 is($t->tx->res->dom->at('svg')->attr('sodipodi:docname'),
-   "swn_warrior.svg",
+   "Charakterblatt.svg",
    'the correct SVG file was loaded');
 
 done_testing();
