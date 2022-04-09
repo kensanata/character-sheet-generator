@@ -1,6 +1,5 @@
 #!/usr/bin/env perl
-
-# Copyright (C) 2012-2016  Alex Schroeder <alex@gnu.org>
+# Copyright (C) 2012-2022  Alex Schroeder <alex@gnu.org>
 
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -14,16 +13,133 @@
 # You should have received a copy of the GNU General Public License along with
 # this program. If not, see <http://www.gnu.org/licenses/>.
 
-package HH;
+=encoding utf8
+
+=head1 NAME
+
+Game::CharacterSheetGenerator - a web app to generate character sheets
+
+=head1 DESCRIPTION
+
+Character Sheet Generator is a web application that generates characters for the
+Halberts & Helmets game. It does two things: it generates the stats for random
+characters, and it populates a SVG file with those values.
+
+Here's an example of the stats generated:
+
+    name: Diara
+    str: 11
+    dex: 10
+    con: 13
+    int: 10
+    wis: 9
+    cha: 7
+    level: 1
+    xp: 0
+    thac0: 19
+    class: halfling
+    hp: 4
+    ac: 6
+    property: backpack
+    property: rope
+    property: leather armour
+    property: silver dagger
+    property: sling
+    property: pouch with 30 stones
+    abilities: 1/6 for normal tasks
+    abilities: 2/6 to hide and sneak
+    abilities: 5/6 to hide and sneak outside
+    abilities: +1 for ranged weapons
+    abilities: AC -2 against giants
+    charsheet: Charaktersheet.svg
+    breath: 13
+    poison: 8
+    petrify: 10
+    wands: 9
+    spells: 12
+
+Think of it as key value pairs. Some keys have multiple values, resulting in
+multiline values.
+
+The SVG file acts as a template. For every key in the character, a C<text>
+element with a matching id is searched and if found, C<tspan> elements matching
+the value are inserted.
+
+The C<charsheet> key is special because it tells the app which file to load.
+
+On a technical level, Character Sheet Generator is a web app based on the
+Mojolicious framework. This class in particular uses L<Mojolicious::Lite>.
+
+See L<Mojolicious::Guides> for more information.
+
+=cut
+
+package Game::CharacterSheetGenerator;
+
+our $VERSION = 1.00;
+
 use Mojolicious::Lite;
 use Mojo::UserAgent;
+use Mojo::Log;
+use File::ShareDir 'dist_dir';
 use I18N::AcceptLanguage;
 use XML::LibXML;
 use List::Util qw(shuffle);
 use POSIX qw(floor ceil);
+use Cwd;
 no warnings qw(uninitialized numeric);
 
-my $home = $ENV{MOJO_HOME} || "/home/alex/farm/halberdsnhelmets";
+# Change scheme if "X-Forwarded-Proto" header is set (presumably to HTTPS)
+app->hook(before_dispatch => sub {
+  my $c = shift;
+  $c->req->url->base->scheme('https')
+      if $c->req->headers->header('X-Forwarded-Proto') } );
+
+=head2 Configuration
+
+As a Mojolicious application, it will read a config file called
+F<character-sheet-generator.conf> in the same directory, if it exists. As the
+default log level is 'debug', one use of the config file is to change the log
+level using the C<loglevel> key, and if you're not running the server in a
+terminal, using the C<logfile> key to set a file.
+
+The default map and table are stored in the F<contrib> directory. You can change
+this directory using the C<contrib> key. By default, the directory included with
+the distribution is used. Thus, if you're a developer, you probably want to use
+something like the following to use the files from the source directory.
+
+The code also needs to know where the Face Generator can be found, if at all.
+You can set the URL using the C<face_generator_url> key. If you're a developer
+and have it running locally on port 3020, this is what you'd use:
+
+    {
+      loglevel => 'debug',
+      logfile => undef,
+      contrib => 'share',
+      face_generator_url => 'http://localhost:3020',
+    };
+
+=cut
+
+plugin Config => {
+  default => {
+    loglevel => 'warn',
+    logfile => undef,
+    contrib => undef,
+  },
+  file => getcwd() . '/character-sheet-generator.conf',
+};
+
+my $log = Mojo::Log->new;
+$log->level(app->config('loglevel'));
+$log->path(app->config('logfile'));
+$log->info($log->path ? "Logfile is " . $log->path : "Logging to stderr");
+
+my $dist_dir = app->config('contrib') // dist_dir('Game-CharacterSheetGenerator');
+$log->debug("Reading contrib files from $dist_dir");
+
+my $face_generator_url = app->config('face_generator_url') || 'https://campaignwiki.org/face';
+$log->debug("Face Generator URL: $face_generator_url");
 
 sub translations {
   # strings in sinqle quotes are translated into German if necessary
@@ -519,8 +635,8 @@ sub svg_read {
   my ($char) = @_;
   my $filename = $char->{charsheet} || 'Charactersheet.svg';
   my $doc;
-  if (-f "$home/$filename") {
-    $doc = XML::LibXML->load_xml(location => "$home/$filename");
+  if (-f "$dist_dir/$filename") {
+    $doc = XML::LibXML->load_xml(location => "$dist_dir/$filename");
   } else {
     my $ua = Mojo::UserAgent->new;
     my $tx = $ua->get($filename);
@@ -894,7 +1010,7 @@ sub freebooters {
 
   # character sheet
   my $charsheet = "Maezar-Freebooters.svg";
-  if (not $char->{"charsheet"} and -f "$home/$charsheet") {
+  if (not $char->{"charsheet"} and -f "$dist_dir/$charsheet") {
     $char->{"charsheet"} = $charsheet;
   }
 }
@@ -3245,7 +3361,7 @@ sub portrait {
   } else {
     $gender = one("woman", "man");
   }
-  my $url = Mojo::URL->new("https://campaignwiki.org/face/redirect/alex/$gender");
+  my $url = Mojo::URL->new("$face_generator_url/redirect/alex/$gender");
   my $ua = Mojo::UserAgent->new;
   my $tx = $ua->get($url);
   $url->path($tx->res->headers->location);
