@@ -27,15 +27,15 @@ Prepare an upload by using n.nn_nn for a developer release:
 ```
 perl Makefile.PL
 make distdir
-mv Game-TextMapper-1.02 Game-TextMapper-1.02_01
-tar czf Game-TextMapper-1.02_01.tar.gz Game-TextMapper-1.02_01
-trash Game-TextMapper-1.02_01
-cpan-upload -u SCHROEDER Game-TextMapper-1.02_01.tar.gz
+mv Game-CharacterSheetGenerator-1.00 Game-CharacterSheetGenerator-1.00_00
+tar czf Game-CharacterSheetGenerator-1.00_00.tar.gz Game-CharacterSheetGenerator-1.00_00
+trash Game-CharacterSheetGenerator-1.00_00
+cpan-upload -u SCHROEDER Game-CharacterSheetGenerator-1.00_00.tar.gz
 ```
 
 If you’re happy with the results:
 
 ```
 perl Makefile.PL && make && make dist
-cpan-upload -u SCHROEDER Game-TextMapper-1.02.tar.gz
+cpan-upload -u SCHROEDER Game-CharacterSheetGenerator-1.tar.gz
 ```
