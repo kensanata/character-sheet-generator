@@ -90,6 +90,9 @@ use POSIX qw(floor ceil);
 use Cwd;
 no warnings qw(uninitialized numeric);
 
+# Commands for the command line!
+push @{app->commands->namespaces}, 'Game::CharacterSheetGenerator::Command';
+
 # Change scheme if "X-Forwarded-Proto" header is set (presumably to HTTPS)
 app->hook(before_dispatch => sub {
   my $c = shift;
@@ -428,14 +431,19 @@ sub svg_transform {
     }
   }
 
-  my $nodes = $svg->find(qq{//svg:a[\@id="link"]/attribute::xlink:href}, $doc);
-  for my $node ($nodes->get_nodelist) {
-    my $params = Mojo::Parameters->new;
-    for my $key (@{$char->{provided}}) {
-      $params->append($key => $char->{$key}||'');
+  # $self is not set when using the random command
+  # (Game::CharacterSheetGenerator::Command::random).
+  if ($self) {
+    my $nodes = $svg->find(qq{//svg:a[\@id="link"]/attribute::xlink:href}, $doc);
+    for my $node ($nodes->get_nodelist) {
+      my $params = Mojo::Parameters->new;
+      for my $key (@{$char->{provided}}) {
+	$params->append($key => $char->{$key}||'');
+      }
+      $node->setValue($self->url_for("edit")->query($params));
     }
-    $node->setValue($self->url_for("edit")->query($params));
   }
+
   return $doc;
 }
 

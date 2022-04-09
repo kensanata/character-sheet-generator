@@ -1,4 +1,5 @@
 lib/Game/CharacterSheetGenerator.pm
+lib/Game/CharacterSheetGenerator/Command/random.pm
 Makefile.PL
 MANIFEST
 README.md
