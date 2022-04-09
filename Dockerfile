@@ -1,4 +1,6 @@
 FROM perl:latest
+RUN apt-get update
+RUN apt-get install --yes libgd-dev
 RUN mkdir /app
 RUN cd /app && git clone https://alexschroeder.ch/cgit/face-generator
 RUN cd /app && git clone https://alexschroeder.ch/cgit/character-sheet-generator

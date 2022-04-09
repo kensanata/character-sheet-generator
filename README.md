@@ -187,8 +187,7 @@ good way to check for missing dependencies. 😁
 To run the application on it:
 
 ```bash
-docker run --publish=3040:3040 test/character-sheet-generator \
-  character-sheet-generator daemon --listen "http://*:3040"
+docker run --publish=3020:3020 --publish=3040:3040 test/character-sheet-generator
 ```
 
 This runs the web application in the container and has it listen on
