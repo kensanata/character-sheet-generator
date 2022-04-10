@@ -91,7 +91,7 @@ use Cwd;
 no warnings qw(uninitialized numeric);
 
 # Commands for the command line!
-push @{app->commands->namespaces}, 'Game::CharacterSheetGenerator::Command';
+push @{app->commands->namespaces}, "Game::CharacterSheetGenerator::Command";
 
 # Change scheme if "X-Forwarded-Proto" header is set (presumably to HTTPS)
 app->hook(before_dispatch => sub {
@@ -121,7 +121,7 @@ and have it running locally on port 3020, this is what you'd use:
       logfile => undef,
       contrib => "share",
       face_generator_url => "http://localhost:3020",
-    };
+    }
 
 =cut
 
@@ -141,9 +141,6 @@ $log->debug($log->path ? "Logfile is " . $log->path : "Logging to stderr");
 
 my $dist_dir = app->config("contrib") // dist_dir("Game-CharacterSheetGenerator");
 $log->debug("Reading contrib files from $dist_dir");
-
-my $face_generator_url = app->config("face_generator_url") || "https://campaignwiki.org/face";
-$log->debug("Face Generator URL: $face_generator_url");
 
 sub translations {
   # strings in sinqle quotes are translated into German if necessary
@@ -1928,6 +1925,7 @@ sub random_parameters {
 
 sub portrait {
   my $char = shift;
+  my $face_generator_url = app->config("face_generator_url") or return '';
   my $gender = $char->{gender} || $names{$char->{name}};
   if ($char->{class} eq T('elf')
       or $char->{race} eq T('elf')) {
@@ -2249,7 +2247,7 @@ by <a href="http://save.vs.totalpartykill.ca/">Ramanan Sivaranjan</a>.
 <p>
 Dies ist der <a href="https://alexschroeder.ch/wiki/Hellebarden_%26_Helme">Hellebarden und Helme</a>
 Charaktergenerator.
-Um weitere Charaktere der 1. Stufe zu generieren, kann man die Seite einfach neu laden.
+Um weitere Charaktere der ersten Stufe zu generieren, kann man die Seite einfach neu laden.
 
 Wer will, kann dem generierten Charakter hier auch einen Namen geben:
 
