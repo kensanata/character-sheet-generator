@@ -2174,7 +2174,7 @@ get "/characters/:lang" => [lang => qr/(?:en|de)/] => sub {
 get "/stats" => sub {
   my $self = shift;
   $self->redirect_to($self->url_with("stats" => {lang => lang($self),
-						 n => 1000}));
+						 n => 100}));
 };
 
 get "/stats/:n" => [n => qr/\d+/] => sub {
@@ -2188,7 +2188,7 @@ get "/stats/:lang" => [lang => qr/(?:en|de)/] => sub {
   my $self = shift;
   my $lang = $self->param("lang");
   $self->redirect_to($self->url_with("stats" => {lang => $lang,
-						 n => 1000}));
+						 n => 100}));
 };
 
 get "/stats/:lang/:n" => [lang => qr/(?:en|de)/, n => qr/\d+/] => sub {
