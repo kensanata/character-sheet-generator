@@ -775,6 +775,9 @@ sub buy_armor {
 
   if (member(T('shield'), @property)) { $ac -= 1; }
 
+  if ($class eq T('halfling')) {
+    $ac .= "/" . ($ac - 2);
+  }
   provide($char, "ac",  $ac);
 
   return ($money + $budget, @property);
@@ -1710,17 +1713,15 @@ sub random {
 
   # if a class is provided, make sure minimum requirements are met
   my $class = $char->{class};
-  while ($class eq T('dwarf') and not average($con)) {
-    $con = roll_3d6();
+  if ($class eq T('dwarf')) {
+    $con = roll_3d6() until average($con);
   }
-  while ($class eq T('elf') and not average($int)) {
-    $int = roll_3d6();
+  if ($class eq T('elf')) {
+    $int = roll_3d6() until average($int);
   }
-  while ($class eq T('halfling') and not average($con)) {
-    $con = roll_3d6();
-  }
-  while ($class eq T('halfling') and not average($dex)) {
-    $dex = roll_3d6();
+  if ($class eq T('halfling')) {
+    $con = roll_3d6() until average($con);
+    $dex = roll_3d6() until average($dex);
   }
 
   provide($char, "str", $str);
@@ -1762,6 +1763,10 @@ sub random {
   }
 
   provide($char, "class",  $class);
+
+  if ($class eq T('halfling')) {
+    provide($char, "range-thac0",  18 - bonus($dex));
+  }
 
   my $hp = $char->{hp};
   if (not $hp) {
