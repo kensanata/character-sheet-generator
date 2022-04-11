@@ -22,7 +22,7 @@ use utf8;
 my $t = Test::Mojo->new('Game::CharacterSheetGenerator');
 $t->app->log->level('warn');
 
-$t->get_ok('/decode/de?code=BADA97H46-NQLRP2McCV8')
+$t->get_ok('/decode/de?code=A976ECT37-OZMKGII776Lb2U')
     ->status_is(200)
     ->header_is('Content-Type' => 'text/html;charset=UTF-8');
 
@@ -31,7 +31,7 @@ sub simplify {
   $str =~ s/^\n*//;
   $str =~ s/^name:.*\n//m;
   $str =~ s/^charsheet:.*\n//m;
-  $str =~ s/^rules:.*\n//m;
+  $str =~ s/^xp:.*\n//m;
   $str =~ s/^portrait:.*\n//m;
   $str =~ s/^property: \d+ Gold\n//m;
   $str =~ s/^abilities: Code: .*\n//m;
@@ -40,59 +40,49 @@ sub simplify {
 
 my $new = simplify($t->tx->res->dom->at('textarea')->content);
 my $original = simplify(<<EOT);
-name: Diara
-str: 11
-dex: 10
-con: 13
-int: 10
-wis: 9
-cha: 7
+name: Rabia
+str: 10
+dex: 9
+con: 7
+int: 6
+wis: 14
+cha: 12
 level: 1
-xp: 0
 thac0: 19
-class: Halbling
-hp: 4
-ac: 6
+class: Dieb
+hp: 3
+ac: 7
 property: Rucksack
-property: Seil
+property: Wegzehrung (1 Woche)
 property: Lederrüstung
-property: Silberner Dolch
-property: Schleuder
-property: Beutel mit 30 Steinen
-property: Plattenpanzer
-property: Kiste mit 30 Bolzen
-property: Stangenwaffe
-property: Helm
+property: Langschwert
+property: Kurzbogen
+property: Köcher mit 20 Pfeilen (2)
+property: Dolch (2)
+property: Diebeswerkzeug
+property: Laterne
+property: Ölflasche
+property: 12 Holzpfähle und Hammer
+property: Spiegel
+property: 14 Gold
 abilities: 1/6 für normale Aufgaben
-abilities: 2/6 für Verstecken und Schleichen
-abilities: 5/6 für Verstecken und Schleichen im Freien
-abilities: +1 für Fernwaffen
-abilities: Rüstung -2 bei Gegnern über Menschengrösse
-abilities: Code: BADA97H46-NQLRP2McCV8
+abilities: 2/6 für alle Aktivitäten
+abilities: +4 und Schaden ×2 für hinterhältigen Angriff
+abilities: Code: A976ECT37-OZMKGII776Lb2U
 charsheet: Charakterblatt.svg
-portrait: https://campaignwiki.org/face/render/alex/eyes_all_39.png_,mouth_all_109.png,chin_woman_32.png,ears_all_21.png,nose_woman_elf_11.png,hair_woman_72.png
-breath: 13
-poison: 8
-petrify: 10
-wands: 9
-spells: 12
+breath: 16
+poison: 14
+petrify: 13
+wands: 15
+spells: 13
 EOT
-
-sub line {
-  my ($str, $i) = @_;
-  my $offset = $i;
-  while ($offset > 0 and substr($str, $offset, 1) ne "\n") { $offset-- };
-  $offset++;
-  my $length = $i - $offset;
-  while ($offset + $length < length($str) and substr($str, $offset + $length, 1) ne "\n") { $length++ };
-  return substr($str, $offset, $length);
-}
 
 for (my $i = 0; $i < length($new); $i++) {
   if (substr($original, $i, 1) ne substr($new, $i, 1)) {
     die "pos $i:\n"
-	. "< " . line($original, $i) . "\n"
-	. "> " . line($new, $i) . "\n";
+	. join("\n", map { "< $_" } split(/\n/, substr($original, 0, $i) . "⌘" . substr($original, $i))) . "\n"
+	. "====\n"
+	. join("\n", map { "> $_" } split(/\n/, substr($new, 0, $i) . "⌘" . substr($new, $i))) . "\n";
   }
 }
 is($new, $original, "matches original character sheet");

@@ -225,10 +225,10 @@ helmet
 Helm
 hold portal
 Portal verschliessen
-iron spikes (12) and hammer
-Eisenkeile (12) und Hammer
-stakes (3) and hammer
-Holzpfähle (12) und Hammer
+12 iron spikes and hammer
+12 Eisenkeile und Hammer
+3 stakes and hammer
+12 Holzpfähle und Hammer
 lantern
 Laterne
 leather armor
@@ -287,8 +287,8 @@ thief
 Dieb
 thieves’ tools
 Diebeswerkzeug
-torches (6)
-Fackeln (6)
+6 torches
+6 Fackeln
 two handed sword
 Zweihänder
 ventriloquism
@@ -591,10 +591,10 @@ sub get_price_cache {
     T('thieves’ tools') => 25,
     T('lantern') => 10,
     T('flask of oil') => 2,
-    T('torches (6)') => 1,
+    T('6 torches') => 1,
     T('rope') => 1,
-    T('stakes (3) and hammer') => 3,
-    T('iron spikes (12) and hammer') => 3,
+    T('3 stakes and hammer') => 3,
+    T('12 iron spikes and hammer') => 3,
     T('pole') => 1,
     T('wolfsbane') => 10,
     T('garlic') => 1,
@@ -720,7 +720,7 @@ sub buy_light {
   my ($char, $money, $class, @property) = @_;
   push(@property, "- $money gp -") if $char->{debug};
   return buy($char, [[T('lantern'), T('flask of oil')],
-	      T('torches (6)')],
+	      T('6 torches')],
 	     $money, @property);
 }
 
@@ -729,8 +729,8 @@ sub buy_gear {
   push(@property, "- $money gp -") if $char->{debug};
   my @preferences = shuffle(
     T('rope'),
-    T('iron spikes (12) and hammer'),
-    T('stakes (3) and hammer'),
+    T('12 iron spikes and hammer'),
+    T('3 stakes and hammer'),
     T('pole'));
   return buy($char, \@preferences, $money, @property);
 }
@@ -795,23 +795,40 @@ sub buy_melee_weapon {
     @preferences = shuffle(
       T('dagger'),
       T('staff'));
-  } elsif ($class eq T('fighter')
-	   and good($str)
-	   and $hp > 6
-	   and not $shield) {
-    @preferences = (T('two handed sword'),
-		    T('battle axe'),
-		    T('pole arm'),
-		    T('long sword'),
-		    T('short sword'));
-  } elsif ($class eq T('dwarf')
-	   and not $shield) {
-    @preferences = (T('battle axe'),
-		    T('long sword'),
-		    T('short sword'));
-  } else {
+  } elsif ($class eq T('fighter')) {
+    if (good($str)
+	and $hp > 6
+	and not $shield) {
+      # prefer a shield!
+      push(@preferences,
+	   shuffle(T('two handed sword'),
+		   T('battle axe'),
+		   T('pole arm')));
+    }
+    push(@preferences,
+	 T('long sword'),
+	 T('short sword'),
+	 T('mace'));
+  } elsif ($class eq T('dwarf')) {
+    push(@preferences, T('battle axe')) unless $shield;
+    push(@preferences,
+	 T('war hammer'),
+	 T('mace'),
+	 T('short sword'));
+  } elsif ($class eq T('halfling')) {
+    @preferences = (T('short sword'),
+		    T('mace'),
+		    T('club'));
+  } elsif ($class eq T('elf')) {
     @preferences = (T('long sword'),
 		    T('short sword'));
+  } elsif ($class eq T('thief')) {
+    @preferences = (T('long sword'),
+		    T('short sword'),
+		    T('mace'),
+		    T('club'));
+  } else {
+    $log->warn("Unknown class $class has no preferred weapons");
   }
   return buy($char, \@preferences, $money, @property);
 }
