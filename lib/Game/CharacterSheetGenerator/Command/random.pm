@@ -51,6 +51,8 @@ use Mojo::Base 'Mojolicious::Command';
 use Game::CharacterSheetGenerator;
 use Pod::Simple::Text;
 use Role::Tiny;
+use Encode::Locale;
+use Encode;
 
 binmode(STDOUT, ':utf8');
 
@@ -64,7 +66,7 @@ sub init {
   for my $arg (@_) {
     my ($key, $value) = split(/=/, $arg, 2);
     push(@provided, $key);
-    $char{$key} = $value;
+    $char{$key} = decode(locale => $value);
   }
   $char{provided} = \@provided;
   return \%char;

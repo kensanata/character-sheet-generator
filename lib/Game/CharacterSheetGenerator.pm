@@ -173,6 +173,8 @@ AC -2 vs. opponents larger than humans
 Rüstung -2 bei Gegnern über Menschengrösse
 Charactersheet.svg
 Charakterblatt.svg
+Hireling.svg
+Mietling.svg
 Classes
 Klassen
 Property
@@ -223,6 +225,10 @@ hand axe
 Handaxt
 helmet
 Helm
+hireling
+Mietling
+porter
+Träger
 hold portal
 Portal verschliessen
 12 iron spikes and hammer
@@ -547,6 +553,8 @@ sub compute_data {
 }
 
 sub starting_gold {
+  my $class = shift;
+  return 0 if $class eq T('hireling') or $class eq T('porter');
   return roll_3d6() * 10;
 }
 
@@ -560,7 +568,7 @@ sub equipment {
   return if $xp or $level > 1 or not $class;
 
   get_price_cache($char);
-  my $money = starting_gold();
+  my $money = starting_gold($class);
   my @property;
 
   # free spellbook for arcane casters
@@ -827,6 +835,11 @@ sub buy_melee_weapon {
 		    T('short sword'),
 		    T('mace'),
 		    T('club'));
+  } elsif ($class eq T('hireling')) {
+    @preferences = (T('spear'),
+		    T('club'));
+  } elsif ($class eq T('porter')) {
+    @preferences = ();
   } else {
     $log->warn("Unknown class $class has no preferred weapons");
   }
@@ -920,7 +933,7 @@ sub saves {
   my $char = shift;
   my $class = $char->{class};
   my $level = $char->{level};
-  return unless $class and $level >= 1 and $level <= 3;
+  return unless $class and $level >= 0 and $level <= 3;
   my ($breath, $poison, $petrify, $wands, $spells);
   if  ($class eq T('dwarf') or $class eq T('halfling')) {
     ($breath, $poison, $petrify, $wands, $spells) =
@@ -937,6 +950,9 @@ sub saves {
   } elsif ($class eq T('thief')) {
     ($breath, $poison, $petrify, $wands, $spells) =
       (16, 14, 13, 15, 13);
+  } else {
+    ($breath, $poison, $petrify, $wands, $spells) =
+      (17, 14, 16, 15, 18);
   }
 
   provide($char, "breath",  $breath) unless $char->{breath};
@@ -1723,13 +1739,15 @@ sub random {
   # keys that can be provided: name, class, charsheet
 
   provide($char, "name", name()) unless $char->{name};
+  my $class = $char->{class};
 
   my ($str, $dex, $con, $int, $wis, $cha) =
-    (roll_3d6(), roll_3d6(), roll_3d6(),
-     roll_3d6(), roll_3d6(), roll_3d6());
+      $class eq T('hireling') || $class eq T('porter')
+      ? (10, 10, 10, 10, 10, 10)
+      : (roll_3d6(), roll_3d6(), roll_3d6(),
+	 roll_3d6(), roll_3d6(), roll_3d6());
 
   # if a class is provided, make sure minimum requirements are met
-  my $class = $char->{class};
   if ($class eq T('dwarf')) {
     $con = roll_3d6() until average($con);
   }
@@ -1748,9 +1766,15 @@ sub random {
   provide($char, "wis", $wis);
   provide($char, "cha", $cha);
 
-  provide($char, "level",  "1");
   provide($char, "xp",  "0");
-  provide($char, "thac0",  19);
+
+  if ($class eq T('hireling') or $class eq T('porter')) {
+    provide($char, "level",  "0");
+    provide($char, "thac0",  20);
+  } else {
+    provide($char, "level",  "1");
+    provide($char, "thac0",  19);
+  }
 
   my $best = best($str, $dex, $con, $int, $wis, $cha);
 
@@ -1812,7 +1836,14 @@ sub random {
   # code
   $abilities .= "\\\\" . encode_char($char);
   provide($char, "abilities", $abilities);
-  provide($char, "charsheet", T('Charactersheet.svg')) unless $char->{charsheet};
+
+  if (not $char->{charsheet}) {
+    if ($class eq T('hireling') or $class eq T('porter')) {
+      provide($char, "charsheet", T('Hireling.svg'));
+    } else {
+      provide($char, "charsheet", T('Charactersheet.svg'));
+    }
+  }
 }
 
 sub abilities {
@@ -2459,6 +2490,8 @@ angegeben wurden:
 <p>
 Das Skript kann auch
 <%= link_to url_for("random" => {lang => "de"}) => begin %>einen zufälligen Charakter<% end %>,
+<%= link_to url_for("random" => {lang => "de"})->query(class=>"Mietling") => begin %>zufällligen Mietling<% end %>,
+<%= link_to url_for("random" => {lang => "de"})->query(class=>"Träger") => begin %>zufälligen Träger<% end %>,
 <%= link_to url_for("characters" => {lang => "de"}) => begin %>einige Charaktere<% end %>,
 oder <%= link_to url_for("stats" => {lang => "de"}) => begin %>Statistiken<% end %>
 generieren.
@@ -2508,6 +2541,8 @@ In addition to that, some parameters are computed unless provided:
 <p>
 The script can also generate a
 <%= link_to url_for("random" => {lang => "en"}) => begin %>random character<% end %>,
+<%= link_to url_for("random" => {lang => "en"})->query(class=>"hireling") => begin %>random hireling<% end %>,
+<%= link_to url_for("random" => {lang => "en"})->query(class=>"porter") => begin %>random porter<% end %>,
 <%= link_to url_for("characters" => {lang => "en"}) => begin %>bunch of characters<% end %>
 or <%= link_to url_for("stats" => {lang => "en"}) => begin %>some statistics<% end =%>.
 
