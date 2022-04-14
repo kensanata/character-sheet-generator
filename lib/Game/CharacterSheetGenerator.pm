@@ -1814,10 +1814,10 @@ sub random {
 
     if ($class eq T('fighter') or $class eq T('dwarf')) {
       $hp = d8();
-    } elsif ($class eq T('magic-user') or $class eq T('thief')) {
-      $hp = d4();
-    } else {
+    } elsif ($class eq T('elf') or $class eq T('halfling')) {
       $hp = d6();
+    } else {
+      $hp = d4();
     }
 
     $hp += bonus($con);
