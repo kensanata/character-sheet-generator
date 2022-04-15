@@ -506,23 +506,23 @@ sub cha_bonus {
 sub character {
   my $char = shift;
   for my $id (qw(str dex con int wis cha)) {
-    if ($char->{$id} and not $char->{"$id-bonus"}) {
+    if ($char->{$id} and not defined $char->{"$id-bonus"}) {
       $char->{"$id-bonus"} = bonus($char->{$id});
     }
   }
-  if ($char->{cha} and not $char->{reaction}) {
+  if ($char->{cha} and not defined $char->{reaction}) {
     $char->{reaction} = cha_bonus($char->{cha});
   }
   if (not $char->{loyalty}) {
     $char->{loyalty} =  7 + $char->{"cha-bonus"};
   }
-  if (not $char->{hirelings}) {
+  if (not defined $char->{hirelings}) {
     $char->{hirelings} =  4 + $char->{"cha-bonus"};
   }
-  if ($char->{thac0} and not $char->{"melee-thac0"}) {
+  if ($char->{thac0} and not defined $char->{"melee-thac0"}) {
     $char->{"melee-thac0"} = $char->{thac0} - $char->{"str-bonus"};
   }
-  if ($char->{thac0} and not $char->{"range-thac0"}) {
+  if ($char->{thac0} and not defined $char->{"range-thac0"}) {
     $char->{"range-thac0"} = $char->{thac0} - $char->{"dex-bonus"};
   }
   for my $type ("melee", "range") {
@@ -533,13 +533,13 @@ sub character {
       $char->{"$type$n"} = $val unless $char->{"$type$n"};
     }
   }
-  if (not $char->{damage}) {
+  if (not defined $char->{damage}) {
     $char->{damage} = 1 . T('d6');
   }
-  if (not $char->{"melee-damage"}) {
+  if (not defined $char->{"melee-damage"}) {
     $char->{"melee-damage"} = $char->{damage} . $char->{"str-bonus"};
   }
-  if (not $char->{"range-damage"}) {
+  if (not defined $char->{"range-damage"}) {
     $char->{"range-damage"} = $char->{damage};
   }
   saves($char);

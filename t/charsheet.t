@@ -29,4 +29,9 @@ is($t->tx->res->dom->at('svg')->attr('sodipodi:docname'),
    "Charakterblatt.svg",
    'the correct SVG file was loaded');
 
+$t->get_ok('/char/en?str=10&str-bonus=0')
+    ->status_is(200)
+    ->text_is('#str tspan' => '10')
+    ->text_is('#str-bonus tspan' => '0');
+
 done_testing();
