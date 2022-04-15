@@ -1969,7 +1969,15 @@ sub portrait {
   my $url = Mojo::URL->new("$face_generator_url/redirect/alex/$gender");
   my $ua = Mojo::UserAgent->new;
   my $tx = $ua->get($url);
-  $url->path($tx->res->headers->location);
+  if ($tx->res->code == 302) {
+    $url->path($tx->res->headers->location);
+  } else {
+    $log->warn("Did you configure the face_generator_url setting in the config file correctly? "
+	       . "It is currently set to $face_generator_url. "
+	       . ($tx->res->code
+		  ? "It returns: " . $tx->res->code . " " . $tx->res->message
+		  : "The error: " . $tx->res->error->{message}));
+  }
   return $url;
 }
 
