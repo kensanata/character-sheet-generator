@@ -4,7 +4,7 @@ This is the source repository for a Halberds & Helmets character
 generator.
 
 The character generator is currently
-[installed on Campaign Wiki](http://campaignwiki.org/halberdsnhelmets).
+[installed on Campaign Wiki](https://campaignwiki.org/character-sheet-generator/).
 Take a look at the Help page. It comes with links to examples of what
 this web application can do.
 
