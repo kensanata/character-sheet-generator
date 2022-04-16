@@ -10,7 +10,6 @@
     height="210mm"
     version="1.1">
   <style type="text/css">
-      svg { border: 1px solid red; }
       @media print {
         #link {
 	  display: none;
@@ -205,7 +204,7 @@
     <text id="melee7" x="820" y="640" class="big centred"><tspan>7</tspan></text>
     <text id="melee8" x="850" y="640" class="big centred"><tspan>8</tspan></text>
     <text id="melee9" x="880" y="640" class="big centred"><tspan>9</tspan></text>
-    <text id="melee-label" x="910" y="640" class="huge"><tspan>1W6</tspan></text>
+    <text id="melee-damage" x="910" y="640" class="huge"><tspan>1W6</tspan></text>
 
     <text id="range" x="420" y="680" class="huge"><tspan>Nahkampf</tspan></text>
     <text id="range0" x="610" y="680" class="big centred"><tspan>0</tspan></text>
@@ -218,7 +217,7 @@
     <text id="range7" x="820" y="680" class="big centred"><tspan>7</tspan></text>
     <text id="range8" x="850" y="680" class="big centred"><tspan>8</tspan></text>
     <text id="range9" x="880" y="680" class="big centred"><tspan>9</tspan></text>
-    <text id="range-label" x="910" y="680" class="huge"><tspan>1W6</tspan></text>
+    <text id="range-damage" x="910" y="680" class="huge"><tspan>1W6</tspan></text>
 
     <text id="other" x="420" y="720" class="huge"><tspan>Weitere</tspan></text>
     <text id="other0" x="610" y="720" class="big centred"><tspan>0</tspan></text>
@@ -231,7 +230,7 @@
     <text id="other7" x="820" y="720" class="big centred"><tspan>7</tspan></text>
     <text id="other8" x="850" y="720" class="big centred"><tspan>8</tspan></text>
     <text id="other9" x="880" y="720" class="big centred"><tspan>9</tspan></text>
-    <text id="other-label" x="910" y="720" class="huge"><tspan>1W6</tspan></text>
+    <text id="other-damage" x="910" y="720" class="huge"><tspan>1W6</tspan></text>
 
     <text id="attack-explanation" x="890" y="740" class="tiny right"><tspan>W20 muss gleich oder grösser sein</tspan></text>
 
