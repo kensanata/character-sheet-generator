@@ -525,7 +525,10 @@ sub character {
   if ($char->{thac0} and not defined $char->{"range-thac0"}) {
     $char->{"range-thac0"} = $char->{thac0} - $char->{"dex-bonus"};
   }
-  for my $type ("melee", "range") {
+  if ($char->{thac0} and not defined $char->{"other-thac0"}) {
+    $char->{"other-thac0"} = $char->{thac0};
+  }
+  for my $type ("melee", "range", "other") {
     for (my $n = 0; $n <= 9; $n++) {
       my $val = $char->{"$type-thac0"} - $n;
       $val = 20 if $val > 20;
@@ -541,6 +544,9 @@ sub character {
   }
   if (not defined $char->{"range-damage"}) {
     $char->{"range-damage"} = $char->{damage};
+  }
+  if (not defined $char->{"other-damage"}) {
+    $char->{"other-damage"} = $char->{damage};
   }
   saves($char);
 }
@@ -2465,6 +2471,8 @@ angegeben wurden:
 <li>damage → melee-damage
 <li>thac0 → range-thac0
 <li>range-thac0 → range0-9
+<li>thac0 → other-thac0
+<li>other-thac0 → range0-9
 <li>damage → range-damage
 </ul>
 
