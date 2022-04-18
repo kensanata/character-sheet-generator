@@ -173,6 +173,8 @@ AC -2 vs. opponents larger than humans
 Rüstung -2 bei Gegnern über Menschengrösse
 Charactersheet.svg
 Charakterblatt.svg
+Charactersheet-landscape.svg
+Charakterblatt-quer.svg
 Hireling.svg
 Mietling.svg
 Classes
@@ -1819,6 +1821,8 @@ sub random {
   if (not $char->{charsheet}) {
     if ($class eq T('hireling') or $class eq T('porter')) {
       provide($char, "charsheet", T('Hireling.svg'));
+    } elsif ($char->{landscape}) {
+      provide($char, "charsheet", T('Charactersheet-landscape.svg'));
     } else {
       provide($char, "charsheet", T('Charactersheet.svg'));
     }
@@ -2257,6 +2261,10 @@ Feel free to provide a name for your random character!
 %= form_for random => begin
 %= label_for name => "Name:"
 %= text_field "name"
+%= label_for class => "Class:"
+%= select_field class => ['', qw(fighter magic-user thief elf halfling dwarf hireling)]
+%= check_box 'landscape'
+%= label_for landscape => "
 %= submit_button
 % end
 
@@ -2294,6 +2302,10 @@ Wer will, kann dem generierten Charakter hier auch einen Namen geben:
 %= form_for random => begin
 %= label_for name => "Name:"
 %= text_field "name"
+%= label_for class => "Klasse:"
+%= select_field class => ['', qw(Krieger Magier Dieb Elf Halbling Zwerg Mietling)]
+%= check_box 'landscape'
+%= label_for landscape => "Querformat"
 %= submit_button
 % end
 
