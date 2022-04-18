@@ -2264,7 +2264,7 @@ Feel free to provide a name for your random character!
 %= label_for class => "Class:"
 %= select_field class => ['', qw(fighter magic-user thief elf halfling dwarf hireling)]
 %= check_box 'landscape'
-%= label_for landscape => "
+%= label_for landscape => "landscape"
 %= submit_button
 % end
 
