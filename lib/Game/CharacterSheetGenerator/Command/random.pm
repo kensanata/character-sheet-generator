@@ -34,10 +34,13 @@ The supported languages are C<en> and C<de>. English is the default.
 
 The supported formats are C<SVG> and C<text>. SVG is the default.
 
-You can provide additional key-value pairs:
+You can provide additional key-value pairs. These can be combined. Class names
+are case sensitive.
 
 ```
-script/character-sheet-generator random de text name=Alex
+character-sheet-generator random de text name=Alex
+character-sheet-generator random en text class=elf
+character-sheet-generator random en text class=elf name=Alex
 ```
 
 C<help> prints the man page.
