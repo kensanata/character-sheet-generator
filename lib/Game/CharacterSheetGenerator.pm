@@ -1839,6 +1839,7 @@ sub abilities {
     $abilities .= "\\\\" . T('2/6 to hear noise');
     $abilities .= "\\\\" . T('2/6 to find secret constructions and traps');
   } elsif ($class eq T('halfling')) {
+    $abilities .= "\\\\" . T('2/6 to hear noise');
     $abilities .= "\\\\" . T('2/6 to hide and sneak');
     $abilities .= "\\\\" . T('5/6 to hide and sneak outdoors');
     $abilities .= "\\\\" . T('+1 bonus to ranged weapons');
