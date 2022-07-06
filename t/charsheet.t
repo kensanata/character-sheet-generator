@@ -45,4 +45,9 @@ $t->get_ok('/random/en?class=thief')
     ->text_is('#class tspan' => 'thief')
     ->text_is('#abilities tspan:first-child' => '2/6 for all activities');
 
+$t->get_ok('/random/en?class=thief&level=3')
+    ->status_is(200)
+    ->text_is('#level tspan' => '3')
+    ->text_is('#abilities tspan:first-child' => '3/6 for all activities');
+
 done_testing();

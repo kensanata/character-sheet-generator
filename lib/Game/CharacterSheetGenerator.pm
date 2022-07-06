@@ -85,7 +85,7 @@ use Mojo::Log;
 use File::ShareDir "dist_dir";
 use I18N::AcceptLanguage;
 use XML::LibXML;
-use List::Util qw(shuffle);
+use List::Util qw(shuffle max);
 use POSIX qw(floor ceil);
 use Cwd;
 no warnings qw(uninitialized numeric);
@@ -1033,10 +1033,13 @@ sub average {
 }
 
 # use prototype so that Perl knows that there are only three arguments, which
-# allows wrap to use wantarray when used to wrap $value, see freebooters_appearance
+# allows wrap to use wantarray when used to wrap $value
 sub provide ($$$) {
   my ($char, $key, $value) = @_;
-  push(@{$char->{provided}}, $key) unless defined $char->{$key};
+  $log->warn("$key: $char->{$key} → $value");
+  return unless not defined $char->{$key} or $char->{$key} eq '';
+  # empty strings get overwritten, but zero does not get overwritten
+  push(@{$char->{provided}}, $key);
   $char->{$key} = $value;
 }
 
@@ -1790,21 +1793,17 @@ sub random {
     provide($char, "range-thac0",  18 - bonus($dex));
   }
 
+  my $level = $char->{level};
   my $hp = $char->{hp};
   if (not $hp) {
-
     if ($class eq T('fighter') or $class eq T('dwarf')) {
-      $hp = d8();
+      $hp += max(1, d8() + bonus($con)) for 1.. $level;
     } elsif ($class eq T('elf') or $class eq T('halfling')) {
-      $hp = d6();
+      $hp += max(1, d6() + bonus($con)) for 1.. $level;
     } else {
-      $hp = d4();
+      $hp += max(1, d4() + bonus($con)) for 1.. $level;
     }
-
-    $hp += bonus($con);
-    $hp = 1 if $hp < 1;
   }
-
   provide($char, "hp",  $hp);
 
   equipment($char);
