@@ -167,8 +167,8 @@ sub translations {
 2/6 für Verstecken und Schleichen
 5/6 to hide and sneak outdoors
 5/6 für Verstecken und Schleichen im Freien
-2/6 for all activities
-2/6 für alle Aktivitäten
+%d/6 for all activities
+%d/6 für alle Aktivitäten
 AC -2 vs. opponents larger than humans
 Rüstung -2 bei Gegnern über Menschengrösse
 Charactersheet.svg
@@ -1809,7 +1809,7 @@ sub random {
 
   equipment($char);
 
-  my $abilities = abilities($class);
+  my $abilities = abilities($char);
   # spellbook
   if ($class eq T('magic-user') or $class eq T('elf')) {
     $abilities .= "\\\\" . spellbook();
@@ -1830,22 +1830,25 @@ sub random {
 }
 
 sub abilities {
-  my $class = shift;
+  my $char = shift;
+  my $class = $char->{class};
   my $abilities = T('1/6 for normal tasks');
   if ($class eq T('elf')) {
     $abilities .= "\\\\" . T('2/6 to hear noise');
     $abilities .= "\\\\" . T('2/6 to find secret or concealed doors');
   } elsif ($class eq T('dwarf')) {
-    $abilities .= "\\\\" . T('2/6 to hear noise');
     $abilities .= "\\\\" . T('2/6 to find secret constructions and traps');
   } elsif ($class eq T('halfling')) {
-    $abilities .= "\\\\" . T('2/6 to hear noise');
     $abilities .= "\\\\" . T('2/6 to hide and sneak');
     $abilities .= "\\\\" . T('5/6 to hide and sneak outdoors');
     $abilities .= "\\\\" . T('+1 bonus to ranged weapons');
     $abilities .= "\\\\" . T('AC -2 vs. opponents larger than humans');
   } elsif ($class eq T('thief')) {
-    $abilities .= "\\\\" . T('2/6 for all activities');
+    my $level = $char->{level};
+    my $n = 2 + int($char->{level} / 3);
+    $n = 5 if $n > 5;
+    # override the 1/6 for normal tasks
+    $abilities = sprintf(T('%d/6 for all activities'), $n);
     $abilities .= "\\\\" . T('+4 to hit and double damage backstabbing');
   }
   return $abilities;
@@ -1921,7 +1924,7 @@ sub decode_char {
     add($item, \@property);
   }
   provide($char, "property", join("\\\\", @property));
-  provide($char, "abilities", abilities($class));
+  provide($char, "abilities", abilities($char));
   saves($char);
   return $char;
 }

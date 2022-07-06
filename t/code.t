@@ -65,7 +65,6 @@ property: Ölflasche
 property: 12 Holzpfähle und Hammer
 property: Spiegel
 property: 14 Gold
-abilities: 1/6 für normale Aufgaben
 abilities: 2/6 für alle Aktivitäten
 abilities: +4 und Schaden ×2 für hinterhältigen Angriff
 abilities: Code: A976ECT37-OZMKGII776Lb2U
