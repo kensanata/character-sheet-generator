@@ -2264,7 +2264,7 @@ Feel free to provide a name for your random character!
 %= text_field "name"
 %= label_for class => "Class:"
 %= select_field class => ['', qw(fighter magic-user thief elf halfling dwarf hireling porter)]
-%= check_box 'landscape'
+%= check_box "landscape"
 %= label_for landscape => "landscape"
 %= submit_button
 % end
@@ -2305,7 +2305,7 @@ Wer will, kann dem generierten Charakter hier auch einen Namen geben:
 %= text_field "name"
 %= label_for class => "Klasse:"
 %= select_field class => ['', qw(Krieger Magier Dieb Elf Halbling Zwerg Mietling Träger)]
-%= check_box 'landscape'
+%= check_box "landscape"
 %= label_for landscape => "Querformat"
 %= submit_button
 % end
