@@ -941,23 +941,23 @@ sub saves {
   my $char = shift;
   my $class = $char->{class};
   my $level = $char->{level};
-  return unless $class and $level >= 0 and $level <= 3;
+  return unless $class;
   my ($breath, $poison, $petrify, $wands, $spells);
   if  ($class eq T('dwarf') or $class eq T('halfling')) {
     ($breath, $poison, $petrify, $wands, $spells) =
-      (13, 8, 10, 9, 12);
+	improve([13, 8, 10, 9, 12], [3, 2, 2, 2, 2], int(($level-1)/3));
   } elsif ($class eq T('elf')) {
     ($breath, $poison, $petrify, $wands, $spells) =
-      (15, 12, 13, 13, 15);
+	improve([15, 12, 13, 13, 15], 2, int(($level-1)/3));
   } elsif ($class eq T('fighter')) {
     ($breath, $poison, $petrify, $wands, $spells) =
-      (15, 12, 14, 13, 16);
+      improve([15, 12, 14, 13, 16], 2, int(($level-1)/3));
   } elsif ($class eq T('magic-user')) {
     ($breath, $poison, $petrify, $wands, $spells) =
-      (16, 13, 13, 13, 14);
+      improve([16, 13, 13, 13, 14], 2, int(($level-1)/5));
   } elsif ($class eq T('thief')) {
     ($breath, $poison, $petrify, $wands, $spells) =
-      (16, 14, 13, 15, 13);
+      improve([16, 14, 13, 15, 14], 2, int(($level-1)/4));
   } else {
     ($breath, $poison, $petrify, $wands, $spells) =
       (17, 14, 16, 15, 18);
@@ -968,6 +968,16 @@ sub saves {
   provide($char, "petrify",  $petrify) unless $char->{petrify};
   provide($char, "wands",  $wands) unless $char->{wands};
   provide($char, "spells",  $spells) unless $char->{spells};
+}
+
+sub improve {
+  my $saves = shift;
+  my $improvement = shift;
+  my $steps = shift;
+  for (my $i = 0; $i < @$saves; $i++) {
+    $saves->[$i] -= ref($improvement) ? $improvement->[$i] : $improvement for 1 .. $steps;
+  }
+  return @$saves;
 }
 
 sub d3 {
@@ -1036,7 +1046,6 @@ sub average {
 # allows wrap to use wantarray when used to wrap $value
 sub provide ($$$) {
   my ($char, $key, $value) = @_;
-  $log->warn("$key: $char->{$key} → $value");
   return unless not defined $char->{$key} or $char->{$key} eq '';
   # empty strings get overwritten, but zero does not get overwritten
   push(@{$char->{provided}}, $key);
