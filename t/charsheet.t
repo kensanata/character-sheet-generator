@@ -19,6 +19,7 @@ use Test::More;
 use Test::Mojo;
 
 my $t = Test::Mojo->new('Game::CharacterSheetGenerator');
+$t->app->config("face_generator_url", undef);
 $t->app->log->level('warn');
 
 $t->get_ok('/char/en?name=Markus&charsheet=Charakterblatt.svg')
