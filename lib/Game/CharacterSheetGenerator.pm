@@ -1822,8 +1822,7 @@ sub random {
   if ($class eq T('magic-user') or $class eq T('elf')) {
     $abilities .= "\\\\" . spellbook();
   }
-  # code
-  $abilities .= "\\\\" . encode_char($char);
+
   provide($char, "abilities", $abilities);
 
   if (not $char->{charsheet}) {
@@ -1864,37 +1863,6 @@ sub abilities {
   return $abilities;
 }
 
-sub encode_char {
-  my $char = shift;
-  return join("", "Code: ",
-	      map {
-		if (member($_, "name", "xp", "level", "thac0")) {
-		  "";
-		} elsif ($char->{$_} =~ /^\d+$/) {
-		  if ($char->{$_} >= 10) {
-		    chr($char->{$_} + 55); # 65 is A
-		  } else {
-		    $char->{$_};
-		  };
-		} elsif ($_ eq "class") {
-		  classes()->{$char->{$_}} or "?";
-		} elsif ($_ eq "property") {
-		  my $h = unique(sort keys %price_cache);
-		  my %h = map { $h->{$_} => $_ } keys %$h;
-		  join ("", "-",
-			map {
-			  my $item = $_;
-			  my $n = 1;
-			  $item = $1, $n = $2 if $item =~ /(.*) \((\d+)\)$/;
-			  # warn "$item, $n, $h{$item}" if $n > 1;
-			  $h{$item} x $n;
-			} split(/\\\\/, $char->{$_}));
-		} else {
-		  "?";
-		};
-	      } @{$char->{provided}});
-}
-
 sub classes {
   return {
     T('dwarf') => "D",
@@ -1904,63 +1872,6 @@ sub classes {
 	T('magic-user') => "M",
 	T('thief') => "T",
   };
-}
-
-sub decode_char {
-  my ($code, $language) = @_;
-  local $lang = $language; # make sure T works as intended
-  my $char = {};
-  provide($char, "name", "?");
-  my @abilities = map { number($_) } split(//, substr($code, 0, 6));
-  for my $ability (qw(str dex con int wis cha)) {
-    provide($char, $ability, shift(@abilities));
-  }
-  provide($char, "level", 1);
-  provide($char, "xp", 0);
-  provide($char, "thac0", 19);
-  my $h = classes();
-  my %h = map { $h->{$_} => $_ } keys %$h;
-  my $class = $h{substr($code, 6, 1)};
-  provide($char, "class", $class);
-  provide($char, "hp", number(substr($code, 7, 1)));
-  my ($ac) = (substr($code, 8) =~ /^(-?[0-9A-Z]+)/);
-  provide($char, "ac", number($ac));
-  get_price_cache(); # sets global %price_cache
-  $h = unique(sort keys %price_cache);
-  my $i = index($code, "-", 9);
-  my @property;
-  while ($i++ < length($code) - 1) {
-    my $item = $h->{substr($code, $i, 1)};
-    add($item, \@property);
-  }
-  provide($char, "property", join("\\\\", @property));
-  provide($char, "abilities", abilities($char));
-  saves($char);
-  return $char;
-}
-
-# convert a single digit to a number as if it were base 36, eg. A is 10
-sub number {
-  my $s = shift;
-  return $s =~ /[A-Z]/ ? ord($s) - 55 : $s;
-}
-
-# Given a list of items, return a list mapping them to very short but unique
-# strings to encode them. Actually, we'll just assume up to 36 items in the list
-# and return the index. The order is important!
-sub unique {
-  my @source = @_;
-  my %h;
-  my $i = 1;
-  while (@source) {
-    $h{$i++} = shift(@source);
-    if ($i eq "10") {
-      $i = "A"; # $i++ will still work
-    } elsif ($i eq "AA") {
-      $i = "a";
-    }
-  }
-  return \%h;
 }
 
 sub random_parameters {
@@ -2170,15 +2081,6 @@ get "/edit/:lang" => [lang => qr/(?:en|de)/] => sub {
 		char => $char);
 } => "edit";
 
-get "/decode/:lang" => [lang => qr/(?:en|de)/] => sub {
-  my $self = shift;
-  my $lang = $self->param("lang");
-  my $code = $self->param("code");
-  my $char = decode_char($code, $lang);
-  $self->render(template => "edit.$lang",
-		char => $char);
-} => "decode";
-
 get "/redirect" => sub {
   my $self = shift;
   $self->redirect_to($self->url_with("redirect" => {lang => lang($self)}));
@@ -2287,16 +2189,6 @@ The character sheet contains a link in the bottom right corner which allows you
 to bookmark and edit your character. <%= link_to "Learn more…" => "help" %>
 
 <p>
-If you got a printed character sheet and want to recreate it, you can type in
-the code right here:
-
-%= form_for decode => begin
-%= label_for name => "Code:"
-%= text_field "code"
-%= submit_button
-% end
-
-<p>
 If you're looking for an alternative, check out the
 <a href="http://character.totalpartykill.ca/">Random D&D Character Generator</a>
 by <a href="http://save.vs.totalpartykill.ca/">Ramanan Sivaranjan</a>.
@@ -2327,16 +2219,6 @@ Wer will, kann dem generierten Charakter hier auch einen Namen geben:
 Auf dem generierten Charakterblatt hat es unten rechts einen Link mit dem man
 sich ein Lesezeichen erstellen kann und wo der Charakter bearbeitet werden kann.
 <%= link_to "Weiterlesen…" => "hilfe" %>
-
-<p>
-Hat man ein Charakterblatt ausgedruckt und vergessen, sich den Link zu speicher,
-kann man dies mit dem Code zum Teil wieder herstellen.
-
-%= form_for decode => begin
-%= label_for name => "Code:"
-%= text_field "code"
-%= submit_button
-% end
 
 <p>
 Eine englische Alternative wäre der
