@@ -1,13 +1,16 @@
 Changes
 lib/Game/CharacterSheetGenerator.pm
 lib/Game/CharacterSheetGenerator/Command/random.pm
+lib/Game/CharacterSheetGenerator/Command/stats.pm
 LICENSE
 Makefile.PL
 MANIFEST
 README.md
 script/character-sheet-generator
+share/Charactersheet-adv.svg
 share/Charactersheet-landscape.svg
 share/Charactersheet.svg
+share/Charakterblatt-adv.svg
 share/Charakterblatt-quer.svg
 share/Charakterblatt.svg
 share/Hireling.svg
