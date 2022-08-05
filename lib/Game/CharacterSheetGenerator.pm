@@ -1426,14 +1426,13 @@ sub name {
 }
 
 sub traits {
-  my ($language, $class) = @_;
+  my ($char, $language) = @_;
   local $lang = $language; # make sure T works as intended
-  my ($name, $gender) = name($class);
-  my $description = "$name, ";
+  my $description = $char->{name} . ", ";
   my $d;
-  if ($gender eq "F") {
+  if ($char->{gender} eq "F") {
     $d = d3();
-  } elsif ($gender eq "M") {
+  } elsif ($char->{gender} eq "M") {
     $d = 3 + d3();
   } else {
     $d = d6();
@@ -1458,7 +1457,7 @@ sub traits {
   if ($other ne $trait) {
     $description .= " " . T('and') . " " . $other;
   }
-  return $description;
+  provide($char, "traits", $description);
 }
 
 sub random {
@@ -1530,6 +1529,7 @@ sub random {
   }
 
   provide($char, "class",  $class);
+
   unless ($char->{name}) {
     my ($name, $gender) = name($class);
     provide($char, "name", $name);
@@ -1666,7 +1666,7 @@ sub characters {
   for (my $i = 0; $i < 50; $i++) {
     my %one = %$char; # defaults
     random_parameters(\%one, $lang);
-    $one{traits} = traits($lang, $char->{class});
+    traits(\%one, $lang);
     push(@characters, \%one);
   }
   return \@characters;
