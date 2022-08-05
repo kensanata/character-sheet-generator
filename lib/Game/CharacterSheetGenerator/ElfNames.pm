@@ -136,8 +136,8 @@ sub male_name {
 
 # We do some post-processing of words, inspired by these two web pages, but using
 # our own replacements.
-# http://sindarinlessons.weebly.com/37---how-to-make-names-1.html
-# http://sindarinlessons.weebly.com/38---how-to-make-names-2.html
+# https://sindarinlessons.weebly.com/36---how-to-make-names-1.html
+# https://sindarinlessons.weebly.com/37---how-to-make-names-2.html
 
 sub normalize {
   my $name = shift;
