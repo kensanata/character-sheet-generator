@@ -76,7 +76,7 @@ See L<Mojolicious::Guides> for more information.
 
 package Game::CharacterSheetGenerator;
 
-our $VERSION = 1.01;
+our $VERSION = 1.02;
 
 use Modern::Perl;
 use Game::CharacterSheetGenerator::ElfNames qw(elf_name);
