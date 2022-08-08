@@ -49,9 +49,10 @@ sub one {
   return $_[$i];
 }
 
-# http://sindarinlessons.weebly.com/37---how-to-make-names-1.html
-
+# Sindarin-English & English-Sindarin Dictionary, J-M Carpenter (2017)
 # https://realelvish.net/names/sindarin/woodelf/all/
+# https://sindarinlessons.weebly.com/36---how-to-make-names-1.html
+# https://sindarinlessons.weebly.com/37---how-to-make-names-2.html
 
 my @prefix =
     qw(achar adertha adleg al amartha aníra aphada ar ava awartha badh batha
