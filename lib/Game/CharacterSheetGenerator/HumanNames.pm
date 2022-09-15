@@ -78,7 +78,7 @@ Carice F Carina F Carla F Carlotta F Carolina F Caroline F Cassandra F Castille
 F Cataleya F Caterina F Catherine F Céleste F Celia F Celina F Celine F Ceylin F
 Chana F Chanel F Chantal F Charielle F Charleen F Charlie ? Charlize F Charlott
 F Charlotte F Charly F Chavi F Chaya F Chiara F Chiara-Maé F Chinyere F Chléa F
-Chloe F Chloé F Chrisbely F Christiana F Christina F Ciara F Cilgia F Claire F
+Chloe F Chloé F Ciara F Cilgia F Claire F
 Clara F Claudia F Clea F Cleo F Cleofe F Clodagh F Cloé F Coco F Colette F Coral
 F Coralie F Cyrielle F Daliah F Dalila F Dalilah F Dalina F Damiana F Damla F
 Dana F Daniela F Daria F Darija F Dean ? Deborah F Déborah-Isabel F Defne F
@@ -202,8 +202,8 @@ M Berend M Berktan M Bertal M Besir M Bilal M Bilgehan M Birk M Bjarne M Bleart
 M Blend M Blendi M Bo M Bogdan M Bolaji M Bora M Boris M Brady M Brandon M
 Breyling M Brice M Bruce M Bruno M Bryan M Butrint M Caleb M Camil M Can M Cário
 M Carl M Carlo M Carlos M Carmelo M Cas M Caspar M Cedric M Cédric M Célestin M
-Celestino M Cemil-Lee M César M Chaim M Chandor M Charles M Chilo M Chris M
-Christian M Christopher M Christos M Ciaran M Cillian M Cla M Claudio M Colin M
+Celestino M Cemil-Lee M César M Chaim M Chandor M Charles M Chilo M
+Ciaran M Cillian M Cla M Claudio M Colin M
 Collin M Connor M Conrad M Constantin M Corey M Cosmo M Cristian M Curdin M
 Custavo M Cynphael M Cyprian M Cyrill M Daan M Dagemawi M Daha M Dalmar M Damian
 M Damián M Damien M Damjan M Daniel M Daniele M Danilo M Danny M Dareios M Darel
