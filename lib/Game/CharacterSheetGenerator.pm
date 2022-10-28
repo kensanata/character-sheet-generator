@@ -194,7 +194,7 @@ und
 backpack
 Rucksack
 battle axe
-Streitaxt
+Kriegsaxt
 case with 30 bolts
 Kiste mit 30 Bolzen
 chain mail
@@ -830,7 +830,6 @@ sub buy_melee_weapon {
 	 T('short sword'),
 	 T('mace'));
   } elsif ($class eq T('dwarf')) {
-    push(@preferences, T('battle axe')) unless $shield;
     push(@preferences,
 	 T('war hammer'),
 	 T('mace'),
@@ -862,6 +861,7 @@ sub buy_throwing_weapon {
   my $char = shift;
   my ($money, $class, @property) = @_;
   my @preferences;
+  # Don't buy daggers because those are bought anyway.
   if ($class eq T('dwarf') or member(T('battle axe'), @property)) {
     push(@preferences, [T('hand axe'), T('hand axe')]);
     push(@preferences, T('hand axe'));
