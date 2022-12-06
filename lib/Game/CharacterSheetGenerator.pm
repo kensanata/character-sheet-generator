@@ -231,6 +231,8 @@ hand axe
 Handaxt
 helmet
 Helm
+dog
+Hund
 hireling
 Mietling
 porter
@@ -566,7 +568,7 @@ sub compute_data {
 
 sub starting_gold {
   my $class = shift;
-  return 0 if $class eq T('hireling') or $class eq T('porter');
+  return 0 if $class eq T('hireling') or $class eq T('porter') or $class eq T('dog');
   return roll_3d6() * 10;
 }
 
@@ -849,7 +851,7 @@ sub buy_melee_weapon {
   } elsif ($class eq T('hireling')) {
     @preferences = (T('spear'),
 		    T('club'));
-  } elsif ($class eq T('porter')) {
+  } elsif ($class eq T('porter') or $class eq T('dog')) {
     @preferences = ();
   } else {
     $log->warn("Unknown class $class has no preferred weapons");
@@ -953,7 +955,7 @@ sub saves {
   } elsif ($class eq T('elf')) {
     ($breath, $poison, $petrify, $wands, $spells) =
 	improve([15, 12, 13, 13, 15], 2, int(($level-1)/3));
-  } elsif ($class eq T('fighter')) {
+  } elsif ($class eq T('fighter') or $class eq T('dog')) {
     ($breath, $poison, $petrify, $wands, $spells) =
       improve([15, 12, 14, 13, 16], 2, int(($level-1)/3));
   } elsif ($class eq T('magic-user')) {
@@ -1467,7 +1469,7 @@ sub random {
   my $class = $char->{class};
 
   my ($str, $dex, $con, $int, $wis, $cha) =
-      $class eq T('hireling') || $class eq T('porter')
+      $class eq T('hireling') || $class eq T('porter') || $class eq T('dog')
       ? (10, 10, 10, 10, 10, 10)
       : (roll_3d6(), roll_3d6(), roll_3d6(),
 	 roll_3d6(), roll_3d6(), roll_3d6());
@@ -1496,6 +1498,9 @@ sub random {
   if ($class eq T('hireling') or $class eq T('porter')) {
     provide($char, "level",  "0");
     provide($char, "thac0",  20);
+  } elsif ($class eq T('dog')) {
+    provide($char, "level",  "2");
+    provide($char, "thac0",  18);
   } else {
     provide($char, "level",  "1");
     provide($char, "thac0",  19);
@@ -1549,8 +1554,9 @@ sub random {
   my $level = $char->{level};
   my $hp = $char->{hp};
   if (not $hp) {
-    if ($class eq T('fighter') or $class eq T('dwarf')) {
+    if ($class eq T('fighter') or $class eq T('dwarf') or $class eq T('dog')) {
       $hp += max(1, d8() + bonus($con)) for 1.. $level;
+      $hp += 2 if $class eq T('dog');
     } elsif ($class eq T('elf') or $class eq T('halfling')) {
       $hp += max(1, d6() + bonus($con)) for 1.. $level;
     } else {
@@ -1570,7 +1576,7 @@ sub random {
   provide($char, "abilities", $abilities);
 
   if (not $char->{charsheet}) {
-    if ($class eq T('hireling') or $class eq T('porter')) {
+    if ($class eq T('hireling') or $class eq T('porter') or $class eq T('dog')) {
       provide($char, "charsheet", T('Hireling.svg'));
     } elsif ($char->{landscape}) {
       provide($char, "charsheet", T('Charactersheet-landscape.svg'));
@@ -1631,6 +1637,7 @@ sub random_parameters {
 sub portrait {
   my $char = shift;
   my $face_generator_url = app->config("face_generator_url") or return '';
+  my $artist = "alex";
   my $gender = $char->{gender};
   if ($char->{class} eq T('elf')
       or $char->{race} eq T('elf')) {
@@ -1638,6 +1645,9 @@ sub portrait {
   } elsif ($char->{class} eq T('dwarf')
       or $char->{race} eq T('dwarf')) {
     $gender = "dwarf";
+  } elsif ($char->{class} eq T('dog')) {
+    $artist = "alex3";
+    $gender = "dog";
   } elsif ($gender eq "F") {
     $gender = "woman";
   } elsif ($gender eq "M") {
@@ -1645,7 +1655,7 @@ sub portrait {
   } else {
     $gender = one("woman", "man");
   }
-  my $url = Mojo::URL->new("$face_generator_url/redirect/alex/$gender");
+  my $url = Mojo::URL->new("$face_generator_url/redirect/$artist/$gender");
   my $ua = Mojo::UserAgent->new;
   my $tx = $ua->get($url);
   if ($tx->res->code == 302) {
@@ -1922,7 +1932,7 @@ Feel free to provide a name for your random character!
 %= label_for name => "Name:"
 %= text_field "name"
 %= label_for class => "Class:"
-%= select_field class => ['', qw(fighter magic-user thief elf halfling dwarf hireling porter)]
+%= select_field class => ['', qw(fighter magic-user thief elf halfling dwarf hireling porter dog)]
 %= check_box "landscape"
 %= label_for landscape => "landscape"
 %= submit_button
@@ -2186,6 +2196,7 @@ The script can also generate a
 <%= link_to url_for("random" => {lang => "en"}) => begin %>random character<% end %>,
 <%= link_to url_for("random" => {lang => "en"})->query(class=>"hireling") => begin %>random hireling<% end %>,
 <%= link_to url_for("random" => {lang => "en"})->query(class=>"porter") => begin %>random porter<% end %>,
+<%= link_to url_for("random" => {lang => "en"})->query(class=>"dog") => begin %>random dog<% end %>,
 <%= link_to url_for("characters" => {lang => "en"}) => begin %>bunch of characters<% end %>
 or <%= link_to url_for("stats" => {lang => "en"}) => begin %>some statistics<% end =%>.
 
