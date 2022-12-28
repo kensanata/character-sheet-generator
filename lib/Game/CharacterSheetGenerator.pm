@@ -1945,7 +1945,9 @@ to bookmark and edit your character. <%= link_to "Learn more…" => "help" %>
 <p>
 If you're looking for an alternative, check out the
 <a href="http://character.totalpartykill.ca/">Random D&D Character Generator</a>
-by <a href="http://save.vs.totalpartykill.ca/">Ramanan Sivaranjan</a>.
+by <a href="http://save.vs.totalpartykill.ca/">Ramanan Sivaranjan</a>, or
+<a href="https://osr.smolderingwizard.com/osr/random_bx_char">Random B/X Character</a>
+by Doug aka [https://smolderingwizard.wordpress.com/ Smoldering Wizard</a>.
 
 @@ index.de.html.ep
 % layout "default.de";
@@ -1977,8 +1979,9 @@ sich ein Lesezeichen erstellen kann und wo der Charakter bearbeitet werden kann.
 <p>
 Eine englische Alternative wäre der
 <a href="http://character.totalpartykill.ca/">Random D&D Character Generator</a>
-von <a href="http://save.vs.totalpartykill.ca/">Ramanan Sivaranjan</a>.
-
+von <a href="http://save.vs.totalpartykill.ca/">Ramanan Sivaranjan</a> oder
+<a href="https://osr.smolderingwizard.com/osr/random_bx_char">Random B/X Character</a>
+von Doug alias [https://smolderingwizard.wordpress.com/ Smoldering Wizard</a>.
 
 @@ edit.en.html.ep
 % layout "default.en";
