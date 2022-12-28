@@ -240,42 +240,42 @@
     <text id="damage-label" x="910" y="600" class="huge"><tspan>Schaden</tspan></text>
 
     <text id="melee" x="450" y="640" class="big"><tspan>Nahkampf</tspan></text>
-    <text id="melee0" x="610" y="640" class="big centred"><tspan>0</tspan></text>
-    <text id="melee1" x="640" y="640" class="big centred"><tspan>1</tspan></text>
-    <text id="melee2" x="670" y="640" class="big centred"><tspan>2</tspan></text>
-    <text id="melee3" x="700" y="640" class="big centred"><tspan>3</tspan></text>
-    <text id="melee4" x="730" y="640" class="big centred"><tspan>4</tspan></text>
-    <text id="melee5" x="760" y="640" class="big centred"><tspan>5</tspan></text>
-    <text id="melee6" x="790" y="640" class="big centred"><tspan>6</tspan></text>
-    <text id="melee7" x="820" y="640" class="big centred"><tspan>7</tspan></text>
-    <text id="melee8" x="850" y="640" class="big centred"><tspan>8</tspan></text>
-    <text id="melee9" x="880" y="640" class="big centred"><tspan>9</tspan></text>
+    <text id="melee0" x="610" y="640" class="big centred"><tspan>_</tspan></text>
+    <text id="melee1" x="640" y="640" class="big centred"><tspan>_</tspan></text>
+    <text id="melee2" x="670" y="640" class="big centred"><tspan>_</tspan></text>
+    <text id="melee3" x="700" y="640" class="big centred"><tspan>_</tspan></text>
+    <text id="melee4" x="730" y="640" class="big centred"><tspan>_</tspan></text>
+    <text id="melee5" x="760" y="640" class="big centred"><tspan>_</tspan></text>
+    <text id="melee6" x="790" y="640" class="big centred"><tspan>_</tspan></text>
+    <text id="melee7" x="820" y="640" class="big centred"><tspan>_</tspan></text>
+    <text id="melee8" x="850" y="640" class="big centred"><tspan>_</tspan></text>
+    <text id="melee9" x="880" y="640" class="big centred"><tspan>_</tspan></text>
     <text id="melee-damage" x="910" y="640" class="huge"><tspan>1W6</tspan></text>
 
     <text id="range" x="450" y="680" class="big"><tspan>Fernkampf</tspan></text>
-    <text id="range0" x="610" y="680" class="big centred"><tspan>0</tspan></text>
-    <text id="range1" x="640" y="680" class="big centred"><tspan>1</tspan></text>
-    <text id="range2" x="670" y="680" class="big centred"><tspan>2</tspan></text>
-    <text id="range3" x="700" y="680" class="big centred"><tspan>3</tspan></text>
-    <text id="range4" x="730" y="680" class="big centred"><tspan>4</tspan></text>
-    <text id="range5" x="760" y="680" class="big centred"><tspan>5</tspan></text>
-    <text id="range6" x="790" y="680" class="big centred"><tspan>6</tspan></text>
-    <text id="range7" x="820" y="680" class="big centred"><tspan>7</tspan></text>
-    <text id="range8" x="850" y="680" class="big centred"><tspan>8</tspan></text>
-    <text id="range9" x="880" y="680" class="big centred"><tspan>9</tspan></text>
+    <text id="range0" x="610" y="680" class="big centred"><tspan>_</tspan></text>
+    <text id="range1" x="640" y="680" class="big centred"><tspan>_</tspan></text>
+    <text id="range2" x="670" y="680" class="big centred"><tspan>_</tspan></text>
+    <text id="range3" x="700" y="680" class="big centred"><tspan>_</tspan></text>
+    <text id="range4" x="730" y="680" class="big centred"><tspan>_</tspan></text>
+    <text id="range5" x="760" y="680" class="big centred"><tspan>_</tspan></text>
+    <text id="range6" x="790" y="680" class="big centred"><tspan>_</tspan></text>
+    <text id="range7" x="820" y="680" class="big centred"><tspan>_</tspan></text>
+    <text id="range8" x="850" y="680" class="big centred"><tspan>_</tspan></text>
+    <text id="range9" x="880" y="680" class="big centred"><tspan>_</tspan></text>
     <text id="range-damage" x="910" y="680" class="huge"><tspan>1W6</tspan></text>
 
     <text id="other" x="450" y="720" class="big"><tspan>Weitere</tspan></text>
-    <text id="other0" x="610" y="720" class="big centred"><tspan>0</tspan></text>
-    <text id="other1" x="640" y="720" class="big centred"><tspan>1</tspan></text>
-    <text id="other2" x="670" y="720" class="big centred"><tspan>2</tspan></text>
-    <text id="other3" x="700" y="720" class="big centred"><tspan>3</tspan></text>
-    <text id="other4" x="730" y="720" class="big centred"><tspan>4</tspan></text>
-    <text id="other5" x="760" y="720" class="big centred"><tspan>5</tspan></text>
-    <text id="other6" x="790" y="720" class="big centred"><tspan>6</tspan></text>
-    <text id="other7" x="820" y="720" class="big centred"><tspan>7</tspan></text>
-    <text id="other8" x="850" y="720" class="big centred"><tspan>8</tspan></text>
-    <text id="other9" x="880" y="720" class="big centred"><tspan>9</tspan></text>
+    <text id="other0" x="610" y="720" class="big centred"><tspan>_</tspan></text>
+    <text id="other1" x="640" y="720" class="big centred"><tspan>_</tspan></text>
+    <text id="other2" x="670" y="720" class="big centred"><tspan>_</tspan></text>
+    <text id="other3" x="700" y="720" class="big centred"><tspan>_</tspan></text>
+    <text id="other4" x="730" y="720" class="big centred"><tspan>_</tspan></text>
+    <text id="other5" x="760" y="720" class="big centred"><tspan>_</tspan></text>
+    <text id="other6" x="790" y="720" class="big centred"><tspan>_</tspan></text>
+    <text id="other7" x="820" y="720" class="big centred"><tspan>_</tspan></text>
+    <text id="other8" x="850" y="720" class="big centred"><tspan>_</tspan></text>
+    <text id="other9" x="880" y="720" class="big centred"><tspan>_</tspan></text>
     <text id="other-damage" x="910" y="720" class="huge"><tspan>1W6</tspan></text>
 
     <text id="attack-explanation" x="890" y="740" class="tiny right"><tspan>W20 muss gleich oder grösser sein</tspan></text>
