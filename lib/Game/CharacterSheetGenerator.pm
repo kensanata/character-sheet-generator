@@ -1,5 +1,5 @@
 #!/usr/bin/env perl
-# Copyright (C) 2012-2022  Alex Schroeder <alex@gnu.org>
+# Copyright (C) 2012-2023  Alex Schroeder <alex@gnu.org>
 
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -1560,7 +1560,8 @@ sub random {
     } elsif ($class eq T('elf') or $class eq T('halfling')) {
       $hp += max(1, d6() + bonus($con)) for 1.. $level;
     } else {
-      $hp += max(1, d4() + bonus($con)) for 1.. $level;
+      # hirelings with level 0 still get hp
+      $hp += max(1, d4() + bonus($con)) for 1.. max($level, 1);
     }
   }
   provide($char, "hp",  $hp);
