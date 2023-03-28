@@ -527,6 +527,9 @@ sub character {
   if (not defined $char->{hirelings}) {
     $char->{hirelings} =  4 + $char->{"cha-bonus"};
   }
+  if (defined $char->{"to-hit"} and not defined $char->{"thac0"}) {
+    $char->{"thac0"} = 20 - $char->{"to-hit"};
+  }
   if ($char->{thac0} and not defined $char->{"melee-thac0"}) {
     $char->{"melee-thac0"} = $char->{thac0} - $char->{"str-bonus"};
   }
@@ -2133,6 +2136,7 @@ angegeben wurden:
 <li>cha → cha-bonus
 <li>cha-bonus → loyalty
 <li>str-bonus → damage
+<li>to-hit → thac0
 <li>thac0 → melee-thac0
 <li>melee-thac0 → melee0-9
 <li>damage → melee-damage
