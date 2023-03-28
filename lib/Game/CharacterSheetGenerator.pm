@@ -242,7 +242,7 @@ Portal verschliessen
 12 iron spikes and hammer
 12 Eisenkeile und Hammer
 3 stakes and hammer
-12 Holzpfähle und Hammer
+3 Holzpfähle und Hammer
 lantern
 Laterne
 leather armor
