@@ -1077,9 +1077,11 @@ sub average {
 # allows wrap to use wantarray when used to wrap $value
 sub provide ($$$) {
   my ($char, $key, $value) = @_;
-  return unless not defined $char->{$key} or $char->{$key} eq '';
   # empty strings get overwritten, but zero does not get overwritten
-  push(@{$char->{provided}}, $key);
+  return unless not defined $char->{$key} or $char->{$key} eq '';
+  # early provided values are removed
+  my @provided = grep { $_ ne $key } @{$char->{provided}};
+  $char->{provided} = [@provided, $key];
   $char->{$key} = $value;
 }
 
