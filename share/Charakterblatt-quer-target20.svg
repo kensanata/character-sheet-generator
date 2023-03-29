@@ -228,15 +228,15 @@
     <text id="melee" x="450" y="640" class="big"><tspan>Nahkampf</tspan></text>
     <text id="melee-to-hit" x="620" y="640" class="big centred"><tspan>+0</tspan></text>
     <text id="melee-damage" x="750" y="640" class="huge centred"><tspan>1W6</tspan></text>
-    <text id="melee-note" x="820" y="640" class="big"><tspan>_________</tspan></text>
+    <text id="melee-note" x="820" y="640" class="big"><tspan></tspan></text>
     <text id="range" x="450" y="680" class="big"><tspan>Fernkampf</tspan></text>
     <text id="range-to-hit" x="620" y="680" class="big centred"><tspan>+0</tspan></text>
     <text id="range-damage" x="750" y="680" class="huge centred"><tspan>1W6</tspan></text>
-    <text id="range-note" x="820" y="680" class="big"><tspan>_________</tspan></text>
+    <text id="range-note" x="820" y="680" class="big"><tspan></tspan></text>
     <text id="other" x="450" y="720" class="big"><tspan>Weitere</tspan></text>
     <text id="other-to-hit" x="620" y="720" class="big centred"><tspan>+0</tspan></text>
     <text id="other-damage" x="750" y="720" class="huge centred"><tspan>1W6</tspan></text>
-    <text id="other-note" x="820" y="720" class="big"><tspan>_________</tspan></text>
+    <text id="other-note" x="820" y="720" class="big"><tspan></tspan></text>
 
     <text id="attack-explanation" x="580" y="740" class="tiny"><tspan>W20 + Bonus muss grösser oder gleich 20 sein</tspan></text>
 
