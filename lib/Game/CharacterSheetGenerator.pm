@@ -513,11 +513,13 @@ sub cha_bonus {
 
 sub character {
   my $char = shift;
+
   for my $id (qw(str dex con int wis cha)) {
     if ($char->{$id} and not defined $char->{"$id-bonus"}) {
       $char->{"$id-bonus"} = bonus($char->{$id});
     }
   }
+
   if ($char->{cha} and not defined $char->{reaction}) {
     $char->{reaction} = cha_bonus($char->{cha});
   }
@@ -527,18 +529,37 @@ sub character {
   if (not defined $char->{hirelings}) {
     $char->{hirelings} =  4 + $char->{"cha-bonus"};
   }
+
   if (defined $char->{"to-hit"} and not defined $char->{"thac0"}) {
     $char->{"thac0"} = 20 - $char->{"to-hit"};
+  } elsif (not defined $char->{"to-hit"} and defined $char->{"thac0"}) {
+    $char->{"to-hit"} = "+" . (20 - $char->{"thac0"});
   }
-  if ($char->{thac0} and not defined $char->{"melee-thac0"}) {
-    $char->{"melee-thac0"} = $char->{thac0} - $char->{"str-bonus"};
+
+  if ($char->{thac0}) {
+    if (defined $char->{"melee-thac0"}) {
+      $char->{"melee-thac0"} = $char->{thac0} - $char->{"str-bonus"};
+    }
+    if (not defined $char->{"range-thac0"}) {
+      $char->{"range-thac0"} = $char->{thac0} - $char->{"dex-bonus"};
+    }
+    if (not defined $char->{"other-thac0"}) {
+      $char->{"other-thac0"} = $char->{thac0};
+    }
   }
-  if ($char->{thac0} and not defined $char->{"range-thac0"}) {
-    $char->{"range-thac0"} = $char->{thac0} - $char->{"dex-bonus"};
+
+  if ($char->{"to-hit"}) {
+    if (not defined $char->{"melee-to-hit"}) {
+      $char->{"melee-to-hit"} = "+" . ($char->{"to-hit"} + $char->{"str-bonus"});
+    }
+    if (not defined $char->{"range-to-hit"}) {
+      $char->{"range-to-hit"} = "+" . ($char->{"to-hit"} + $char->{"dex-bonus"});
+    }
+    if (not defined $char->{"other-to-hit"}) {
+      $char->{"other-to-hit"} = "+" . $char->{"to-hit"};
+    }
   }
-  if ($char->{thac0} and not defined $char->{"other-thac0"}) {
-    $char->{"other-thac0"} = $char->{thac0};
-  }
+
   for my $type ("melee", "range", "other") {
     for (my $n = 0; $n <= 9; $n++) {
       my $val = $char->{"$type-thac0"} - $n;
@@ -547,6 +568,7 @@ sub character {
       $char->{"$type$n"} = $val unless $char->{"$type$n"};
     }
   }
+
   if (not defined $char->{damage}) {
     $char->{damage} = 1 . T('d6');
   }
@@ -2136,15 +2158,16 @@ angegeben wurden:
 <li>cha → cha-bonus
 <li>cha-bonus → loyalty
 <li>str-bonus → damage
-<li>to-hit → thac0
-<li>thac0 → melee-thac0
+<li>to-hit ↔ thac0
+<li>thac0 → melee-thac0 und to-hit → melee-to-hit inkl. str-bonus
 <li>melee-thac0 → melee0-9
-<li>damage → melee-damage
-<li>thac0 → range-thac0
+<li>damage → melee-damage inkl. str-bonus
+<li>thac0 → range-thac0 und to-hit → range-to-hit inkl. dex-bonus
 <li>range-thac0 → range0-9
-<li>thac0 → other-thac0
-<li>other-thac0 → range0-9
 <li>damage → range-damage
+<li>thac0 → other-thac0 und to-hit → other-to-hit
+<li>other-thac0 → range0-9
+<li>damage → other-damage
 </ul>
 
 <p>
@@ -2191,12 +2214,16 @@ In addition to that, some parameters are computed unless provided:
 <li>cha → cha-bonus
 <li>cha-bonus → loyalty
 <li>str-bonus → damage
-<li>thac0 → melee-thac0
+<li>to-hit ↔ thac0
+<li>thac0 → melee-thac0 and to-hit → melee-to-hit incl. str-bonus
 <li>melee-thac0 → melee0-9
-<li>damage → melee-damage
-<li>thac0 → range-thac0
+<li>damage → melee-damage incl. str-bonus
+<li>thac0 → range-thac0 and to-hit → range-to-hit incl. dex-bonus
 <li>range-thac0 → range0-9
 <li>damage → range-damage
+<li>thac0 → other-thac0 and to-hit → other-to-hit
+<li>other-thac0 → range0-9
+<li>damage → other-damage
 </ul>
 
 <p>
