@@ -191,7 +191,7 @@
     <text id="wands-bonus" x="380" y="690" class="large centred"><tspan>___</tspan></text>
     <text id="spells-label" x="80" y="720" class="big"><tspan></tspan>Zaubersprüche</text>
     <text id="spells-bonus" x="380" y="720" class="large centred"><tspan>___</tspan></text>
-    <text id="saves-explanation" x="390" y="740" class="tiny right"><tspan>W20 muss gleich oder grösser sein</tspan></text>
+    <text id="saves-explanation" x="390" y="740" class="tiny right"><tspan>W20 + Bonus muss grösser oder gleich 20 sein</tspan></text>
 
     <text id="portrait-label" x="300" y="80" class="smaller"><tspan>Wappen oder Bild</tspan></text>
     <image id="portrait" width="120" height="120" x="300" y="85" />
@@ -238,7 +238,7 @@
     <text id="other-damage" x="750" y="720" class="huge centred"><tspan>1W6</tspan></text>
     <text id="other-note" x="820" y="720" class="big"><tspan>_________</tspan></text>
 
-    <text id="attack-explanation" x="890" y="740" class="tiny right"><tspan>W20 muss gleich oder grösser sein</tspan></text>
+    <text id="attack-explanation" x="580" y="740" class="tiny"><tspan>W20 + Bonus muss grösser oder gleich 20 sein</tspan></text>
 
     <a id="link" xlink:href="https://campaignwiki.org/character-sheet-generator">
       <text id="link-text" y="740" x="990"><tspan>Link</tspan></text>
