@@ -536,19 +536,19 @@ sub character {
     $char->{"to-hit"} = "+" . (20 - $char->{"thac0"});
   }
 
-  if ($char->{thac0}) {
-    if (defined $char->{"melee-thac0"}) {
-      $char->{"melee-thac0"} = $char->{thac0} - $char->{"str-bonus"};
+  if (defined $char->{"thac0"}) {
+    if (not defined $char->{"melee-thac0"}) {
+      $char->{"melee-thac0"} = $char->{"thac0"} - $char->{"str-bonus"};
     }
     if (not defined $char->{"range-thac0"}) {
-      $char->{"range-thac0"} = $char->{thac0} - $char->{"dex-bonus"};
+      $char->{"range-thac0"} = $char->{"thac0"} - $char->{"dex-bonus"};
     }
     if (not defined $char->{"other-thac0"}) {
-      $char->{"other-thac0"} = $char->{thac0};
+      $char->{"other-thac0"} = $char->{"thac0"};
     }
   }
 
-  if ($char->{"to-hit"}) {
+  if (defined $char->{"to-hit"}) {
     if (not defined $char->{"melee-to-hit"}) {
       $char->{"melee-to-hit"} = "+" . ($char->{"to-hit"} + $char->{"str-bonus"});
     }
@@ -1576,7 +1576,6 @@ sub random {
   if ($class eq T('halfling')) {
     provide($char, "range-thac0",  18 - bonus($dex));
   }
-
 
   my $level = $char->{level};
   my $hp = $char->{hp};

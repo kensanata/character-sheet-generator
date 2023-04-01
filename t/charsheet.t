@@ -35,10 +35,11 @@ $t->get_ok('/char/en?str=10&str-bonus=0')
     ->text_is('#str tspan' => '10')
     ->text_is('#str-bonus tspan' => '0');
 
-$t->get_ok('/random/en?class=fighter')
+$t->get_ok('/random/en?class=fighter&str=10')
     ->status_is(200)
     ->text_is('#class tspan' => 'fighter')
-    ->text_is('#abilities tspan:first-child' => '1/6 for normal tasks');
+    ->text_is('#abilities tspan:first-child' => '1/6 for normal tasks')
+    ->text_is('#melee0 tspan' => '19');
 
 $t->get_ok('/random/en?class=thief')
     ->status_is(200)
