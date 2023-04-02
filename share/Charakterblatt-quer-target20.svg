@@ -181,6 +181,7 @@
     <text id="loyalty-explanation" x="370" y="520" class="tiny centred"><tspan>7 + Auftreten Bonus</tspan></text>
 
     <text id="saves-label" x="80" y="570" class="huge"><tspan>Rettungswürfe</tspan></text>
+    <text id="saves-bonus" x="380" y="570" class="big centred"><tspan>Bonus</tspan></text>
     <text id="breath-label" x="80" y="600" class="big"><tspan>Drachenodem, Explosion</tspan></text>
     <text id="breath-bonus" x="380" y="600" class="large centred"><tspan>___</tspan></text>
     <text id="petrify-label" x="80" y="630" class="big"><tspan></tspan>Lähmung, Versteinerung</text>
@@ -223,8 +224,8 @@
       <tspan x="705" y="347" />
     </text>
 
-    <text id="attack-label" x="620" y="600" class="huge centred"><tspan>Treffer</tspan></text>
-    <text id="damage-label" x="750" y="600" class="huge centred"><tspan>Schaden</tspan></text>
+    <text id="attack-label" x="620" y="600" class="big centred"><tspan>Bonus</tspan></text>
+    <text id="damage-label" x="750" y="600" class="big centred"><tspan>Schaden</tspan></text>
     <text id="melee" x="450" y="640" class="big"><tspan>Nahkampf</tspan></text>
     <text id="melee-to-hit" x="620" y="640" class="big centred"><tspan>+0</tspan></text>
     <text id="melee-damage" x="750" y="640" class="huge centred"><tspan>1W6</tspan></text>
@@ -238,7 +239,11 @@
     <text id="other-damage" x="750" y="720" class="huge centred"><tspan>1W6</tspan></text>
     <text id="other-note" x="820" y="720" class="big"><tspan></tspan></text>
 
-    <text id="attack-explanation" x="580" y="740" class="tiny"><tspan>W20 + Bonus muss grösser oder gleich 20 sein</tspan></text>
+    <text id="attack-explanation" x="580" y="740" class="tiny"><tspan></tspan></text>
+    <text id="attack-explanation" x="450" y="740" class="tiny">
+      <tspan>Kraft: Treffer und Schaden im Nahkampf; Geschick: Treffer im Fernkampf</tspan>
+      <tspan x="450" dy="12">W20 + Bonus muss grösser oder gleich 20 sein</tspan>
+    </text>
 
     <a id="link" xlink:href="https://campaignwiki.org/character-sheet-generator">
       <text id="link-text" y="740" x="990"><tspan>Link</tspan></text>

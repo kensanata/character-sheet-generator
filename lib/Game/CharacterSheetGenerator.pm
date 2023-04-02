@@ -998,11 +998,11 @@ sub saves {
       (17, 14, 16, 15, 18);
   }
 
-  provide($char, "breath",  $breath) unless $char->{breath};
-  provide($char, "poison",  $poison) unless $char->{poison};
-  provide($char, "petrify",  $petrify) unless $char->{petrify};
-  provide($char, "wands",  $wands) unless $char->{wands};
-  provide($char, "spells",  $spells) unless $char->{spells};
+  provide($char, "breath-bonus", number(20 - $breath)) unless $char->{"breath-bonus"};
+  provide($char, "poison-bonus", number(20 - $poison)) unless $char->{"poison-bonus"};
+  provide($char, "petrify-bonus", number(20 - $petrify)) unless $char->{"petrify-bonus"};
+  provide($char, "wands-bonus", number(20 - $wands)) unless $char->{"wands-bonus"};
+  provide($char, "spells-bonus", number(20 - $spells)) unless $char->{"spells-bonus"};
 }
 
 sub improve {

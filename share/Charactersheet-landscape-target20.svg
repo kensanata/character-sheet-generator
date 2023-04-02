@@ -87,7 +87,7 @@
     <text id="level" x="160" y="130" class="large"><tspan>_________</tspan></text>
     <text id="xp-label" x="80" y="155" class="big"><tspan>Exp.</tspan></text>
     <text id="xp" x="160" y="155" class="large"><tspan>_________</tspan></text>
-    <text id="ac-label" x="80" y="180" class="big"><tspan>Armour</tspan></text>
+    <text id="ac-label" x="80" y="180" class="large"><tspan>Armour</tspan></text>
     <text id="ac" x="160" y="180" class="large"><tspan>_________</tspan></text>
     <text id="ac-explanation" x="80" y="192" class="tiny">
       <tspan x="80" y="192">Summary: none is 9, leather is 7,</tspan>
@@ -181,6 +181,7 @@
     <text id="loyalty-explanation" x="370" y="520" class="tiny centred"><tspan>7 + Charisma Bonus</tspan></text>
 
     <text id="saves-label" x="80" y="570" class="huge"><tspan>Saving Throws</tspan></text>
+    <text id="saves-bonus" x="380" y="570" class="big centred"><tspan>Bonus</tspan></text>
     <text id="breath-label" x="80" y="600" class="big"><tspan>Dragon Breath, Explosion</tspan></text>
     <text id="breath-bonus" x="380" y="600" class="large centred"><tspan>___</tspan></text>
     <text id="petrify-label" x="80" y="630" class="big"><tspan></tspan>Paralysis, Petrification</text>
@@ -223,8 +224,8 @@
       <tspan x="705" y="347" />
     </text>
 
-    <text id="attack-label" x="620" y="600" class="huge centred"><tspan>To Hit</tspan></text>
-    <text id="damage-label" x="750" y="600" class="huge centred"><tspan>Damage</tspan></text>
+    <text id="attack-label" x="620" y="600" class="big centred"><tspan>Bonus</tspan></text>
+    <text id="damage-label" x="750" y="600" class="big centred"><tspan>Damage</tspan></text>
     <text id="melee" x="450" y="640" class="big"><tspan>Melee</tspan></text>
     <text id="melee-to-hit" x="620" y="640" class="big centred"><tspan>+0</tspan></text>
     <text id="melee-damage" x="750" y="640" class="huge centred"><tspan>1d6</tspan></text>
@@ -238,7 +239,10 @@
     <text id="other-damage" x="750" y="720" class="huge centred"><tspan>1d6</tspan></text>
     <text id="other-note" x="820" y="720" class="big"><tspan></tspan></text>
 
-    <text id="attack-explanation" x="580" y="740" class="tiny"><tspan>d20 + bonus must be 20 or higher</tspan></text>
+    <text id="attack-explanation" x="450" y="740" class="tiny">
+      <tspan>Strength: bonus and damage in melee; dexterity: bonus for ranged combat</tspan>
+      <tspan x="450" dy="12">d20 + bonus must be 20 or higher</tspan>
+    </text>
 
     <a id="link" xlink:href="https://campaignwiki.org/character-sheet-generator">
       <text id="link-text" y="740" x="990"><tspan>Link</tspan></text>
