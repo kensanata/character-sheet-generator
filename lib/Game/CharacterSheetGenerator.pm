@@ -51,7 +51,7 @@ Here's an example of the stats generated:
     abilities: 5/6 to hide and sneak outside
     abilities: +1 for ranged weapons
     abilities: AC -2 against giants
-    charsheet: Charaktersheet.svg
+    charsheet: Charactersheet-landscape-target20.svg
     breath: 13
     poison: 8
     petrify: 10
@@ -175,10 +175,8 @@ sub translations {
 %d/6 für alle Aktivitäten
 AC -2 vs. opponents larger than humans
 Rüstung -2 bei Gegnern über Menschengrösse
-Charactersheet.svg
-Charakterblatt.svg
-Charactersheet-landscape.svg
-Charakterblatt-quer.svg
+Charactersheet-landscape-target20.svg
+Charakterblatt-quer-target20.svg
 Hireling.svg
 Mietling.svg
 Classes
@@ -352,7 +350,7 @@ sub T {
 
 sub svg_read {
   my ($char) = @_;
-  my $filename = $char->{charsheet} || 'Charactersheet.svg';
+  my $filename = $char->{charsheet} || 'Charactersheet-landscape-target20.svg';
   my $doc;
   if (-f "$dist_dir/$filename") {
     $doc = XML::LibXML->load_xml(location => "$dist_dir/$filename");
@@ -511,6 +509,12 @@ sub cha_bonus {
   return "+2";
 }
 
+sub number {
+  my $num = shift;
+  return "+" . $num if $num >= 0;
+  return $num;
+}
+
 sub character {
   my $char = shift;
 
@@ -533,7 +537,7 @@ sub character {
   if (defined $char->{"to-hit"} and not defined $char->{"thac0"}) {
     $char->{"thac0"} = 20 - $char->{"to-hit"};
   } elsif (not defined $char->{"to-hit"} and defined $char->{"thac0"}) {
-    $char->{"to-hit"} = "+" . (20 - $char->{"thac0"});
+    $char->{"to-hit"} = 20 - $char->{"thac0"};
   }
 
   if (defined $char->{"thac0"}) {
@@ -550,13 +554,13 @@ sub character {
 
   if (defined $char->{"to-hit"}) {
     if (not defined $char->{"melee-to-hit"}) {
-      $char->{"melee-to-hit"} = "+" . ($char->{"to-hit"} + $char->{"str-bonus"});
+      $char->{"melee-to-hit"} = number($char->{"to-hit"} + $char->{"str-bonus"});
     }
     if (not defined $char->{"range-to-hit"}) {
-      $char->{"range-to-hit"} = "+" . ($char->{"to-hit"} + $char->{"dex-bonus"});
+      $char->{"range-to-hit"} = number($char->{"to-hit"} + $char->{"dex-bonus"});
     }
     if (not defined $char->{"other-to-hit"}) {
-      $char->{"other-to-hit"} = "+" . $char->{"to-hit"};
+      $char->{"other-to-hit"} = number($char->{"to-hit"});
     }
   }
 
@@ -1605,10 +1609,8 @@ sub random {
   if (not $char->{charsheet}) {
     if ($class eq T('hireling') or $class eq T('porter') or $class eq T('dog')) {
       provide($char, "charsheet", T('Hireling.svg'));
-    } elsif ($char->{landscape}) {
-      provide($char, "charsheet", T('Charactersheet-landscape.svg'));
     } else {
-      provide($char, "charsheet", T('Charactersheet.svg'));
+      provide($char, "charsheet", T('Charactersheet-landscape-target20.svg'));
     }
   }
 }
@@ -1960,8 +1962,6 @@ Feel free to provide a name for your random character!
 %= text_field "name"
 %= label_for class => "Class:"
 %= select_field class => ['', qw(fighter magic-user thief elf halfling dwarf hireling porter dog)]
-%= check_box "landscape"
-%= label_for landscape => "landscape"
 %= submit_button
 % end
 
@@ -1993,8 +1993,6 @@ Wer will, kann dem generierten Charakter hier auch einen Namen geben:
 %= text_field "name"
 %= label_for class => "Klasse:"
 %= select_field class => ['', qw(Krieger Magier Dieb Elf Halbling Zwerg Mietling Träger)]
-%= check_box "landscape"
-%= label_for landscape => "Querformat"
 %= submit_button
 % end
 
@@ -2132,16 +2130,11 @@ Charakter:
 <p>Das funktioniert über eine Vorlage und dem Ersetzen von Platzhaltern.
 
 <p>Die
-<%= link_to url_for("char" => {lang => "de"})->query(charsheet => "Charakterblatt.svg") => begin %>Defaultvorlage<% end %>
-(<%= link_to url_for("char" => {lang => "de"})->query(charsheet => "Charakterblatt-quer.svg") => begin %>Querformat<% end %>, <%= link_to url_for("char" => {lang => "de"})->query(charsheet => "Charakterblatt-adv.svg") => begin %>Alternative<% end %>)
+<%= link_to url_for("char" => {lang => "de"})->query(charsheet => "Charakterblatt-quer-target20.svg") => begin %>Defaultvorlage<% end %> (<%= link_to url_for("char" => {lang => "de"})->query(charsheet => "Charakterblatt.svg") => begin %>alte Vorlage<% end %>, <%= link_to url_for("char" => {lang => "de"})->query(charsheet => "Charakterblatt-quer.svg") => begin %>alte Querformatvorlage<% end %>, <%= link_to url_for("char" => {lang => "de"})->query(charsheet => "Charakterblatt-adv.svg") => begin %>Alternative<% end %>)
 verwendet die <a href="/Purisa.ttf">Purisa</a> Schrift. Den Platzhaltern werden
 über URL Parameter Werte zugewiesen
-(<%= link_to url_for("char" => {lang => "de"})->query(name => "Tehah", class => "Elf", level => "1", xp => "100", ac => "9", hp => "5", str => "15", dex => "9", con => "15", int => "10", wis => "9", cha => "7", breath => "15", poison => "12", petrify => "13", wands => "13", spells => "15", property => "Zauberbuch (Gerdana)\\\\* Einschläferndes Rauschen", abilities => "Ghinorisch\\\\Elfisch", thac0 => "19", charsheet => "Charakterblatt.svg") => begin %>Beispiel<% end %>,
-<%= link_to url_for("char" => {lang => "de"})->query(name => "Tehah", class => "Elf", level => "1", xp => "100", ac => "9", hp => "5", str => "15", dex => "9", con => "15", int => "10", wis => "9", cha => "7", breath => "15", poison => "12", petrify => "13", wands => "13", spells => "15", property => "Zauberbuch (Gerdana)\\\\* Einschläferndes Rauschen", languages => "Ghinorisch\\\\Elfisch", abilities => "Geheimtüren entdecken 2/6\\\\Geräusche hören 2/6\\\\Schlaf", thac0 => "19", charsheet=>"Charakterblatt-quer.svg") => begin %>Querformat<% end %>,
-<%= link_to url_for("char" => {lang => "de"})->query(name => "Tehah", class => "Elf", level => "1", xp => "100", ac => "9", hp => "5", str => "15", dex => "9", con => "15", int => "10", wis => "9", cha => "7", breath => "15", poison => "12", petrify => "13", wands => "13", spells => "15", property => "Zauberbuch (Gerdana)\\\\* Einschläferndes Rauschen", languages => "Ghinorisch\\\\Elfisch", abilities => "Geheimtüren entdecken 2/6\\\\Geräusche hören 2/6\\\\Schlaf", misc => "“Dwarf-friend”", thac0 => "19", charsheet=>"Charakterblatt-adv.svg") => begin %>Alternative<% end %>).
-Das Skript kann auch zeigen
-<%= link_to url_for("show")->query(charsheet=>"Charakterblatt.svg") => begin %>welche Parameter wo erscheinen<% end %>
-(<%= link_to url_for("show")->query(charsheet=>"Charakterblatt-quer.svg") => begin %>Querformat<% end %>, <%= link_to url_for("show")->query(charsheet=>"Charakterblatt-adv.svg") => begin %>Alternative<% end %>).
+(<%= link_to url_for("char" => {lang => "de"})->query(name => "Tehah", class => "Elf", level => "1", xp => "100", ac => "9", hp => "5", str => "15", dex => "9", con => "15", int => "10", wis => "9", cha => "7", breath => "15", poison => "12", petrify => "13", wands => "13", spells => "15", property => "Zauberbuch (Gerdana)\\\\* Einschläferndes Rauschen", abilities => "Ghinorisch\\\\Elfisch", thac0 => "19", charsheet => "Charakterblatt-quer-target20.svg") => begin %>Beispiel<% end %>, <%= link_to url_for("char" => {lang => "de"})->query(name => "Tehah", class => "Elf", level => "1", xp => "100", ac => "9", hp => "5", str => "15", dex => "9", con => "15", int => "10", wis => "9", cha => "7", breath => "15", poison => "12", petrify => "13", wands => "13", spells => "15", property => "Zauberbuch (Gerdana)\\\\* Einschläferndes Rauschen", abilities => "Ghinorisch\\\\Elfisch", thac0 => "19", charsheet => "Charakterblatt.svg") => begin %>alte Vorlage<% end %>, <%= link_to url_for("char" => {lang => "de"})->query(name => "Tehah", class => "Elf", level => "1", xp => "100", ac => "9", hp => "5", str => "15", dex => "9", con => "15", int => "10", wis => "9", cha => "7", breath => "15", poison => "12", petrify => "13", wands => "13", spells => "15", property => "Zauberbuch (Gerdana)\\\\* Einschläferndes Rauschen", languages => "Ghinorisch\\\\Elfisch", abilities => "Geheimtüren entdecken 2/6\\\\Geräusche hören 2/6\\\\Schlaf", thac0 => "19", charsheet=>"Charakterblatt-quer.svg") => begin %>altes Querformatvorlage<% end %>, <%= link_to url_for("char" => {lang => "de"})->query(name => "Tehah", class => "Elf", level => "1", xp => "100", ac => "9", hp => "5", str => "15", dex => "9", con => "15", int => "10", wis => "9", cha => "7", breath => "15", poison => "12", petrify => "13", wands => "13", spells => "15", property => "Zauberbuch (Gerdana)\\\\* Einschläferndes Rauschen", languages => "Ghinorisch\\\\Elfisch", abilities => "Geheimtüren entdecken 2/6\\\\Geräusche hören 2/6\\\\Schlaf", misc => "“Dwarf-friend”", thac0 => "19", charsheet=>"Charakterblatt-adv.svg") => begin %>Alternative<% end %>).
+Das Skript kann auch zeigen <%= link_to url_for("show")->query(charsheet=>"Charakterblatt-quer-target20.svg") => begin %>welche Parameter wo erscheinen<% end %> (<%= link_to url_for("show")->query(charsheet=>"Charakterblatt.svg") => begin %>alte Vorlage<% end %>, <%= link_to url_for("show")->query(charsheet=>"Charakterblatt-quer.svg") => begin %>alte Querformatvorlage<% end %>, <%= link_to url_for("show")->query(charsheet=>"Charakterblatt-adv.svg") => begin %>Alternative<% end %>).
 Die Parameter müssen UTF-8 codiert sein. Die Vorlage kann auch mehrzeilige
 Platzhalter enthalten. Der entsprechende Parameter muss die Zeilen dann durch
 doppelte Backslashes trennen.
@@ -2189,16 +2182,13 @@ generieren.
 <p>The generator works by using a template and replacing some placeholders.
 
 <p>The
-<%= link_to url_for("char" => {lang => "en"}) => begin %>default template<% end %>
-(<%= link_to url_for("char" => {lang => "en"})->query(charsheet=>"Charactersheet-landscape.svg") => begin %>landscape<% end %>, <%= link_to url_for("char" => {lang => "en"})->query(charsheet=>"Charactersheet-adv.svg") => begin %>alternative<% end %>)
+<%= link_to url_for("char" => {lang => "en"}) => begin %>default template<% end %> (alternatives: <%= link_to url_for("char" => {lang => "en"})->query(charsheet=>"Charactersheet.svg") => begin %>old<% end %>, <%= link_to url_for("char" => {lang => "en"})->query(charsheet=>"Charactersheet-landscape.svg") => begin %>old landscape<% end %>, <%= link_to url_for("char" => {lang => "en"})->query(charsheet=>"Charactersheet-adv.svg") => begin %>alternative<% end %>)
 uses the <a href="/Purisa.ttf">Purisa</a> font. You provide values for the
 placeholders by providing URL parameters
-(<%= link_to url_for("char" => {lang => "en"})->query(name => "Tehah", class => "Elf", level => "1", xp => "100", ac => "9", hp => "5", str => "15", dex => "9", con => "15", int => "10", wis => "9", cha => "7", breath => "15", poison => "12", petrify => "13", wands => "13", spells => "15", property => "Spell Book (Gerdana)\\\\* sleepy swoosh", abilities => "Ghinorian\\\\Elven", thac0 => "19", charsheet => "Charactersheet.svg") => begin %>example<% end %>,
-<%= link_to url_for("char" => {lang => "en"})->query(name => "Tehah", class => "Elf", level => "1", xp => "100", ac => "9", hp => "5", str => "15", dex => "9", con => "15", int => "10", wis => "9", cha => "7", breath => "15", poison => "12", petrify => "13", wands => "13", spells => "15", property => "Spell Book (Gerdana)\\\\* sleepy swoosh", languages => "Ghinorian\\\\Elven", abilities => "Spot secret doors 2/6\\\\Hear noise 2/6\\\\Sleep", misc => "“Dwarf-friend”", thac0 => "19", charsheet=>"Charactersheet-landscape.svg") => begin %>landscape<% end %>,
-<%= link_to url_for("char" => {lang => "en"})->query(name => "Tehah", class => "Elf", level => "1", xp => "100", ac => "9", hp => "5", str => "15", dex => "9", con => "15", int => "10", wis => "9", cha => "7", breath => "15", poison => "12", petrify => "13", wands => "13", spells => "15", property => "Spell Book (Gerdana)\\\\* sleepy swoosh", languages => "Ghinorian\\\\Elven", abilities => "Spot secret doors 2/6\\\\Hear noise 2/6\\\\Sleep", misc => "“Dwarf-friend”", thac0 => "19", charsheet=>"Charactersheet-adv.svg") => begin %>alternative<% end %>).
+(<%= link_to url_for("char" => {lang => "en"})->query(name => "Tehah", class => "Elf", level => "1", xp => "100", ac => "9", hp => "5", str => "15", dex => "9", con => "15", int => "10", wis => "9", cha => "7", breath => "15", poison => "12", petrify => "13", wands => "13", spells => "15", property => "Spell Book (Gerdana)\\\\* sleepy swoosh", abilities => "Ghinorian\\\\Elven", thac0 => "19", charsheet => "Charactersheet-landscape-target20.svg") => begin %>example<% end %>, <%= link_to url_for("char" => {lang => "en"})->query(name => "Tehah", class => "Elf", level => "1", xp => "100", ac => "9", hp => "5", str => "15", dex => "9", con => "15", int => "10", wis => "9", cha => "7", breath => "15", poison => "12", petrify => "13", wands => "13", spells => "15", property => "Spell Book (Gerdana)\\\\* sleepy swoosh", languages => "Ghinorian\\\\Elven", abilities => "Spot secret doors 2/6\\\\Hear noise 2/6\\\\Sleep", misc => "“Dwarf-friend”", thac0 => "19", charsheet=>"Charactersheet.svg") => begin %>old<% end %>,
+<%= link_to url_for("char" => {lang => "en"})->query(name => "Tehah", class => "Elf", level => "1", xp => "100", ac => "9", hp => "5", str => "15", dex => "9", con => "15", int => "10", wis => "9", cha => "7", breath => "15", poison => "12", petrify => "13", wands => "13", spells => "15", property => "Spell Book (Gerdana)\\\\* sleepy swoosh", languages => "Ghinorian\\\\Elven", abilities => "Spot secret doors 2/6\\\\Hear noise 2/6\\\\Sleep", misc => "“Dwarf-friend”", thac0 => "19", charsheet=>"Charactersheet-landscape.svg") => begin %>old landscape<% end %>, <%= link_to url_for("char" => {lang => "en"})->query(name => "Tehah", class => "Elf", level => "1", xp => "100", ac => "9", hp => "5", str => "15", dex => "9", con => "15", int => "10", wis => "9", cha => "7", breath => "15", poison => "12", petrify => "13", wands => "13", spells => "15", property => "Spell Book (Gerdana)\\\\* sleepy swoosh", languages => "Ghinorian\\\\Elven", abilities => "Spot secret doors 2/6\\\\Hear noise 2/6\\\\Sleep", misc => "“Dwarf-friend”", thac0 => "19", charsheet=>"Charactersheet-adv.svg") => begin %>alternative<% end %>).
 The script can also show
-<%= link_to url_for("show")->query(charsheet=>"Charactersheet.svg") => begin %>which parameters go where<% end %>
-(<%= link_to url_for("show")->query(charsheet=>"Charactersheet-landscape.svg") => begin %>landscape<% end %>, <%= link_to url_for("show")->query(charsheet=>"Charactersheet-adv.svg") => begin %>alternative<% end %>).
+<%= link_to url_for("show")->query(charsheet=>"Charactersheet-landscape-target20.svg") => begin %>which parameters go where<% end %> (<%= link_to url_for("show")->query(charsheet=>"Charactersheet.svg") => begin %>old<% end %>, <%= link_to url_for("show")->query(charsheet=>"Charactersheet-landscape.svg") => begin %>old landscape<% end %>, <%= link_to url_for("show")->query(charsheet=>"Charactersheet-adv.svg") => begin %>alternative<% end %>).
 Also note that the parameters need to be UTF-8 encoded. If the
 template contains a multiline placeholder, the parameter may also provide
 multiple lines separated by two backslashes.
