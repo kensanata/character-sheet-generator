@@ -247,8 +247,8 @@
 
     <text id="attack-explanation" x="580" y="740" class="tiny"><tspan></tspan></text>
     <text id="attack-explanation" x="450" y="740" class="tiny">
-      <tspan>Nahkampf: W20 + Bonus + Kraft Bonus + RK des Gegners ≥ 20; Schaden: 1W6 + Kraft Bonus</tspan>
-      <tspan x="450" dy="12">Fernkampf: W20 + Bonus + Geschick Bonus + RK des Gegners ≥ 20; Schaden: 1W6</tspan>
+      <tspan>Nahkampf: Kraft Bonus gilt für beides; Fernkampf: Geschick Bonus gilt nur zum treffen</tspan>
+      <tspan x="450" dy="12">Treffen: W20 + Bonus + RK des Gegners ≥ 20</tspan>
     </text>
 
     <a id="link" xlink:href="https://campaignwiki.org/character-sheet-generator">

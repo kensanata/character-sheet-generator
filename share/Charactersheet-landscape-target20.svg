@@ -246,8 +246,8 @@
     <text id="other-note" x="820" y="720" class="big"><tspan></tspan></text>
 
     <text id="attack-explanation" x="450" y="740" class="tiny">
-      <tspan>melee: d20 + bonus + strength bonus ≥ 20; damage: d6 + strength bonus</tspan>
-      <tspan x="450" dy="12">ranged: d20 + bonus + dexterity bonus ≥ 20; damage: d6</tspan>
+      <tspan>melee: add strength bonus to both; ranged: add dexterity bonus to hit</tspan>
+      <tspan x="450" dy="12">to hit: roll d20 + bonus + armour class ≥ 20</tspan>
     </text>
 
     <a id="link" xlink:href="https://campaignwiki.org/character-sheet-generator">
