@@ -192,7 +192,7 @@
     <text id="wands-bonus" x="380" y="690" class="large centred"><tspan>___</tspan></text>
     <text id="spells-label" x="80" y="720" class="big"><tspan></tspan>Zaubersprüche</text>
     <text id="spells-bonus" x="380" y="720" class="large centred"><tspan>___</tspan></text>
-    <text id="saves-explanation" x="390" y="740" class="tiny right"><tspan>W20 + Bonus muss grösser oder gleich 20 sein</tspan></text>
+    <text id="saves-explanation" x="390" y="740" class="tiny right"><tspan>W20 + Bonus ≥ 20</tspan></text>
 
     <text id="portrait-label" x="300" y="80" class="smaller"><tspan>Wappen oder Bild</tspan></text>
     <image id="portrait" width="120" height="120" x="300" y="85" />
@@ -202,6 +202,12 @@
     <rect id="hp-frame" width="220" height="50" x="450" y="85" class="frame"/>
     <text id="hp" x="455" y="115" class="huge"><tspan>___</tspan></text>
     <text id="hp-explanation" x="455" y="130" class="tiny"><tspan>Maximum</tspan></text>
+    <text id="hp-classes" y="83" class="tiny right">
+      <tspan x="668" dy="12">Krieger &amp; Zwerge: W8</tspan><!--
+      --><tspan x="668" dy="12">Magier &amp; Diebe: W4</tspan><!--
+      --><tspan x="668" dy="12">Alle anderen: W6</tspan><!--
+      --><tspan x="668" dy="12">+ Gesundheit Bonus</tspan>
+    </text>
 
     <text id="gold-label" x="450" y="160" class="smaller"><tspan>Gold</tspan></text>
     <rect id="gold-frame" width="60" height="40" x="450" y="165" class="frame"/>
@@ -241,12 +247,12 @@
 
     <text id="attack-explanation" x="580" y="740" class="tiny"><tspan></tspan></text>
     <text id="attack-explanation" x="450" y="740" class="tiny">
-      <tspan>Kraft: Treffer und Schaden im Nahkampf; Geschick: Treffer im Fernkampf</tspan>
-      <tspan x="450" dy="12">W20 + Bonus muss grösser oder gleich 20 sein</tspan>
+      <tspan>Nahkampf: W20 + Bonus + Kraft Bonus + RK des Gegners ≥ 20; Schaden: 1W6 + Kraft Bonus</tspan>
+      <tspan x="450" dy="12">Fernkampf: W20 + Bonus + Geschick Bonus + RK des Gegners ≥ 20; Schaden: 1W6</tspan>
     </text>
 
     <a id="link" xlink:href="https://campaignwiki.org/character-sheet-generator">
-      <text id="link-text" y="740" x="990"><tspan>Link</tspan></text>
+      <text id="link-text" y="0" x="0" transform="translate(1020,752) rotate(-90) "><tspan>Link</tspan></text>
     </a>
   </g>
 </svg>

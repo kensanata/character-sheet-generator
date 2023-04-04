@@ -192,7 +192,7 @@
     <text id="wands-bonus" x="380" y="690" class="large centred"><tspan>___</tspan></text>
     <text id="spells-label" x="80" y="720" class="big"><tspan></tspan>Spells</text>
     <text id="spells-bonus" x="380" y="720" class="large centred"><tspan>___</tspan></text>
-    <text id="saves-explanation" x="390" y="740" class="tiny right"><tspan>d20 + bonus must be 20 or higher</tspan></text>
+    <text id="saves-explanation" x="390" y="740" class="tiny right"><tspan>d20 + bonus ≥ 20</tspan></text>
 
     <text id="portrait-label" x="300" y="80" class="smaller"><tspan>Heraldry or Image</tspan></text>
     <image id="portrait" width="120" height="120" x="300" y="85" />
@@ -202,6 +202,12 @@
     <rect id="hp-frame" width="220" height="50" x="450" y="85" class="frame"/>
     <text id="hp" x="455" y="115" class="huge"><tspan>___</tspan></text>
     <text id="hp-explanation" x="455" y="130" class="tiny"><tspan>Max</tspan></text>
+    <text id="hp-classes" y="83" class="tiny right">
+      <tspan x="668" dy="12">fighters &amp; dwarves: W8</tspan><!--
+      --><tspan x="668" dy="12">magic users &amp; thieves: W4</tspan><!--
+      --><tspan x="668" dy="12">all others: W6</tspan><!--
+      --><tspan x="668" dy="12">+ constitution bonus</tspan>
+    </text>
 
     <text id="gold-label" x="450" y="160" class="smaller"><tspan>Gold</tspan></text>
     <rect id="gold-frame" width="60" height="40" x="450" y="165" class="frame"/>
@@ -240,8 +246,8 @@
     <text id="other-note" x="820" y="720" class="big"><tspan></tspan></text>
 
     <text id="attack-explanation" x="450" y="740" class="tiny">
-      <tspan>Strength: bonus and damage in melee; dexterity: bonus for ranged combat</tspan>
-      <tspan x="450" dy="12">d20 + bonus must be 20 or higher</tspan>
+      <tspan>melee: d20 + bonus + strength bonus ≥ 20; damage: d6 + strength bonus</tspan>
+      <tspan x="450" dy="12">ranged: d20 + bonus + dexterity bonus ≥ 20; damage: d6</tspan>
     </text>
 
     <a id="link" xlink:href="https://campaignwiki.org/character-sheet-generator">
