@@ -357,7 +357,7 @@ sub svg_read {
   } else {
     my $ua = Mojo::UserAgent->new;
     my $tx = $ua->get($filename);
-    die "«$filename»: " . $tx->res->error->{message} . "\n" unless $tx->success;
+    die "«$filename»: " . $tx->res->error->{message} . "\n" unless $tx->res->is_success;
     $doc = XML::LibXML->load_xml(string => $tx->res->body);
   }
   return ($char, $doc); # used as parameters for svg_transform
