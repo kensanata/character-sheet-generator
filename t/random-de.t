@@ -46,7 +46,7 @@ $t->get_ok('/random/de?name=Alex')
     ->header_is('Content-Type' => 'image/svg+xml')
     ->text_is('text#name tspan' => 'Alex')
     ->text_is('a#link text tspan' => 'Link')
-    ->text_like('text#breath tspan' => qr'\d+');
+    ->text_like('text#breath-bonus tspan' => qr'\+\d+');
 
 my $url = $t->tx->res->dom->at('a#link')->attr('xlink:href');
 my $str = $t->tx->res->dom->at('text#str tspan')->text;

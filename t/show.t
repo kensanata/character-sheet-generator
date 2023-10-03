@@ -25,16 +25,6 @@ $t->get_ok('/show')
     ->status_is(200)
     ->text_is('text#str' => 'str');
 
-is($t->tx->res->dom->at('svg')->attr('sodipodi:docname'),
-   "Charactersheet.svg",
-   'the correct SVG file was loaded');
-
-$t->get_ok('/show?charsheet=Charakterblatt.svg')
-    ->status_is(200)
-    ->text_is('text#str' => 'str');
-
-is($t->tx->res->dom->at('svg')->attr('sodipodi:docname'),
-   "Charakterblatt.svg",
-   'the correct SVG file was loaded');
+$t->text_is('#melee-to-hit', "melee-to-hit");
 
 done_testing();

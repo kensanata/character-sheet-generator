@@ -39,7 +39,7 @@ $t->get_ok('/random/en?class=fighter&str=10')
     ->status_is(200)
     ->text_is('#class tspan' => 'fighter')
     ->text_is('#abilities tspan:first-child' => '1/6 for normal tasks')
-    ->text_is('#melee0 tspan' => '19');
+    ->text_is('#melee-to-hit tspan' => '+1');
 
 $t->get_ok('/random/en?class=thief')
     ->status_is(200)

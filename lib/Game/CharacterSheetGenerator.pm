@@ -510,9 +510,7 @@ sub cha_bonus {
 }
 
 sub number {
-  my $num = shift;
-  return "+" . $num if $num >= 0;
-  return $num;
+  return sprintf("%+d", shift);
 }
 
 sub character {
