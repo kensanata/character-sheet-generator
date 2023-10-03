@@ -41,13 +41,13 @@ $t->get_ok('/random/en?class=fighter&str=10')
     ->text_is('#abilities tspan:first-child' => '1/6 for normal tasks')
     ->text_is('#melee-to-hit tspan' => '+1');
 
-$t->get_ok('/random/en?class=fighter&wis=13')
+$t->get_ok('/random/en?class=fighter&wis=13') # +1 Wisdom-Bonus taken into account
     ->status_is(200)
-    ->text_is('#breath-bonus tspan' => '+5')
-    ->text_is('#petrify-bonus tspan' => '+6')
-    ->text_is('#poison-bonus tspan' => '+8')
-    ->text_is('#wands-bonus tspan' => '+7')
-    ->text_is('#spells-bonus tspan' => '+5'); # +1 Wisdom-Bonus taken into account
+    ->text_is('#breath-bonus tspan' => '+6')
+    ->text_is('#petrify-bonus tspan' => '+7')
+    ->text_is('#poison-bonus tspan' => '+9')
+    ->text_is('#wands-bonus tspan' => '+8')
+    ->text_is('#spells-bonus tspan' => '+5');
 
 $t->get_ok('/random/en?class=thief')
     ->status_is(200)
