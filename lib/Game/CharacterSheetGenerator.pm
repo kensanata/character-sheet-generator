@@ -1532,8 +1532,9 @@ sub random {
     provide($char, "level",  "0");
     provide($char, "thac0",  20);
   } elsif ($class eq T('dog')) {
+    provide($char, "ac",  "7");
     provide($char, "level",  "2");
-    provide($char, "thac0",  18);
+    provide($char, "thac0",  17);
   } else {
     provide($char, "level",  "1");
     provide($char, "thac0",  19);
