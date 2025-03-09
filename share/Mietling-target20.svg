@@ -617,7 +617,7 @@
        style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;line-height:0%;font-family:Purisa;-inkscape-font-specification:'Purisa Light';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
        x="346.0069"
        y="183.89264"
-       id="breath"><tspan
+       id="breath-bonus"><tspan
          sodipodi:role="line"
          x="346.0069"
          y="183.89264"
@@ -629,7 +629,7 @@
        style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;line-height:0%;font-family:Purisa;-inkscape-font-specification:'Purisa Light';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
        x="346.0069"
        y="203.89264"
-       id="petrify"><tspan
+       id="petrify-bonus"><tspan
          sodipodi:role="line"
          x="346.0069"
          y="203.89264"
@@ -641,7 +641,7 @@
        style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;line-height:0%;font-family:Purisa;-inkscape-font-specification:'Purisa Light';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
        x="346.0069"
        y="223.89264"
-       id="poison"><tspan
+       id="poison-bonus"><tspan
          sodipodi:role="line"
          x="346.0069"
          y="223.89264"
@@ -653,7 +653,7 @@
        style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;line-height:0%;font-family:Purisa;-inkscape-font-specification:'Purisa Light';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
        x="346.0069"
        y="243.89264"
-       id="wands"><tspan
+       id="wands-bonus"><tspan
          sodipodi:role="line"
          x="346.0069"
          y="243.89264"
@@ -665,7 +665,7 @@
        style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;line-height:0%;font-family:Purisa;-inkscape-font-specification:'Purisa Light';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
        x="346.0069"
        y="263.89264"
-       id="spells"><tspan
+       id="spells-bonus"><tspan
          sodipodi:role="line"
          x="346.0069"
          y="263.89264"
