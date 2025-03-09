@@ -89,7 +89,7 @@ use Mojo::Log;
 use File::ShareDir "dist_dir";
 use I18N::AcceptLanguage;
 use XML::LibXML;
-use List::Util qw(shuffle max);
+use List::Util qw(first shuffle max);
 use POSIX qw(floor ceil);
 use Cwd;
 no warnings qw(uninitialized numeric);
@@ -974,7 +974,6 @@ sub saves {
   my $char = shift;
   my $class = $char->{class};
   my $level = $char->{level};
-  return unless $class;
   my ($breath, $poison, $petrify, $wands, $spells);
   if  ($class eq T('dwarf') or $class eq T('halfling')) {
     ($breath, $poison, $petrify, $wands, $spells) =
@@ -995,16 +994,24 @@ sub saves {
     ($breath, $poison, $petrify, $wands, $spells) =
       (17, 14, 16, 15, 18);
   }
+  # This is the default, if any
   $breath -= $char->{"wis-bonus"};
   $poison -= $char->{"wis-bonus"};
   $petrify -= $char->{"wis-bonus"};
   $wands -= $char->{"wis-bonus"};
   $spells -= $char->{"wis-bonus"};
-  provide($char, "breath-bonus", number(20 - $breath)) unless $char->{"breath-bonus"};
-  provide($char, "poison-bonus", number(20 - $poison)) unless $char->{"poison-bonus"};
-  provide($char, "petrify-bonus", number(20 - $petrify)) unless $char->{"petrify-bonus"};
-  provide($char, "wands-bonus", number(20 - $wands)) unless $char->{"wands-bonus"};
-  provide($char, "spells-bonus", number(20 - $spells)) unless $char->{"spells-bonus"};
+  # Set classic saves, unless they already exist
+  provide($char, "breath", defined $char->{"breath-bonus"} ? 20 - $char->{"breath-bonus"} : $breath);
+  provide($char, "poison", defined $char->{"poison-bonus"} ? 20 - $char->{"poison-bonus"} : $poison);
+  provide($char, "petrify", defined $char->{"petrify-bonus"} ? 20 - $char->{"petrify-bonus"} : $petrify);
+  provide($char, "wands", defined $char->{"wands-bonus"} ? 20 - $char->{"wands-bonus"} : $wands);
+  provide($char, "spells", defined $char->{"spells-bonus"} ? 20 - $char->{"spells-bonus"} : $spells);
+  # Set Target 20 saves, unless they already exist
+  provide($char, "breath-bonus", number(20 - $char->{"breath"}));
+  provide($char, "poison-bonus", number(20 - $char->{"poison"}));
+  provide($char, "petrify-bonus", number(20 - $char->{"petrify"}));
+  provide($char, "wands-bonus", number(20 - $char->{"wands"}));
+  provide($char, "spells-bonus", number(20 - $char->{"spells"}));
 }
 
 sub improve {
@@ -1089,6 +1096,11 @@ sub provide ($$$) {
   my @provided = grep { $_ ne $key } @{$char->{provided}};
   $char->{provided} = [@provided, $key];
   $char->{$key} = $value;
+}
+
+sub provided {
+  my ($char, $key) = @_;
+  return grep { $_ eq $key } @{$char->{provided}} if @{$char->{provided}};
 }
 
 sub one {
@@ -2218,6 +2230,11 @@ In addition to that, some parameters are computed unless provided:
 <li>thac0 → other-thac0 and to-hit → other-to-hit
 <li>other-thac0 → range0-9
 <li>damage → other-damage
+<li>breath → breath-bonus
+<li>poison → poison-bonus
+<li>petrify → petrify-bonus
+<li>wands → wands-bonus
+<li>spells → spells-bonus
 </ul>
 
 <p>
