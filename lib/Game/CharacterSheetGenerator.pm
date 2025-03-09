@@ -177,8 +177,8 @@ AC -2 vs. opponents larger than humans
 Rüstung -2 bei Gegnern über Menschengrösse
 Charactersheet-landscape-target20.svg
 Charakterblatt-quer-target20.svg
-Hireling.svg
-Mietling.svg
+Hireling-target20.svg
+Mietling-target20.svg
 Classes
 Klassen
 Property
@@ -515,6 +515,7 @@ sub number {
 
 sub character {
   my $char = shift;
+  my $melee_only = $char->{class} eq T("dog");
 
   for my $id (qw(str dex con int wis cha)) {
     if ($char->{$id} and not defined $char->{"$id-bonus"}) {
@@ -532,6 +533,12 @@ sub character {
     $char->{hirelings} =  4 + $char->{"cha-bonus"};
   }
 
+  if (defined $char->{"ac"} and not defined $char->{"aac"}) {
+    $char->{"aac"} = 20 - $char->{"ac"};
+  } elsif (not defined $char->{"ac"} and defined $char->{"aac"}) {
+    $char->{"ac"} = 20 - $char->{"aac"};
+  }
+
   if (defined $char->{"to-hit"} and not defined $char->{"thac0"}) {
     $char->{"thac0"} = 20 - $char->{"to-hit"};
   } elsif (not defined $char->{"to-hit"} and defined $char->{"thac0"}) {
@@ -542,10 +549,10 @@ sub character {
     if (not defined $char->{"melee-thac0"}) {
       $char->{"melee-thac0"} = $char->{"thac0"} - $char->{"str-bonus"};
     }
-    if (not defined $char->{"range-thac0"}) {
+    if (not defined $char->{"range-thac0"} and not $melee_only) {
       $char->{"range-thac0"} = $char->{"thac0"} - $char->{"dex-bonus"};
     }
-    if (not defined $char->{"other-thac0"}) {
+    if (not defined $char->{"other-thac0"} and not $melee_only) {
       $char->{"other-thac0"} = $char->{"thac0"};
     }
   }
@@ -554,15 +561,16 @@ sub character {
     if (not defined $char->{"melee-to-hit"}) {
       $char->{"melee-to-hit"} = number($char->{"to-hit"} + $char->{"str-bonus"});
     }
-    if (not defined $char->{"range-to-hit"}) {
+    if (not defined $char->{"range-to-hit"} and not $melee_only) {
       $char->{"range-to-hit"} = number($char->{"to-hit"} + $char->{"dex-bonus"});
     }
-    if (not defined $char->{"other-to-hit"}) {
+    if (not defined $char->{"other-to-hit"} and not $melee_only) {
       $char->{"other-to-hit"} = number($char->{"to-hit"});
     }
   }
 
   for my $type ("melee", "range", "other") {
+    next unless defined $char->{"$type-thac0"};
     for (my $n = 0; $n <= 9; $n++) {
       my $val = $char->{"$type-thac0"} - $n;
       $val = 20 if $val > 20;
@@ -1623,7 +1631,7 @@ sub random {
 
   if (not $char->{charsheet}) {
     if ($class eq T('hireling') or $class eq T('porter') or $class eq T('dog')) {
-      provide($char, "charsheet", T('Hireling.svg'));
+      provide($char, "charsheet", T('Hireling-target20.svg'));
     } else {
       provide($char, "charsheet", T('Charactersheet-landscape-target20.svg'));
     }
@@ -2007,7 +2015,7 @@ Wer will, kann dem generierten Charakter hier auch einen Namen geben:
 %= label_for name => "Name:"
 %= text_field "name"
 %= label_for class => "Klasse:"
-%= select_field class => ['', qw(Krieger Magier Dieb Elf Halbling Zwerg Mietling Träger)]
+%= select_field class => ['', qw(Krieger Magier Dieb Elf Halbling Zwerg Mietling Träger Hund)]
 %= submit_button
 % end
 
@@ -2229,6 +2237,7 @@ In addition to that, some parameters are computed unless provided:
 <li>damage → range-damage
 <li>thac0 → other-thac0 and to-hit → other-to-hit
 <li>other-thac0 → range0-9
+<li>ac → aac
 <li>damage → other-damage
 <li>breath → breath-bonus
 <li>poison → poison-bonus

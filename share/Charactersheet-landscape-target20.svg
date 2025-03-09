@@ -88,7 +88,7 @@
     <text id="xp-label" x="80" y="155" class="big"><tspan>Exp.</tspan></text>
     <text id="xp" x="160" y="155" class="large"><tspan>_________</tspan></text>
     <text id="ac-label" x="80" y="180" class="large"><tspan>Armour</tspan></text>
-    <text id="ac" x="160" y="180" class="large"><tspan>_________</tspan></text>
+    <text id="aac" x="160" y="180" class="large"><tspan>_________</tspan></text>
     <text id="ac-explanation" x="80" y="192" class="tiny">
       <tspan x="80" y="192">Summary: none is 9, leather is 7,</tspan>
       <tspan x="80" y="204">chain is 5, plate is 3, shield is -1,</tspan>
